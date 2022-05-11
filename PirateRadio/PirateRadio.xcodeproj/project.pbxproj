@@ -7,15 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		424B6A7528046029009A043E /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */; };
 		428B7D1D28044D22003DBBB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D1C28044D22003DBBB9 /* AppDelegate.swift */; };
 		428B7D1F28044D22003DBBB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D1E28044D22003DBBB9 /* SceneDelegate.swift */; };
 		428B7D2128044D22003DBBB9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D2028044D22003DBBB9 /* ViewController.swift */; };
 		428B7D2428044D22003DBBB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428B7D2228044D22003DBBB9 /* Main.storyboard */; };
 		428B7D2628044D23003DBBB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428B7D2528044D23003DBBB9 /* Assets.xcassets */; };
 		428B7D2928044D23003DBBB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428B7D2728044D23003DBBB9 /* LaunchScreen.storyboard */; };
+		429533B9282BE9DD0007EA6C /* YouTubeSearchResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429533B8282BE9DD0007EA6C /* YouTubeSearchResultItem.swift */; };
+		429533BB282BEA5F0007EA6C /* YouTubeSearchResultID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429533BA282BEA5F0007EA6C /* YouTubeSearchResultID.swift */; };
+		429533BD282BEAB60007EA6C /* YouTubeSearchResultSnippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429533BC282BEAB60007EA6C /* YouTubeSearchResultSnippet.swift */; };
+		429533BF282BEB4B0007EA6C /* YouTubeSearchResultSnippetThumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429533BE282BEB4B0007EA6C /* YouTubeSearchResultSnippetThumbnails.swift */; };
+		429533C1282BECC50007EA6C /* YouTubeSearchResultSnippetThumbnailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429533C0282BECC50007EA6C /* YouTubeSearchResultSnippetThumbnailData.swift */; };
+		429533C3282BF1FA0007EA6C /* YouTubeSearchListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429533C2282BF1FA0007EA6C /* YouTubeSearchListResponse.swift */; };
+		429533C5282BF2540007EA6C /* YouTubeSearchListResponsePageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429533C4282BF2540007EA6C /* YouTubeSearchListResponsePageInfo.swift */; };
+		42B027792819414300A86E58 /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B027782819414300A86E58 /* SampleViewController.swift */; };
+		42FDA7F528056B9500358658 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDA7F428056B9500358658 /* Constants.swift */; };
+		BA79805A785C428D7CB123DF /* Pods_PirateRadio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0322D488EE03B236F2C93A /* Pods_PirateRadio.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A727BABC64DF0F35829E3E4 /* Pods-PirateRadio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PirateRadio.debug.xcconfig"; path = "Target Support Files/Pods-PirateRadio/Pods-PirateRadio.debug.xcconfig"; sourceTree = "<group>"; };
 		428B7D1928044D22003DBBB9 /* PirateRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PirateRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		428B7D1C28044D22003DBBB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		428B7D1E28044D22003DBBB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +36,17 @@
 		428B7D2528044D23003DBBB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		428B7D2828044D23003DBBB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		428B7D2A28044D23003DBBB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		429533B8282BE9DD0007EA6C /* YouTubeSearchResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearchResultItem.swift; sourceTree = "<group>"; };
+		429533BA282BEA5F0007EA6C /* YouTubeSearchResultID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearchResultID.swift; sourceTree = "<group>"; };
+		429533BC282BEAB60007EA6C /* YouTubeSearchResultSnippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearchResultSnippet.swift; sourceTree = "<group>"; };
+		429533BE282BEB4B0007EA6C /* YouTubeSearchResultSnippetThumbnails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearchResultSnippetThumbnails.swift; sourceTree = "<group>"; };
+		429533C0282BECC50007EA6C /* YouTubeSearchResultSnippetThumbnailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearchResultSnippetThumbnailData.swift; sourceTree = "<group>"; };
+		429533C2282BF1FA0007EA6C /* YouTubeSearchListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearchListResponse.swift; sourceTree = "<group>"; };
+		429533C4282BF2540007EA6C /* YouTubeSearchListResponsePageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearchListResponsePageInfo.swift; sourceTree = "<group>"; };
+		42B027782819414300A86E58 /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
+		42FDA7F428056B9500358658 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6F0322D488EE03B236F2C93A /* Pods_PirateRadio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PirateRadio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8674DE3EF1AB1D5D66968675 /* Pods-PirateRadio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PirateRadio.release.xcconfig"; path = "Target Support Files/Pods-PirateRadio/Pods-PirateRadio.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +54,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				424B6A7528046029009A043E /* YouTubeiOSPlayerHelper in Frameworks */,
+				BA79805A785C428D7CB123DF /* Pods_PirateRadio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04FD044A7D778F1340A8512B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F0322D488EE03B236F2C93A /* Pods_PirateRadio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		428B7D1028044D22003DBBB9 = {
 			isa = PBXGroup;
 			children = (
 				428B7D1B28044D22003DBBB9 /* PirateRadio */,
 				428B7D1A28044D22003DBBB9 /* Products */,
+				BFE39003C61E5818B88F0226 /* Pods */,
+				04FD044A7D778F1340A8512B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +91,41 @@
 		428B7D1B28044D22003DBBB9 /* PirateRadio */ = {
 			isa = PBXGroup;
 			children = (
+				429533B7282BE9BC0007EA6C /* Models */,
 				428B7D1C28044D22003DBBB9 /* AppDelegate.swift */,
 				428B7D1E28044D22003DBBB9 /* SceneDelegate.swift */,
 				428B7D2028044D22003DBBB9 /* ViewController.swift */,
+				42B027782819414300A86E58 /* SampleViewController.swift */,
 				428B7D2228044D22003DBBB9 /* Main.storyboard */,
 				428B7D2528044D23003DBBB9 /* Assets.xcassets */,
 				428B7D2728044D23003DBBB9 /* LaunchScreen.storyboard */,
 				428B7D2A28044D23003DBBB9 /* Info.plist */,
+				42FDA7F428056B9500358658 /* Constants.swift */,
 			);
 			path = PirateRadio;
+			sourceTree = "<group>";
+		};
+		429533B7282BE9BC0007EA6C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				429533BA282BEA5F0007EA6C /* YouTubeSearchResultID.swift */,
+				429533C0282BECC50007EA6C /* YouTubeSearchResultSnippetThumbnailData.swift */,
+				429533BE282BEB4B0007EA6C /* YouTubeSearchResultSnippetThumbnails.swift */,
+				429533BC282BEAB60007EA6C /* YouTubeSearchResultSnippet.swift */,
+				429533B8282BE9DD0007EA6C /* YouTubeSearchResultItem.swift */,
+				429533C4282BF2540007EA6C /* YouTubeSearchListResponsePageInfo.swift */,
+				429533C2282BF1FA0007EA6C /* YouTubeSearchListResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BFE39003C61E5818B88F0226 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A727BABC64DF0F35829E3E4 /* Pods-PirateRadio.debug.xcconfig */,
+				8674DE3EF1AB1D5D66968675 /* Pods-PirateRadio.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,15 +135,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 428B7D2D28044D23003DBBB9 /* Build configuration list for PBXNativeTarget "PirateRadio" */;
 			buildPhases = (
+				C42E46C1CBED14D05C653A02 /* [CP] Check Pods Manifest.lock */,
 				428B7D1528044D22003DBBB9 /* Sources */,
 				428B7D1628044D22003DBBB9 /* Frameworks */,
 				428B7D1728044D22003DBBB9 /* Resources */,
+				02E6CBB60760F7B90F8CA300 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = PirateRadio;
+			packageProductDependencies = (
+				424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */,
+			);
 			productName = PirateRadio;
 			productReference = 428B7D1928044D22003DBBB9 /* PirateRadio.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +177,9 @@
 				Base,
 			);
 			mainGroup = 428B7D1028044D22003DBBB9;
+			packageReferences = (
+				424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
+			);
 			productRefGroup = 428B7D1A28044D22003DBBB9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -133,14 +202,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		02E6CBB60760F7B90F8CA300 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PirateRadio/Pods-PirateRadio-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PirateRadio/Pods-PirateRadio-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PirateRadio/Pods-PirateRadio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C42E46C1CBED14D05C653A02 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PirateRadio-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		428B7D1528044D22003DBBB9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				429533BD282BEAB60007EA6C /* YouTubeSearchResultSnippet.swift in Sources */,
+				429533C1282BECC50007EA6C /* YouTubeSearchResultSnippetThumbnailData.swift in Sources */,
+				42B027792819414300A86E58 /* SampleViewController.swift in Sources */,
+				429533C3282BF1FA0007EA6C /* YouTubeSearchListResponse.swift in Sources */,
 				428B7D2128044D22003DBBB9 /* ViewController.swift in Sources */,
+				429533C5282BF2540007EA6C /* YouTubeSearchListResponsePageInfo.swift in Sources */,
 				428B7D1D28044D22003DBBB9 /* AppDelegate.swift in Sources */,
+				429533BB282BEA5F0007EA6C /* YouTubeSearchResultID.swift in Sources */,
 				428B7D1F28044D22003DBBB9 /* SceneDelegate.swift in Sources */,
+				429533BF282BEB4B0007EA6C /* YouTubeSearchResultSnippetThumbnails.swift in Sources */,
+				429533B9282BE9DD0007EA6C /* YouTubeSearchResultItem.swift in Sources */,
+				42FDA7F528056B9500358658 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +404,7 @@
 		};
 		428B7D2E28044D23003DBBB9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A727BABC64DF0F35829E3E4 /* Pods-PirateRadio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -311,6 +432,7 @@
 		};
 		428B7D2F28044D23003DBBB9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8674DE3EF1AB1D5D66968675 /* Pods-PirateRadio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -358,6 +480,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
+			productName = YouTubeiOSPlayerHelper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 428B7D1128044D22003DBBB9 /* Project object */;
 }
