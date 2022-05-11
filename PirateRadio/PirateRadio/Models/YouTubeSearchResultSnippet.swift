@@ -14,6 +14,6 @@ struct YouTubeSearchResultSnippet : Codable {
     var description : String
     var thumbnails : YouTubeSearchResultSnippetThumbnails
     var channelTitle : String
-    var liveBroadCastContent : String
+    var liveBroadcastContent : String
     var publishTime : String
 }

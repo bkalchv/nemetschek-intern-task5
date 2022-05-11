@@ -52,9 +52,23 @@ class SampleViewController: UIViewController {
                     // TODO: Make a model, mathcing the returned JSON
         
                     if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
-                        print(JSONString)
-                    }                    
-                    
+                        //print(JSONString)
+                        
+                        let responseData = Data(JSONString.utf8)
+                        
+                        let JSONDecoder = JSONDecoder()
+                        JSONDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                        
+                        do {
+                            let decodedSearchListResponse = try JSONDecoder.decode(YouTubeSearchListResponse.self, from: responseData)
+                            print("Kind: \(decodedSearchListResponse.kind), etag:  \(decodedSearchListResponse.etag)")
+                        } catch {
+                            print("Error: \(error.localizedDescription)")
+                            print(error)
+                        }
+                        
+                        
+                    }
                 }
             }
             

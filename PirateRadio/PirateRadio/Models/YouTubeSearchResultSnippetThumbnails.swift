@@ -8,6 +8,7 @@
 import Foundation
 
 struct YouTubeSearchResultSnippetThumbnails : Codable {
-    var thumbnailSize : String
-    var thumbnailData : YouTubeSearchResultSnippetThumbnailData
+    var `default` : YouTubeSearchResultSnippetThumbnailData
+    var medium : YouTubeSearchResultSnippetThumbnailData
+    var high : YouTubeSearchResultSnippetThumbnailData
 }
