@@ -36,6 +36,8 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     }
     
     func downloadThumbnailsIfNonExistent() {
+        // TODO:
+        //let zipped = zip(lastValidResponse!.items, (0...lastValidResponse!.items.count))
         for searchItem in lastValidResponse!.items {
             let searchItemVideoID = searchItem.id.videoId
             
@@ -52,6 +54,8 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
                         do {
                             print(thumbnailFileURL)
                             try FileManager.default.moveItem(at: fileURL, to: thumbnailFileURL)
+                            // TODO:
+                            // NotificationCenter.default.post(name: .ThumbnailDownloadedNotification, object: nil, userInfo: ["indexPath" : IndexPath(row: index, section: 0)])
                         } catch {
                             print ("file error: \(error)")
                         }
@@ -130,7 +134,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
             
         }
     }
-    
+       
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let embeddedTableVC = segue.destination as? SearchResultTableViewController {
             print("Preparation done, delegate set")

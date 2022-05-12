@@ -30,12 +30,26 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // TODO:
+        // NotificationCenter.default.addObserver(self, selector: #selector(didFinishThumbnailDownload(notification:)), name: .ThumbnailDownloadedNotification, object: nil)
+    }
+    
+    @objc func didFinishThumbnailDownload(notification: Notification) {
+        if let indexPath = notification.userInfo?["indexPath"] as? IndexPath {
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func scrollTableViewToTop() {
+        self.tableView.setContentOffset(CGPoint.zero, animated:true)
     }
     
     // MARK: SearchBarViewControllerDelegate
     
     func searchPerformedSuccessfully() {
         loadTableDataFromResponse()
+        scrollTableViewToTop()
         self.tableView.reloadData()
     }
     

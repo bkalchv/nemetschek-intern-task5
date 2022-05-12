@@ -12,3 +12,7 @@ extension URL {
        (try? resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory == true
     }
 }
+
+extension Notification.Name {
+    static let ThumbnailDownloadedNotification = Notification.Name("ThumbnailDownloadedNotification")
+}
