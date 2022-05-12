@@ -15,6 +15,16 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     
     weak var delegate : SearchResultTableViewControllerDelegate?
     var tableData : [YouTubeSearchResultItem] = []
+    var searchResultCellHeight : CGFloat {
+        get {
+            
+            if let lastValidResponse = delegate?.lastValidResponse {
+                return self.tableView.bounds.size.height / CGFloat(lastValidResponse.pageInfo.resultsPerPage)
+            }
+            
+            return 0.0
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -24,11 +34,11 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     // MARK: SearchBarViewControllerDelegate
     
     func searchPerformedSuccessfully() {
-        loadDataFromResponse()
+        loadTableDataFromResponse()
         self.tableView.reloadData()
     }
     
-    func loadDataFromResponse() {
+    func loadTableDataFromResponse() {
         if let lastValidResponse = delegate?.lastValidResponse {
             tableData = lastValidResponse.items
         }
@@ -47,6 +57,10 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         }
                 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return searchResultCellHeight
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
