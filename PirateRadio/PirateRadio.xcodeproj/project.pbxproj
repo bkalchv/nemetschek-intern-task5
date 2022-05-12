@@ -107,12 +107,12 @@
 				429533CE282C10840007EA6C /* SearchBarViewController.swift */,
 				429E739A282D0A2F0073899E /* SearchResultCell.swift */,
 				429533CC282C02600007EA6C /* SearchResultTableViewController.swift */,
-				429E739C282D32600073899E /* Extensions.swift */,
 				428B7D2228044D22003DBBB9 /* Main.storyboard */,
 				428B7D2528044D23003DBBB9 /* Assets.xcassets */,
 				428B7D2728044D23003DBBB9 /* LaunchScreen.storyboard */,
 				428B7D2A28044D23003DBBB9 /* Info.plist */,
 				429533C8282BFF680007EA6C /* Constants.swift */,
+				429E739C282D32600073899E /* Extensions.swift */,
 			);
 			path = PirateRadio;
 			sourceTree = "<group>";

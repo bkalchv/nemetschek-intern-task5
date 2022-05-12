@@ -24,11 +24,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     }
     
     func createThumbnailsDirectoryInCacheIfNonExistent() {
-        let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-        
-        let cachesDirectoryURL = cachesDirectory[0]
-        
-        let thumbnailsDirectoryURL = cachesDirectoryURL.appendingPathComponent("Thumbnails")
+        let thumbnailsDirectoryURL = Constants.thumbnailsDirectoryURL
         
         if !thumbnailsDirectoryURL.isDirectory {
             do {
@@ -42,15 +38,13 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     func downloadThumbnailsIfNonExistent() {
         for searchItem in lastValidResponse!.items {
             let searchItemVideoID = searchItem.id.videoId
-            let searchItemURL = URL(string: searchItem.snippet.thumbnails.medium.url)
             
-            let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-            let cachesDirectoryURL = cachesDirectory[0]
             let thumbnailFilename = "\(searchItemVideoID)_thumbnail.jpg"
-            
-            let thumbnailFileURL = cachesDirectoryURL.appendingPathComponent("Thumbnails").appendingPathComponent(thumbnailFilename)
+            let thumbnailFileURL = Constants.thumbnailsDirectoryURL.appendingPathComponent(thumbnailFilename)
             
             if !FileManager.default.fileExists(atPath: thumbnailFileURL.path) {
+                
+                let searchItemURL = URL(string: searchItem.snippet.thumbnails.medium.url)
                 let thumbnailDownloadTask = URLSession.shared.downloadTask(with: searchItemURL!) {
                     urlOrNil, responseOrNil, errorOrNil in
                     
