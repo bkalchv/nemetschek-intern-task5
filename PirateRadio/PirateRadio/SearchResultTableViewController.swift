@@ -20,7 +20,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
             
             if let lastValidResponse = delegate?.lastValidResponse {
                 //return self.tableView.bounds.size.height / CGFloat(lastValidResponse.pageInfo.resultsPerPage)
-                return 200.00
+                return 260.00
             }
             
             return 0.0
@@ -70,6 +70,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
             cell.videoIDLabel.text = cellVideoID
             cell.titleLabel.text = cellTitle
             cell.publishTimeLabel.text = extractDateFromPublishTime(publishTime: cellPublishTime)
+            cell.loadThumbnail(withVideoID: cellVideoID)
         }
                 
         return cell

@@ -113,21 +113,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="200" id="0t7-iT-n1A" customClass="SearchResultCell" customModule="PirateRadio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="200"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="260" id="0t7-iT-n1A" customClass="SearchResultCell" customModule="PirateRadio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="260"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0t7-iT-n1A" id="r5K-Zb-ZgG">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="videoID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYV-xm-3ZC">
-                                            <rect key="frame" x="20" y="168" width="58" height="21"/>
+                                            <rect key="frame" x="20" y="228.5" width="58" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFL-JO-352">
-                                            <rect key="frame" x="20" y="139" width="33" height="21"/>
+                                            <rect key="frame" x="20" y="199.5" width="33" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="Tu5-AO-fbd"/>
                                             </constraints>
@@ -136,25 +136,36 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Published time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ9-eD-Hdb">
-                                            <rect key="frame" x="281.5" y="139" width="112.5" height="21"/>
+                                            <rect key="frame" x="281.5" y="199" width="112.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G5H-dl-DF7">
+                                            <rect key="frame" x="47" y="11" width="320" height="180"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="320" id="SXL-1r-wJN"/>
+                                                <constraint firstAttribute="height" constant="180" id="Wb4-mm-38f"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="nJ9-eD-Hdb" firstAttribute="leading" relation="lessThanOrEqual" secondItem="QFL-JO-352" secondAttribute="trailing" constant="266" id="Kox-hM-Q35"/>
                                         <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="OYV-xm-3ZC" secondAttribute="trailing" constant="316" id="S2a-PY-MHV"/>
-                                        <constraint firstItem="QFL-JO-352" firstAttribute="top" secondItem="r5K-Zb-ZgG" secondAttribute="top" constant="139" id="S8M-S8-Ak7"/>
                                         <constraint firstItem="OYV-xm-3ZC" firstAttribute="leading" secondItem="r5K-Zb-ZgG" secondAttribute="leading" constant="20" symbolic="YES" id="SLv-T6-XhN"/>
                                         <constraint firstItem="OYV-xm-3ZC" firstAttribute="top" secondItem="QFL-JO-352" secondAttribute="bottom" constant="8" symbolic="YES" id="Ufc-hS-Enb"/>
+                                        <constraint firstAttribute="trailing" secondItem="G5H-dl-DF7" secondAttribute="trailing" constant="47" id="VsG-2F-q2I"/>
+                                        <constraint firstItem="G5H-dl-DF7" firstAttribute="top" secondItem="r5K-Zb-ZgG" secondAttribute="top" constant="11" id="dXB-De-Yx8"/>
                                         <constraint firstItem="QFL-JO-352" firstAttribute="leading" secondItem="r5K-Zb-ZgG" secondAttribute="leading" constant="20" symbolic="YES" id="eBp-Xj-dWV"/>
+                                        <constraint firstItem="G5H-dl-DF7" firstAttribute="leading" secondItem="r5K-Zb-ZgG" secondAttribute="leading" constant="47" id="k4D-Eb-JSF"/>
                                         <constraint firstAttribute="trailing" secondItem="nJ9-eD-Hdb" secondAttribute="trailing" constant="20" symbolic="YES" id="mvO-6b-xGc"/>
-                                        <constraint firstItem="nJ9-eD-Hdb" firstAttribute="top" secondItem="r5K-Zb-ZgG" secondAttribute="top" constant="139" id="yyI-dD-mKa"/>
+                                        <constraint firstItem="QFL-JO-352" firstAttribute="firstBaseline" secondItem="G5H-dl-DF7" secondAttribute="baseline" constant="24.5" symbolType="layoutAnchor" id="uOs-EU-5tm"/>
+                                        <constraint firstItem="nJ9-eD-Hdb" firstAttribute="top" secondItem="r5K-Zb-ZgG" secondAttribute="top" constant="199" id="yyI-dD-mKa"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="publishTimeLabel" destination="nJ9-eD-Hdb" id="Zwc-MN-7fw"/>
+                                    <outlet property="thumbnailImage" destination="G5H-dl-DF7" id="6o2-v0-zho"/>
                                     <outlet property="titleLabel" destination="QFL-JO-352" id="0Tf-Vg-bIy"/>
                                     <outlet property="videoIDLabel" destination="OYV-xm-3ZC" id="t7b-Ig-fCs"/>
                                 </connections>
