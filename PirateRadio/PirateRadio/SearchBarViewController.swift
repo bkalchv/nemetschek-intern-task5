@@ -23,6 +23,70 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
         searchBar.delegate = self
     }
     
+    func createThumbnailsDirectoryInCacheIfNonExistent() {
+        let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
+        
+        let cachesDirectoryURL = cachesDirectory[0]
+        
+        let thumbnailsDirectoryURL = cachesDirectoryURL.appendingPathComponent("Thumbnails")
+        
+        if !thumbnailsDirectoryURL.isDirectory {
+            do {
+                try FileManager.default.createDirectory(at: thumbnailsDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func downloadThumbnailsIfNonExistent() {
+        for searchItem in lastValidResponse!.items {
+            let searchItemVideoID = searchItem.id.videoId
+            let searchItemURL = URL(string: searchItem.snippet.thumbnails.medium.url)
+            
+            let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
+            let cachesDirectoryURL = cachesDirectory[0]
+            let thumbnailFilename = "\(searchItemVideoID)_thumbnail.jpg"
+            
+            let thumbnailFileURL = cachesDirectoryURL.appendingPathComponent("Thumbnails").appendingPathComponent(thumbnailFilename)
+            
+            if !FileManager.default.fileExists(atPath: thumbnailFileURL.path) {
+                let thumbnailDownloadTask = URLSession.shared.downloadTask(with: searchItemURL!) {
+                    urlOrNil, responseOrNil, errorOrNil in
+                    
+                    guard let fileURL = urlOrNil else { return }
+                        do {
+                            print(thumbnailFileURL)
+                            try FileManager.default.moveItem(at: fileURL, to: thumbnailFileURL)
+                        } catch {
+                            print ("file error: \(error)")
+                        }
+                }
+                thumbnailDownloadTask.resume()
+            } else {
+                print("Thumbnail \(thumbnailFilename) already exists.")
+            }
+        }
+    }
+    
+    func updateLastValidResponse(forJSONString JSONString: String) {
+        let responseData = Data(JSONString.utf8)
+        
+        let JSONDecoder = JSONDecoder()
+        JSONDecoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        do {
+            let decodedSearchListResponse = try JSONDecoder.decode(YouTubeSearchListResponse.self, from: responseData)
+            self.lastValidResponse = decodedSearchListResponse
+            
+        } catch {
+            print("Error: \(error.localizedDescription)")
+            print(error)
+        }
+        
+        print("Server response succesfully fetched to models.")
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         dataTask?.cancel()
@@ -53,27 +117,15 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
                           response.statusCode == 200 { // Successful response
                     
                     if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
-                        print(JSONString)
-                        
-                        let responseData = Data(JSONString.utf8)
-                        
-                        let JSONDecoder = JSONDecoder()
-                        JSONDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                        
-                        do {
-                            let decodedSearchListResponse = try JSONDecoder.decode(YouTubeSearchListResponse.self, from: responseData)
-                            
-                            self?.lastValidResponse = decodedSearchListResponse
-                            
-                        } catch {
-                            print("Error: \(error.localizedDescription)")
-                            print(error)
-                        }
-                        
-                        print("Server response succesfully decoded to model.")
-                        
+                        //print(JSONString)
+                        self?.updateLastValidResponse(forJSONString: JSONString)
                         DispatchQueue.main.async {
                             self?.delegate?.searchPerformedSuccessfully()
+                        }
+                                        
+                        if self?.lastValidResponse != nil {
+                            self?.createThumbnailsDirectoryInCacheIfNonExistent()
+                            self?.downloadThumbnailsIfNonExistent()
                         }
                     }
                 }
