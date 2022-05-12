@@ -53,7 +53,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
                           response.statusCode == 200 { // Successful response
                     
                     if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
-                        //print(JSONString)
+                        print(JSONString)
                         
                         let responseData = Data(JSONString.utf8)
                         
@@ -71,7 +71,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
                         }
                         
                         print("Server response succesfully decoded to model.")
-                        // TODO: Notify SearchResultTableVC that there is a valid model loaded
+                        
                         DispatchQueue.main.async {
                             self?.delegate?.searchPerformedSuccessfully()
                         }
@@ -85,10 +85,6 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
         }
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("Hello, I did end editing. Current text in searchBar: \(searchBar.text!)")
-    }
-        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let embeddedTableVC = segue.destination as? SearchResultTableViewController {
             print("Preparation done, delegate set")

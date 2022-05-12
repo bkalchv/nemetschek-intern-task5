@@ -25,6 +25,7 @@
 		429533CD282C02600007EA6C /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429533CC282C02600007EA6C /* SearchResultTableViewController.swift */; };
 		429533CF282C10840007EA6C /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429533CE282C10840007EA6C /* SearchBarViewController.swift */; };
 		429E739B282D0A2F0073899E /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429E739A282D0A2F0073899E /* SearchResultCell.swift */; };
+		429E739D282D32600073899E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429E739C282D32600073899E /* Extensions.swift */; };
 		42B027792819414300A86E58 /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B027782819414300A86E58 /* SampleViewController.swift */; };
 		BA79805A785C428D7CB123DF /* Pods_PirateRadio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0322D488EE03B236F2C93A /* Pods_PirateRadio.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		429533CC282C02600007EA6C /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		429533CE282C10840007EA6C /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
 		429E739A282D0A2F0073899E /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		429E739C282D32600073899E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		42B027782819414300A86E58 /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 		6F0322D488EE03B236F2C93A /* Pods_PirateRadio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PirateRadio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8674DE3EF1AB1D5D66968675 /* Pods-PirateRadio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PirateRadio.release.xcconfig"; path = "Target Support Files/Pods-PirateRadio/Pods-PirateRadio.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				429533CE282C10840007EA6C /* SearchBarViewController.swift */,
 				429E739A282D0A2F0073899E /* SearchResultCell.swift */,
 				429533CC282C02600007EA6C /* SearchResultTableViewController.swift */,
+				429E739C282D32600073899E /* Extensions.swift */,
 				428B7D2228044D22003DBBB9 /* Main.storyboard */,
 				428B7D2528044D23003DBBB9 /* Assets.xcassets */,
 				428B7D2728044D23003DBBB9 /* LaunchScreen.storyboard */,
@@ -269,6 +272,7 @@
 				428B7D1D28044D22003DBBB9 /* AppDelegate.swift in Sources */,
 				429533BB282BEA5F0007EA6C /* YouTubeSearchResultID.swift in Sources */,
 				428B7D1F28044D22003DBBB9 /* SceneDelegate.swift in Sources */,
+				429E739D282D32600073899E /* Extensions.swift in Sources */,
 				429533BF282BEB4B0007EA6C /* YouTubeSearchResultSnippetThumbnails.swift in Sources */,
 				429533CD282C02600007EA6C /* SearchResultTableViewController.swift in Sources */,
 				429533B9282BE9DD0007EA6C /* YouTubeSearchResultItem.swift in Sources */,

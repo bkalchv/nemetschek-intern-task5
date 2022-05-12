@@ -19,7 +19,8 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         get {
             
             if let lastValidResponse = delegate?.lastValidResponse {
-                return self.tableView.bounds.size.height / CGFloat(lastValidResponse.pageInfo.resultsPerPage)
+                //return self.tableView.bounds.size.height / CGFloat(lastValidResponse.pageInfo.resultsPerPage)
+                return 200.00
             }
             
             return 0.0
@@ -44,16 +45,31 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         }
     }
     
+    func extractDateFromPublishTime(publishTime: String) -> String {
+        
+        if let upperBound = publishTime.firstIndex(of: "T") {
+            return String(publishTime[publishTime.startIndex..<upperBound])
+        }
+        
+        return ""
+    }
+    
     // MARK: TableView DataSource
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as! SearchResultCell
         
         if !tableData.isEmpty && indexPath.row < tableData.count {
-            
-            let cellVideoID = tableData[indexPath.row].id.videoId
                         
+            let searchResultItem = tableData[indexPath.row]
+            let cellVideoID = searchResultItem.id.videoId
+            let cellTitle = searchResultItem.snippet.title
+            let cellPublishTime = searchResultItem.snippet.publishTime
+            
+            
             cell.videoIDLabel.text = cellVideoID
+            cell.titleLabel.text = cellTitle
+            cell.publishTimeLabel.text = extractDateFromPublishTime(publishTime: cellPublishTime)
         }
                 
         return cell

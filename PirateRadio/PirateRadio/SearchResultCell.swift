@@ -10,6 +10,8 @@ import UIKit
 class SearchResultCell: UITableViewCell {
 
     @IBOutlet weak var videoIDLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var publishTimeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
