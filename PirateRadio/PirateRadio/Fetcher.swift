@@ -17,6 +17,8 @@ class Fetcher {
     var dataTask: URLSessionDataTask? = nil
     weak var delegate : FetcherDelegate? = nil
     
+    var mockResponses = [Constants.mockResultJSONString, Constants.mockResultNextPageJSON]
+    
     init?(withViewControllerForDelegate vcForDelegate : SearchBarViewController) {
         self.delegate = vcForDelegate
     }
@@ -113,8 +115,9 @@ class Fetcher {
                         self?.delegate?.updateTableViewDataSource()
                     }
                 } else if let response = response as? HTTPURLResponse, response.statusCode == 403 {
-                    self?.updateLastValidResponse(forJSONString: Constants.mockResultJSONString)
+                    self?.updateLastValidResponse(forJSONString: self?.mockResponses.first ?? "")
                     self?.delegate?.updateTableViewDataSource()
+                    self?.mockResponses.removeFirst()
                 }
             }
             
