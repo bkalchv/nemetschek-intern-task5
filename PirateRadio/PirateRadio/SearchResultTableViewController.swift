@@ -12,13 +12,13 @@ protocol SearchResultTableViewControllerDelegate: AnyObject {
 }
 
 class SearchResultTableViewController: UITableViewController, SearchBarViewControllerDelegate {
-    
+      
     weak var delegate : SearchResultTableViewControllerDelegate?
     var tableData : [YouTubeSearchResultItem] = []
     var searchResultCellHeight : CGFloat {
         get {
             
-            if let lastValidResponse = delegate?.lastValidResponse {
+            if (delegate?.lastValidResponse) != nil {
                 //return self.tableView.bounds.size.height / CGFloat(lastValidResponse.pageInfo.resultsPerPage)
                 return 260.00
             }
@@ -39,7 +39,13 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         if let indexPath = notification.userInfo?["indexPath"] as? IndexPath {
             NSLog("Notified to reload \(indexPath.row)'s item")
             DispatchQueue.main.async {
-                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                
+                if self.tableView.numberOfRows(inSection: 0) != 0 {
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                } else {
+                    self.tableView.reloadData()
+                }
+        
             }
         }
     }
@@ -50,10 +56,13 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     
     // MARK: SearchBarViewControllerDelegate
     
-    func searchPerformedSuccessfully() {
-        loadTableDataFromResponse()
+    func performPreloadedThumbnailsSearch() {
         scrollTableViewToTop()
         self.tableView.reloadData()
+    }
+    
+    func updateDataSource() {
+        loadTableDataFromResponse()
     }
     
     func loadTableDataFromResponse() {

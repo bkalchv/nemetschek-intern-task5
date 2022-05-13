@@ -8,7 +8,8 @@
 import UIKit
 
 protocol SearchBarViewControllerDelegate : AnyObject {
-    func searchPerformedSuccessfully()
+    func performPreloadedThumbnailsSearch()
+    func updateDataSource()
 }
 
 class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResultTableViewControllerDelegate {
@@ -35,7 +36,21 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
         }
     }
     
-    func downloadThumbnailsIfNonExistent() {
+    func areAllThumbnailFilesPresent() -> Bool {
+        for searchItem in lastValidResponse!.items {
+            let searchItemVideoID = searchItem.id.videoId
+            let thumbnailFilename = "\(searchItemVideoID)_thumbnail.jpg"
+            let thumbnailFileLocalURL = Constants.thumbnailsDirectoryURL.appendingPathComponent(thumbnailFilename)
+            
+            if !FileManager.default.fileExists(atPath: thumbnailFileLocalURL.path) {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    func downloadMissingThumbnails() {
         // TODO:
         
         let zippedItemsToIndices = zip(lastValidResponse!.items, (0...lastValidResponse!.items.count))
@@ -128,14 +143,19 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
                     if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
                         //print(JSONString)
                         self?.updateLastValidResponse(forJSONString: JSONString)
-                        DispatchQueue.main.async {
-                            self?.delegate?.searchPerformedSuccessfully()
-                        }
-                                        
-                        if self?.lastValidResponse != nil {
-                            self?.createThumbnailsDirectoryInCacheIfNonExistent()
-                            self?.downloadThumbnailsIfNonExistent()
-                        }
+                        self?.delegate?.updateDataSource()
+                        
+                        if let areAllThumbnailFilesPresent = self?.areAllThumbnailFilesPresent(),
+                           areAllThumbnailFilesPresent {
+                            DispatchQueue.main.async {
+                                self?.delegate?.performPreloadedThumbnailsSearch()
+                            }
+                        } else {
+                            if self?.lastValidResponse != nil {
+                                self?.createThumbnailsDirectoryInCacheIfNonExistent()
+                                self?.downloadMissingThumbnails()
+                            }
+                        }                        
                     }
                 }
             }
