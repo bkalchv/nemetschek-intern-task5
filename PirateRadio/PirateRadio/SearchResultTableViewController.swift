@@ -32,12 +32,15 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         super.viewDidLoad()
         
         // TODO:
-        // NotificationCenter.default.addObserver(self, selector: #selector(didFinishThumbnailDownload(notification:)), name: .ThumbnailDownloadedNotification, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(didFinishThumbnailDownload(notification:)), name: .ThumbnailDownloadedNotification, object: nil)
     }
     
     @objc func didFinishThumbnailDownload(notification: Notification) {
         if let indexPath = notification.userInfo?["indexPath"] as? IndexPath {
-            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            NSLog("Notified to reload \(indexPath.row)'s item")
+            DispatchQueue.main.async {
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
         }
     }
     

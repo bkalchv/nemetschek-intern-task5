@@ -38,9 +38,9 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     func downloadThumbnailsIfNonExistent() {
         // TODO:
         
-        let zippedItemsToIndexes = zip(lastValidResponse!.items, (0...lastValidResponse!.items.count))
+        let zippedItemsToIndices = zip(lastValidResponse!.items, (0...lastValidResponse!.items.count))
         
-        for zippedItem in zippedItemsToIndexes {
+        for zippedItem in zippedItemsToIndices {
             
             let currentSearchItem = zippedItem.0
             let currentIndex = zippedItem.1
@@ -56,14 +56,14 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
                     url, response, error in
                     
                     guard let temporaryFileURL = url else { return }
-                        do {
-                            print("\(thumbnailFileLocalURL) downloaded.")
-                            try FileManager.default.moveItem(at: temporaryFileURL, to: thumbnailFileLocalURL)
-                            // TODO:
-                            // NotificationCenter.default.post(name: .ThumbnailDownloadedNotification, object: nil, userInfo: ["indexPath" : IndexPath(row: index, section: 0)])
-                        } catch {
-                            print ("file error: \(error)")
-                        }
+                    do {
+                        print("\(thumbnailFileLocalURL) downloaded.")
+                        try FileManager.default.moveItem(at: temporaryFileURL, to: thumbnailFileLocalURL)
+                        // TODO:
+                        NotificationCenter.default.post(name: .ThumbnailDownloadedNotification, object: nil, userInfo: ["indexPath" : IndexPath(row: currentIndex, section: 0)])
+                    } catch {
+                        print ("file error: \(error)")
+                    }
                 }
                 thumbnailDownloadTask.resume()
             } else {
