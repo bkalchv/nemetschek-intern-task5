@@ -37,23 +37,28 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     
     func downloadThumbnailsIfNonExistent() {
         // TODO:
-        //let zipped = zip(lastValidResponse!.items, (0...lastValidResponse!.items.count))
-        for searchItem in lastValidResponse!.items {
-            let searchItemVideoID = searchItem.id.videoId
+        
+        let zippedItemsToIndexes = zip(lastValidResponse!.items, (0...lastValidResponse!.items.count))
+        
+        for zippedItem in zippedItemsToIndexes {
             
-            let thumbnailFilename = "\(searchItemVideoID)_thumbnail.jpg"
-            let thumbnailFileURL = Constants.thumbnailsDirectoryURL.appendingPathComponent(thumbnailFilename)
+            let currentSearchItem = zippedItem.0
+            let currentIndex = zippedItem.1
             
-            if !FileManager.default.fileExists(atPath: thumbnailFileURL.path) {
+            let currentSearchItemVideoID = currentSearchItem.id.videoId
+            let thumbnailFilename = "\(currentSearchItemVideoID)_thumbnail.jpg"
+            let thumbnailFileLocalURL = Constants.thumbnailsDirectoryURL.appendingPathComponent(thumbnailFilename)
+            
+            if !FileManager.default.fileExists(atPath: thumbnailFileLocalURL.path) {
                 
-                let searchItemURL = URL(string: searchItem.snippet.thumbnails.medium.url)
-                let thumbnailDownloadTask = URLSession.shared.downloadTask(with: searchItemURL!) {
-                    urlOrNil, responseOrNil, errorOrNil in
+                let thumbnailURL = URL(string: currentSearchItem.snippet.thumbnails.medium.url)
+                let thumbnailDownloadTask = URLSession.shared.downloadTask(with: thumbnailURL!) {
+                    url, response, error in
                     
-                    guard let fileURL = urlOrNil else { return }
+                    guard let temporaryFileURL = url else { return }
                         do {
-                            print(thumbnailFileURL)
-                            try FileManager.default.moveItem(at: fileURL, to: thumbnailFileURL)
+                            print("\(thumbnailFileLocalURL) downloaded.")
+                            try FileManager.default.moveItem(at: temporaryFileURL, to: thumbnailFileLocalURL)
                             // TODO:
                             // NotificationCenter.default.post(name: .ThumbnailDownloadedNotification, object: nil, userInfo: ["indexPath" : IndexPath(row: index, section: 0)])
                         } catch {

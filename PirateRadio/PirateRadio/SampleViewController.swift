@@ -49,8 +49,6 @@ class SampleViewController: UIViewController {
                       let response = response as? HTTPURLResponse,
                       response.statusCode == 200 { // Successful response
                     
-                    // TODO: Make a model, mathcing the returned JSON
-        
                     if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
                         //print(JSONString)
                         
