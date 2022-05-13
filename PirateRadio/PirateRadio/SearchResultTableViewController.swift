@@ -19,7 +19,6 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         get {
             
             if (delegate?.lastValidResponse) != nil {
-                //return self.tableView.bounds.size.height / CGFloat(lastValidResponse.pageInfo.resultsPerPage)
                 return 260.00
             }
             
@@ -38,13 +37,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         if let indexPath = notification.userInfo?["indexPath"] as? IndexPath {
             NSLog("Notified to reload \(indexPath.row)'s item")
             DispatchQueue.main.async {
-                // TODO: Ask if fine
-                if self.tableView.numberOfRows(inSection: 0) != 0 {
-                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
-                } else {
-                    self.tableView.reloadData()
-                }
-        
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
     }
@@ -55,18 +48,16 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     
     // MARK: SearchBarViewControllerDelegate
     
-    func performPreloadedThumbnailsSearch() {
-        scrollTableViewToTop()
-        self.tableView.reloadData()
-    }
-    
     func updateDataSource() {
         loadTableDataFromResponse()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func loadTableDataFromResponse() {
         if let lastValidResponse = delegate?.lastValidResponse {
-            tableData = lastValidResponse.items
+            tableData += lastValidResponse.items
         }
     }
     
@@ -95,7 +86,36 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
             cell.videoIDLabel.text = cellVideoID
             cell.titleLabel.text = cellTitle
             cell.publishTimeLabel.text = extractDateFromPublishTime(publishTime: cellPublishTime)
-            cell.loadThumbnail(withVideoID: cellVideoID)
+            
+            // download thumbnail for missing videoId
+            let thumbnailFilename = "\(cellVideoID)_thumbnail.jpg"
+            let thumbnailFileLocalURL = Constants.thumbnailsDirectoryURL.appendingPathComponent(thumbnailFilename)
+            
+            if let thumbnailData = try? Data(contentsOf: thumbnailFileLocalURL) {
+                cell.thumbnailImage.image = UIImage(data: thumbnailData)
+               
+            } else {
+                // download the thumbnail
+                let thumbnailURL = URL(string: searchResultItem.snippet.thumbnails.medium.url)!
+                
+                let thumbnailDownloadTask = URLSession.shared.downloadTask(with: thumbnailURL) {
+                    url, response, error in
+                    
+                    guard let temporaryFileURL = url else { return }
+                    do {
+                        print("\(thumbnailFileLocalURL) downloaded.")
+                        try FileManager.default.moveItem(at: temporaryFileURL, to: thumbnailFileLocalURL)
+                        // TODO:
+                        NotificationCenter.default.post(name: .ThumbnailDownloadedNotification, object: nil, userInfo: ["indexPath" : indexPath])
+                    } catch {
+                        print ("file error: \(error)")
+                    }
+                }
+                thumbnailDownloadTask.resume()
+                
+            }
+        
+            //cell.loadThumbnail(withVideoID: cellVideoID)
         }
                 
         return cell

@@ -8,7 +8,6 @@
 import UIKit
 
 protocol SearchBarViewControllerDelegate : AnyObject {
-    func performPreloadedThumbnailsSearch()
     func updateDataSource()
     func scrollTableViewToTop()
 }
@@ -20,11 +19,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     func updateTableViewDataSource() {
         self.delegate?.updateDataSource()
     }
-    
-    func performPreloadedThumbnailsSearch() {
-        self.delegate?.performPreloadedThumbnailsSearch()
-    }
-    
+        
     func scrollTableViewToTop() {
         self.delegate?.scrollTableViewToTop()
     }
@@ -50,6 +45,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
         if let searchBarText = searchBar.text, let fetcher = fetcher {
             fetcher.cancelDataTask()
             fetcher.executeYoutubeSearchAPI(withSearchText: searchBarText)
+            self.scrollTableViewToTop()
         }
     }
        

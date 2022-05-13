@@ -24,16 +24,5 @@ class SearchResultCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
-    func loadThumbnail(withVideoID videoID: String) {
-        let thumbnailFilename = "\(videoID)_thumbnail.jpg"
-        let thumbnailURL = Constants.thumbnailsDirectoryURL.appendingPathComponent(thumbnailFilename)
-        do {
-            let thumbnailData = try Data(contentsOf: thumbnailURL)
-            thumbnailImage.image = UIImage(data: thumbnailData)
-        } catch {
-            print(error)
-        }
-    }
 
 }

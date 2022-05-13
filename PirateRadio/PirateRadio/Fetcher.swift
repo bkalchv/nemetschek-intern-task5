@@ -9,8 +9,6 @@ import UIKit
 
 protocol FetcherDelegate : AnyObject {
     func updateTableViewDataSource()
-    func performPreloadedThumbnailsSearch()
-    func scrollTableViewToTop()
 }
 
 class Fetcher {
@@ -52,42 +50,7 @@ class Fetcher {
             }
         }
     }
-    
-    private func downloadMissingThumbnails() {
         
-        let zippedItemsToIndices = zip(lastValidResponse!.items, (0...lastValidResponse!.items.count))
-        
-        for zippedItem in zippedItemsToIndices {
-            
-            let currentSearchItem = zippedItem.0
-            let currentIndex = zippedItem.1
-            
-            let currentSearchItemVideoID = currentSearchItem.id.videoId
-            let thumbnailFilename = "\(currentSearchItemVideoID)_thumbnail.jpg"
-            let thumbnailFileLocalURL = Constants.thumbnailsDirectoryURL.appendingPathComponent(thumbnailFilename)
-            
-            // TODO: Ask if not reassurance
-            if !FileManager.default.fileExists(atPath: thumbnailFileLocalURL.path) {
-                
-                let thumbnailURL = URL(string: currentSearchItem.snippet.thumbnails.medium.url)
-                let thumbnailDownloadTask = URLSession.shared.downloadTask(with: thumbnailURL!) {
-                    url, response, error in
-                    
-                    guard let temporaryFileURL = url else { return }
-                    do {
-                        print("\(thumbnailFileLocalURL) downloaded.")
-                        try FileManager.default.moveItem(at: temporaryFileURL, to: thumbnailFileLocalURL)
-                        // TODO:
-                        NotificationCenter.default.post(name: .ThumbnailDownloadedNotification, object: nil, userInfo: ["indexPath" : IndexPath(row: currentIndex, section: 0)])
-                    } catch {
-                        print ("file error: \(error)")
-                    }
-                }
-                thumbnailDownloadTask.resume()
-            }
-        }
-    }
-    
     private func updateLastValidResponse(forJSONString JSONString: String) {
         let responseData = Data(JSONString.utf8)
         
@@ -120,9 +83,9 @@ class Fetcher {
         
         var request = URLRequest(url: youtubeApiURL)
         
-        request.setValue("servicecontrol.googleapis.com/net.nemetschek.PirateRadio", forHTTPHeaderField: "x-ios-bundle-identifier")
-        request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Mobile/15E148 Safari/604.1", forHTTPHeaderField: "User-Agent")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(Constants.IOS_BUNDLE_IDENTIFIER_HEADER, forHTTPHeaderField: Constants.IOS_BUNDLE_IDENTIFIER_HEADER_FIELD)
+        request.setValue(Constants.USER_AGENT, forHTTPHeaderField: Constants.USER_AGENT_FIELD)
+        request.setValue(Constants.CONTENT_TYPE, forHTTPHeaderField: Constants.CONTENT_TYPE_FIELD)
         
         return request
     }
@@ -148,43 +111,10 @@ class Fetcher {
                         //print(JSONString)
                         self?.updateLastValidResponse(forJSONString: JSONString)
                         self?.delegate?.updateTableViewDataSource()
-                        
-                        if let areAllThumbnailFilesPresent = self?.areAllThumbnailFilesPresent(),
-                           areAllThumbnailFilesPresent {
-                            print("Thumbnails already exist in Cache.")
-                            DispatchQueue.main.async {
-                                self?.delegate?.performPreloadedThumbnailsSearch()
-                            }
-                        } else {
-                            if self?.lastValidResponse != nil {
-                                self?.createThumbnailsDirectoryInCacheIfNonExistent()
-                                self?.downloadMissingThumbnails()
-                                //TODO: Ask if fine
-                                DispatchQueue.main.async {
-                                    self?.delegate?.scrollTableViewToTop()
-                                }
-                            }
-                        }
                     }
                 } else if let response = response as? HTTPURLResponse, response.statusCode == 403 {
                     self?.updateLastValidResponse(forJSONString: Constants.mockResultJSONString)
                     self?.delegate?.updateTableViewDataSource()
-                    if let areAllThumbnailFilesPresent = self?.areAllThumbnailFilesPresent(),
-                       areAllThumbnailFilesPresent {
-                        print("Thumbnails already exist in Cache.")
-                        DispatchQueue.main.async {
-                            self?.delegate?.performPreloadedThumbnailsSearch()
-                        }
-                    } else {
-                        if self?.lastValidResponse != nil {
-                            self?.createThumbnailsDirectoryInCacheIfNonExistent()
-                            self?.downloadMissingThumbnails()
-                            //TODO: Ask if fine
-                            DispatchQueue.main.async {
-                                self?.delegate?.scrollTableViewToTop()
-                            }
-                        }
-                    }
                 }
             }
             
