@@ -85,6 +85,16 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
         print("Server response succesfully fetched to models.")
     }
     
+    func initializeURLRequest(withYoutubeApiURL youtubeApiURL: URL) -> URLRequest {
+        var request = URLRequest(url: youtubeApiURL)
+        
+        request.setValue("servicecontrol.googleapis.com/net.nemetschek.PirateRadio", forHTTPHeaderField: "x-ios-bundle-identifier")
+        request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Mobile/15E148 Safari/604.1", forHTTPHeaderField: "User-Agent")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        return request
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         dataTask?.cancel()
@@ -95,13 +105,9 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
             
             guard let youtubeApiURL = urlComponents.url else { return }
             
-            let session = URLSession.shared
+            let request : URLRequest = initializeURLRequest(withYoutubeApiURL: youtubeApiURL)
             
-            var request = URLRequest(url: youtubeApiURL)
-            request.setValue("servicecontrol.googleapis.com/net.nemetschek.PirateRadio", forHTTPHeaderField: "x-ios-bundle-identifier")
-            request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Mobile/15E148 Safari/604.1", forHTTPHeaderField: "User-Agent")
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            dataTask = session.dataTask(with: request) { [weak self] data, response, error in
+            dataTask = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
                 defer {
                     self?.dataTask = nil
                 }
