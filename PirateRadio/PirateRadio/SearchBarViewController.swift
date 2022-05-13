@@ -10,6 +10,7 @@ import UIKit
 protocol SearchBarViewControllerDelegate : AnyObject {
     func performPreloadedThumbnailsSearch()
     func updateDataSource()
+    func scrollTableViewToTop()
 }
 
 class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResultTableViewControllerDelegate {
@@ -51,8 +52,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     }
     
     func downloadMissingThumbnails() {
-        // TODO:
-        
+            
         let zippedItemsToIndices = zip(lastValidResponse!.items, (0...lastValidResponse!.items.count))
         
         for zippedItem in zippedItemsToIndices {
@@ -154,6 +154,10 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
                             if self?.lastValidResponse != nil {
                                 self?.createThumbnailsDirectoryInCacheIfNonExistent()
                                 self?.downloadMissingThumbnails()
+                                //TODO: Ask if fine
+                                DispatchQueue.main.async {
+                                    self?.delegate?.scrollTableViewToTop()
+                                }
                             }
                         }                        
                     }
