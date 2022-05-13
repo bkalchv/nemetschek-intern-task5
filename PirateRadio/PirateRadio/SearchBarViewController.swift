@@ -9,6 +9,7 @@ import UIKit
 
 protocol SearchBarViewControllerDelegate : AnyObject {
     func updateDataSource()
+    func emptyTableViewDataSource()
     func scrollTableViewToTop()
 }
 
@@ -34,16 +35,21 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     }
     weak var delegate : SearchBarViewControllerDelegate? = nil
     
+    func didReachBottom() {
+        let nextPageID = fetcher?.lastValidResponse?.nextPageToken
+        fetcher?.executeYoutubeSearchAPI(withSearchText: searchBar.text!, nextPageID: nextPageID)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         fetcher = Fetcher.init(withViewControllerForDelegate: self)
-        // initialize fetcher
     }
         
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchBarText = searchBar.text, let fetcher = fetcher {
             fetcher.cancelDataTask()
+            self.delegate?.emptyTableViewDataSource()
             fetcher.executeYoutubeSearchAPI(withSearchText: searchBarText)
             self.scrollTableViewToTop()
         }

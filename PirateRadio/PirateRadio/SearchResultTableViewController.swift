@@ -9,6 +9,7 @@ import UIKit
 
 protocol SearchResultTableViewControllerDelegate: AnyObject {
     var lastValidResponse : YouTubeSearchListResponse? { get }
+    func didReachBottom()
 }
 
 class SearchResultTableViewController: UITableViewController, SearchBarViewControllerDelegate {
@@ -55,6 +56,10 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         }
     }
     
+    func emptyTableViewDataSource() {
+        self.tableData = []
+    }
+    
     func loadTableDataFromResponse() {
         if let lastValidResponse = delegate?.lastValidResponse {
             tableData += lastValidResponse.items
@@ -68,6 +73,16 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         }
         
         return ""
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = tableData.count - 1
+        if indexPath.row == lastElement {
+            // handle your logic here to get more items, add it to dataSource and reload tableview
+            print("Reached bottom")
+            
+            self.delegate?.didReachBottom()
+        }
     }
     
     // MARK: TableView DataSource
@@ -127,12 +142,11 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: change
-        if let lastValidResponse = delegate?.lastValidResponse {
-            return lastValidResponse.pageInfo.resultsPerPage
-        } else {
-            return 0
+        if let _ = delegate?.lastValidResponse {
+            return tableData.count
         }
-
+        
+        return 0
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

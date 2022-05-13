@@ -71,17 +71,28 @@ class Fetcher {
         print("Server response succesfully fetched to models.")
     }
     
-    private func initializeYoutubeSearchAPIURL(withSearchText searchText: String) -> URL? {
+    private func initializeYoutubeSearchAPIURL(withSearchText searchText: String, nextPageID: String? = nil) -> URL? {
         var youtubeSearchAPIURL = URLComponents(string: Constants.youtubeSearchAPIAsString)!
+        var queryItems = [
+            URLQueryItem(name: "part", value: "snippet"),
+            URLQueryItem(name: "order", value: "viewCount"),
+            URLQueryItem(name: "q", value: searchText),
+            URLQueryItem(name: "type", value: "video"),
+            URLQueryItem(name: "key", value: API_KEY.value)
+        ]
         
-        youtubeSearchAPIURL.query = "part=snippet&order=viewCount&q=\(searchText)&type=video&key=\(API_KEY.value)"
+        if let nextPageID = nextPageID {
+            queryItems.append(URLQueryItem(name: "pageToken", value: nextPageID))
+        }
+        
+        youtubeSearchAPIURL.queryItems = queryItems
         
         return youtubeSearchAPIURL.url
     }
     
-    private func initializeURLRequest(withSearchText searchText: String) -> URLRequest? {
+    private func initializeURLRequest(withSearchText searchText: String, nextPageID: String? = nil) -> URLRequest? {
         
-        guard let youtubeApiURL = initializeYoutubeSearchAPIURL(withSearchText: searchText) else { return nil }
+        guard let youtubeApiURL = initializeYoutubeSearchAPIURL(withSearchText: searchText, nextPageID: nextPageID) else { return nil }
         
         var request = URLRequest(url: youtubeApiURL)
         
@@ -92,9 +103,9 @@ class Fetcher {
         return request
     }
     
-    public func executeYoutubeSearchAPI(withSearchText searchText: String) {
+    public func executeYoutubeSearchAPI(withSearchText searchText: String, nextPageID: String? = nil) {
         
-        if let request = initializeURLRequest(withSearchText: searchText) {
+        if let request = initializeURLRequest(withSearchText: searchText, nextPageID: nextPageID) {
             
             dataTask = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
                 defer {
@@ -117,7 +128,12 @@ class Fetcher {
                 } else if let response = response as? HTTPURLResponse, response.statusCode == 403 {
                     self?.updateLastValidResponse(forJSONString: self?.mockResponses.first ?? "")
                     self?.delegate?.updateTableViewDataSource()
-                    self?.mockResponses.removeFirst()
+                    
+                    if !(self?.mockResponses.isEmpty ?? true) {
+                        self?.mockResponses.removeFirst()
+                    } else {
+                        print("No more mock responses")
+                    }
                 }
             }
             
