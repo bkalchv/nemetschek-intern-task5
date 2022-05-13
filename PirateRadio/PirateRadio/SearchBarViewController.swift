@@ -121,7 +121,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
         
         if let searchBarText = searchBar.text, var urlComponents = URLComponents(string: "https://www.googleapis.com/youtube/v3/search")  {
             
-            urlComponents.query = "part=snippet&order=viewCount&q=\(searchBarText)&type=video&key=\(Constants.API_KEY)"
+            urlComponents.query = "part=snippet&order=viewCount&q=\(searchBarText)&type=video&key=\(API_KEY.value)"
             
             guard let youtubeApiURL = urlComponents.url else { return }
             

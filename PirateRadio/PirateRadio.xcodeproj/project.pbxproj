@@ -26,6 +26,7 @@
 		429533CF282C10840007EA6C /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429533CE282C10840007EA6C /* SearchBarViewController.swift */; };
 		429E739B282D0A2F0073899E /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429E739A282D0A2F0073899E /* SearchResultCell.swift */; };
 		429E739D282D32600073899E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429E739C282D32600073899E /* Extensions.swift */; };
+		42AC3DCF282E715F003F1695 /* API_KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DCE282E715F003F1695 /* API_KEY.swift */; };
 		42B027792819414300A86E58 /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B027782819414300A86E58 /* SampleViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		429533CE282C10840007EA6C /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
 		429E739A282D0A2F0073899E /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		429E739C282D32600073899E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		42AC3DCE282E715F003F1695 /* API_KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_KEY.swift; sourceTree = "<group>"; };
 		42B027782819414300A86E58 /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 				428B7D2528044D23003DBBB9 /* Assets.xcassets */,
 				428B7D2728044D23003DBBB9 /* LaunchScreen.storyboard */,
 				428B7D2A28044D23003DBBB9 /* Info.plist */,
+				42AC3DCE282E715F003F1695 /* API_KEY.swift */,
 				429533C8282BFF680007EA6C /* Constants.swift */,
 				429E739C282D32600073899E /* Extensions.swift */,
 			);
@@ -211,6 +214,7 @@
 				429533C5282BF2540007EA6C /* YouTubeSearchListResponsePageInfo.swift in Sources */,
 				428B7D1D28044D22003DBBB9 /* AppDelegate.swift in Sources */,
 				429533BB282BEA5F0007EA6C /* YouTubeSearchResultID.swift in Sources */,
+				42AC3DCF282E715F003F1695 /* API_KEY.swift in Sources */,
 				428B7D1F28044D22003DBBB9 /* SceneDelegate.swift in Sources */,
 				429E739D282D32600073899E /* Extensions.swift in Sources */,
 				429533BF282BEB4B0007EA6C /* YouTubeSearchResultSnippetThumbnails.swift in Sources */,

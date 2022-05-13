@@ -26,7 +26,7 @@ class SampleViewController: UIViewController {
                 
         if let searchTextFieldText = searchTextField.text, var urlComponents = URLComponents(string: "https://www.googleapis.com/youtube/v3/search")  {
             
-            urlComponents.query = "part=snippet&order=viewCount&q=\(searchTextFieldText)&type=video&key=\(Constants.API_KEY)"
+            urlComponents.query = "part=snippet&order=viewCount&q=\(searchTextFieldText)&type=video&key=\(API_KEY.value)"
             
             guard let youtubeApiURL = urlComponents.url else { return }
             
