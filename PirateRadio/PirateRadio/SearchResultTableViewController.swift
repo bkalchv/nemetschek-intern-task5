@@ -106,7 +106,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        // TODO: change
         if let lastValidResponse = delegate?.lastValidResponse {
             return lastValidResponse.pageInfo.resultsPerPage
         } else {

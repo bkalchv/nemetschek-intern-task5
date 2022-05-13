@@ -27,6 +27,7 @@
 		429E739B282D0A2F0073899E /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429E739A282D0A2F0073899E /* SearchResultCell.swift */; };
 		429E739D282D32600073899E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429E739C282D32600073899E /* Extensions.swift */; };
 		42AC3DCF282E715F003F1695 /* API_KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DCE282E715F003F1695 /* API_KEY.swift */; };
+		42AC3DD1282E728F003F1695 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DD0282E728F003F1695 /* Fetcher.swift */; };
 		42B027792819414300A86E58 /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B027782819414300A86E58 /* SampleViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		429E739A282D0A2F0073899E /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		429E739C282D32600073899E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		42AC3DCE282E715F003F1695 /* API_KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_KEY.swift; sourceTree = "<group>"; };
+		42AC3DD0282E728F003F1695 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		42B027782819414300A86E58 /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				429533CE282C10840007EA6C /* SearchBarViewController.swift */,
 				429E739A282D0A2F0073899E /* SearchResultCell.swift */,
 				429533CC282C02600007EA6C /* SearchResultTableViewController.swift */,
+				42AC3DD0282E728F003F1695 /* Fetcher.swift */,
 				428B7D2228044D22003DBBB9 /* Main.storyboard */,
 				428B7D2528044D23003DBBB9 /* Assets.xcassets */,
 				428B7D2728044D23003DBBB9 /* LaunchScreen.storyboard */,
@@ -221,6 +224,7 @@
 				429533CD282C02600007EA6C /* SearchResultTableViewController.swift in Sources */,
 				429533B9282BE9DD0007EA6C /* YouTubeSearchResultItem.swift in Sources */,
 				429533C9282BFF680007EA6C /* Constants.swift in Sources */,
+				42AC3DD1282E728F003F1695 /* Fetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
