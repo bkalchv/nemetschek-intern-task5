@@ -8,15 +8,15 @@
 import UIKit
 import YouTubeiOSPlayerHelper
 
-class ViewController: UIViewController {
-
+class VideoPlayerViewController: UIViewController {
+    
     @IBOutlet weak var ytPlayerView: YTPlayerView!
-    @IBOutlet weak var ytLinkTextField: UITextField!
-    @IBOutlet weak var playButton: UIButton!
+    var videoId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        ytPlayerView.load(withVideoId: "H9154xIoYTA")
+        ytPlayerView.load(withVideoId: videoId)
     }
+    
 }

@@ -12,7 +12,7 @@ protocol SearchResultTableViewControllerDelegate: AnyObject {
     func didReachBottom()
 }
 
-class SearchResultTableViewController: UITableViewController, SearchBarViewControllerDelegate {
+class SearchResultTableViewController: UITableViewController, SearchBarViewControllerDelegate, SearchResultCellDelegate {
       
     weak var delegate : SearchResultTableViewControllerDelegate?
     var tableData : [YouTubeSearchResultItem] = []
@@ -57,7 +57,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     }
     
     func emptyTableViewDataSource() {
-        self.tableData = []
+        if !self.tableData.isEmpty { self.tableData = [] }
     }
     
     func loadTableDataFromResponse() {
@@ -80,7 +80,6 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         if indexPath.row == lastElement {
             // handle your logic here to get more items, add it to dataSource and reload tableview
             print("Reached bottom")
-            
             self.delegate?.didReachBottom()
         }
     }
@@ -101,6 +100,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
             cell.videoIDLabel.text = cellVideoID
             cell.titleLabel.text = cellTitle
             cell.publishTimeLabel.text = extractDateFromPublishTime(publishTime: cellPublishTime)
+            cell.delegate = self
             
             // download thumbnail for missing videoId
             let thumbnailFilename = "\(cellVideoID)_thumbnail.jpg"
@@ -129,11 +129,26 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
                 thumbnailDownloadTask.resume()
                 
             }
-        
-            //cell.loadThumbnail(withVideoID: cellVideoID)
         }
                 
         return cell
+    }
+    
+    func presentVideoPlayerVC(videoId: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let videoPlayerVC = storyboard.instantiateViewController(withIdentifier: "VideoPlayerVC") as! VideoPlayerViewController
+        videoPlayerVC.videoId = videoId
+        videoPlayerVC.title = "Video Player"
+        self.navigationController?.pushViewController(videoPlayerVC, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedSearchResultIndex = indexPath.row
+        let selectedSearchResult: YouTubeSearchResultItem = self.tableData[selectedSearchResultIndex]
+        let selectedSearchResultVideoID = selectedSearchResult.id.videoId
+        
+       presentVideoPlayerVC(videoId: selectedSearchResultVideoID)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

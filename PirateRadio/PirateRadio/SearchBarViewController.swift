@@ -57,7 +57,6 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let embeddedTableVC = segue.destination as? SearchResultTableViewController {
-            print("Preparation done, delegate set")
             embeddedTableVC.delegate = self
             self.delegate = embeddedTableVC
         }

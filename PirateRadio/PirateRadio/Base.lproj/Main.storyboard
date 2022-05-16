@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1UO-GT-CDm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ADB-ky-xsb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -8,58 +8,38 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Video Player View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoPlayerVC" id="BYZ-38-t0r" customClass="VideoPlayerViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="ytPlayerView" translatesAutoresizingMaskIntoConstraints="NO" id="wtz-K4-IrX" customClass="YTPlayerView">
-                                <rect key="frame" x="68" y="374" width="278" height="148"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" restorationIdentifier="ytPlayerView" translatesAutoresizingMaskIntoConstraints="NO" id="wtz-K4-IrX" customClass="YTPlayerView">
+                                <rect key="frame" x="29.5" y="353" width="355" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="kAU-GJ-7fn"/>
+                                    <constraint firstAttribute="width" constant="355" id="ozv-2x-bG0"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Here's your YouTube Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvc-Sy-DGE">
-                                <rect key="frame" x="105" y="320" width="205" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aqb-ng-fny">
-                                <rect key="frame" x="39" y="135" width="337" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Link to YouTube video:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ry0-t1-HXU">
-                                <rect key="frame" x="39" y="106" width="171" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZX-OP-ANw">
-                                <rect key="frame" x="153" y="194" width="109" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Play"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wtz-K4-IrX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="62L-wv-ybg"/>
+                            <constraint firstItem="wtz-K4-IrX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jau-vn-QiJ"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="cZu-PN-nSw"/>
                     <connections>
-                        <outlet property="playButton" destination="KZX-OP-ANw" id="ge0-Xp-PKz"/>
-                        <outlet property="ytLinkTextField" destination="aqb-ng-fny" id="vHj-i2-Bq7"/>
                         <outlet property="ytPlayerView" destination="wtz-K4-IrX" id="Pql-od-xyX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-17.39130434782609" y="115.84821428571428"/>
+            <point key="canvasLocation" x="3217" y="125"/>
         </scene>
         <!--Sample View Controller-->
         <scene sceneID="q1B-i5-bRk">
@@ -102,7 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yhb-Rk-7zX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="757" y="125"/>
+            <point key="canvasLocation" x="28" y="-421"/>
         </scene>
         <!--Search Result Table View Controller-->
         <scene sceneID="gDu-Mg-60q">
@@ -148,6 +128,17 @@
                                                 <constraint firstAttribute="height" constant="180" id="Wb4-mm-38f"/>
                                             </constraints>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iek-hG-mSb">
+                                            <rect key="frame" x="163" y="60" width="88" height="78"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="play_circle_outline_white_64pt">
+                                                <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
+                                            </buttonConfiguration>
+                                            <connections>
+                                                <action selector="onPlayButtonPress:" destination="0t7-iT-n1A" eventType="touchUpInside" id="Omz-SE-niV"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="nJ9-eD-Hdb" firstAttribute="leading" relation="lessThanOrEqual" secondItem="QFL-JO-352" secondAttribute="trailing" constant="266" id="Kox-hM-Q35"/>
@@ -164,6 +155,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="playButton" destination="iek-hG-mSb" id="tbV-2S-3wT"/>
                                     <outlet property="publishTimeLabel" destination="nJ9-eD-Hdb" id="Zwc-MN-7fw"/>
                                     <outlet property="thumbnailImage" destination="G5H-dl-DF7" id="6o2-v0-zho"/>
                                     <outlet property="titleLabel" destination="QFL-JO-352" id="0Tf-Vg-bIy"/>
@@ -179,7 +171,23 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5o-2y-e0i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3044.9275362318845" y="124.55357142857142"/>
+            <point key="canvasLocation" x="2206" y="-537"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="h4V-ud-zHw">
+            <objects>
+                <navigationController id="ADB-ky-xsb" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eog-hT-qFw">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1UO-GT-CDm" kind="relationship" relationship="rootViewController" id="Ggd-aZ-KD0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iht-00-k7R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1452" y="125"/>
         </scene>
         <!--Search Bar View Controller-->
         <scene sceneID="PIc-v1-8Ev">
@@ -212,6 +220,7 @@
                         <viewLayoutGuide key="safeArea" id="Qaj-Ih-vhj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UPq-4h-SHX"/>
                     <connections>
                         <outlet property="searchBar" destination="koB-u4-jzX" id="Z3N-wD-m7X"/>
                     </connections>
@@ -222,11 +231,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="play_circle_outline_white_64pt" width="64" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

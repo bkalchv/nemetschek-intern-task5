@@ -10,7 +10,7 @@
 		424B6A7528046029009A043E /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */; };
 		428B7D1D28044D22003DBBB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D1C28044D22003DBBB9 /* AppDelegate.swift */; };
 		428B7D1F28044D22003DBBB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D1E28044D22003DBBB9 /* SceneDelegate.swift */; };
-		428B7D2128044D22003DBBB9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D2028044D22003DBBB9 /* ViewController.swift */; };
+		428B7D2128044D22003DBBB9 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D2028044D22003DBBB9 /* VideoPlayerViewController.swift */; };
 		428B7D2428044D22003DBBB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428B7D2228044D22003DBBB9 /* Main.storyboard */; };
 		428B7D2628044D23003DBBB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428B7D2528044D23003DBBB9 /* Assets.xcassets */; };
 		428B7D2928044D23003DBBB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428B7D2728044D23003DBBB9 /* LaunchScreen.storyboard */; };
@@ -35,7 +35,7 @@
 		428B7D1928044D22003DBBB9 /* PirateRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PirateRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		428B7D1C28044D22003DBBB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		428B7D1E28044D22003DBBB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		428B7D2028044D22003DBBB9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		428B7D2028044D22003DBBB9 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		428B7D2328044D22003DBBB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		428B7D2528044D23003DBBB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		428B7D2828044D23003DBBB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 				429533B7282BE9BC0007EA6C /* Models */,
 				428B7D1C28044D22003DBBB9 /* AppDelegate.swift */,
 				428B7D1E28044D22003DBBB9 /* SceneDelegate.swift */,
-				428B7D2028044D22003DBBB9 /* ViewController.swift */,
+				428B7D2028044D22003DBBB9 /* VideoPlayerViewController.swift */,
 				42B027782819414300A86E58 /* SampleViewController.swift */,
 				429533CE282C10840007EA6C /* SearchBarViewController.swift */,
 				429E739A282D0A2F0073899E /* SearchResultCell.swift */,
@@ -213,7 +213,7 @@
 				42B027792819414300A86E58 /* SampleViewController.swift in Sources */,
 				429E739B282D0A2F0073899E /* SearchResultCell.swift in Sources */,
 				429533C3282BF1FA0007EA6C /* YouTubeSearchListResponse.swift in Sources */,
-				428B7D2128044D22003DBBB9 /* ViewController.swift in Sources */,
+				428B7D2128044D22003DBBB9 /* VideoPlayerViewController.swift in Sources */,
 				429533C5282BF2540007EA6C /* YouTubeSearchListResponsePageInfo.swift in Sources */,
 				428B7D1D28044D22003DBBB9 /* AppDelegate.swift in Sources */,
 				429533BB282BEA5F0007EA6C /* YouTubeSearchResultID.swift in Sources */,
