@@ -23,25 +23,37 @@
                                     <constraint firstAttribute="width" secondItem="wtz-K4-IrX" secondAttribute="height" multiplier="16:9" id="cnT-gF-WW4"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQz-oc-sY9">
-                                <rect key="frame" x="307" y="581" width="60" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQz-oc-sY9">
+                                <rect key="frame" x="320.5" y="581" width="46.5" height="50"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="baseline_download_white_36pt"/>
+                                <connections>
+                                    <action selector="onDownloadMP3ButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PbY-uq-K3m"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download mp3:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBS-JQ-S9i">
+                                <rect key="frame" x="193" y="596" width="119.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wtz-K4-IrX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="62L-wv-ybg"/>
-                            <constraint firstItem="wtz-K4-IrX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="319" id="ONz-Vu-Ghk"/>
+                            <constraint firstItem="KQz-oc-sY9" firstAttribute="leading" secondItem="rBS-JQ-S9i" secondAttribute="trailing" constant="8" id="Fyp-jH-qy8"/>
+                            <constraint firstItem="rBS-JQ-S9i" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="53" id="VpR-TK-Lq0"/>
+                            <constraint firstItem="wtz-K4-IrX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="ePe-JB-0Kf"/>
                             <constraint firstItem="wtz-K4-IrX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jau-vn-QiJ"/>
-                            <constraint firstItem="KQz-oc-sY9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="307" id="ll0-Pw-jXf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KQz-oc-sY9" secondAttribute="trailing" constant="47" id="pVr-Hj-4DU"/>
                             <constraint firstItem="KQz-oc-sY9" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="38" id="r4T-QN-Ag4"/>
+                            <constraint firstItem="rBS-JQ-S9i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="193" id="uZc-8Y-WRb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cZu-PN-nSw"/>
                     <connections>
+                        <outlet property="downloadMP3Button" destination="KQz-oc-sY9" id="19x-OB-oil"/>
                         <outlet property="ytPlayerView" destination="wtz-K4-IrX" id="Pql-od-xyX"/>
                     </connections>
                 </viewController>

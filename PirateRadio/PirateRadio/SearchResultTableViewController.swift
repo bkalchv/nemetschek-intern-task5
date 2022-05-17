@@ -84,6 +84,18 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         }
     }
     
+    private func createThumbnailsDirectoryInCacheIfNonExistent() {
+        let thumbnailsDirectoryURL = Constants.thumbnailsDirectoryURL
+        
+        if !thumbnailsDirectoryURL.isDirectory {
+            do {
+                try FileManager.default.createDirectory(at: thumbnailsDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     // MARK: TableView DataSource
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,6 +122,9 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
                 cell.thumbnailImage.image = UIImage(data: thumbnailData)
                
             } else {
+                
+                self.createThumbnailsDirectoryInCacheIfNonExistent()
+                
                 // download the thumbnail
                 let thumbnailURL = URL(string: searchResultItem.snippet.thumbnails.medium.url)!
                 

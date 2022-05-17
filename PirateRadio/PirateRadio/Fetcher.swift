@@ -40,18 +40,6 @@ class Fetcher {
         
         return true
     }
-    
-    private func createThumbnailsDirectoryInCacheIfNonExistent() {
-        let thumbnailsDirectoryURL = Constants.thumbnailsDirectoryURL
-        
-        if !thumbnailsDirectoryURL.isDirectory {
-            do {
-                try FileManager.default.createDirectory(at: thumbnailsDirectoryURL, withIntermediateDirectories: true, attributes: nil)
-            } catch {
-                print(error)
-            }
-        }
-    }
         
     private func updateLastValidResponse(forJSONString JSONString: String) {
         let responseData = Data(JSONString.utf8)
