@@ -17,7 +17,7 @@ class Fetcher {
     var dataTask: URLSessionDataTask? = nil
     weak var delegate : FetcherDelegate? = nil
     
-    var mockResponses = [Constants.mockResultJSONString, Constants.mockResultNextPageJSON]
+    var mockResponses = [Constants.MOCK_RESULT_JSON_STRING, Constants.MOCK_RESULT_NEXT_PAGE_JSON_STRING]
     
     init?(withViewControllerForDelegate vcForDelegate : SearchBarViewController) {
         self.delegate = vcForDelegate
@@ -31,7 +31,7 @@ class Fetcher {
         for searchItem in lastValidResponse!.items {
             let searchItemVideoID = searchItem.id.videoId
             let thumbnailFilename = "\(searchItemVideoID)_thumbnail.jpg"
-            let thumbnailFileLocalURL = Constants.thumbnailsDirectoryURL.appendingPathComponent(thumbnailFilename)
+            let thumbnailFileLocalURL = Constants.THUMBNAILS_DIRECTORY_URL.appendingPathComponent(thumbnailFilename)
             
             if !FileManager.default.fileExists(atPath: thumbnailFileLocalURL.path) {
                 return false
@@ -60,7 +60,7 @@ class Fetcher {
     }
     
     private func initializeYoutubeSearchAPIURL(withSearchText searchText: String, nextPageID: String? = nil) -> URL? {
-        var youtubeSearchAPIURL = URLComponents(string: Constants.youtubeSearchAPIAsString)!
+        var youtubeSearchAPIURL = URLComponents(string: Constants.YOUTUBE_SEARCH_API_URL)!
         var queryItems = [
             URLQueryItem(name: "part", value: "snippet"),
             URLQueryItem(name: "order", value: "viewCount"),

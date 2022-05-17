@@ -85,7 +85,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     }
     
     private func createThumbnailsDirectoryInCacheIfNonExistent() {
-        let thumbnailsDirectoryURL = Constants.thumbnailsDirectoryURL
+        let thumbnailsDirectoryURL = Constants.THUMBNAILS_DIRECTORY_URL
         
         if !thumbnailsDirectoryURL.isDirectory {
             do {
@@ -116,7 +116,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
             
             // download thumbnail for missing videoId
             let thumbnailFilename = "\(cellVideoID)_thumbnail.jpg"
-            let thumbnailFileLocalURL = Constants.thumbnailsDirectoryURL.appendingPathComponent(thumbnailFilename)
+            let thumbnailFileLocalURL = Constants.THUMBNAILS_DIRECTORY_URL.appendingPathComponent(thumbnailFilename)
             
             if let thumbnailData = try? Data(contentsOf: thumbnailFileLocalURL) {
                 cell.thumbnailImage.image = UIImage(data: thumbnailData)
