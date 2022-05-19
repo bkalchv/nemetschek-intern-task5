@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Toast",
+        "repositoryURL": "https://github.com/scalessec/Toast-Swift",
+        "state": {
+          "branch": "master",
+          "revision": "0c9493eeacb102cc614da385cfaaf475379f4ab4",
+          "version": null
+        }
+      },
+      {
         "package": "YouTubeiOSPlayerHelper",
         "repositoryURL": "https://github.com/youtube/youtube-ios-player-helper.git",
         "state": {

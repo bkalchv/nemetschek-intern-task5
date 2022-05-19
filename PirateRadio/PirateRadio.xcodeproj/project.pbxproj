@@ -10,6 +10,7 @@
 		423AAC3D2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423AAC3C2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift */; };
 		423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423AAC3E2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift */; };
 		424B6A7528046029009A043E /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */; };
+		425C9CDF2836805100D996F6 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 425C9CDE2836805100D996F6 /* Toast */; };
 		428B7D1D28044D22003DBBB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D1C28044D22003DBBB9 /* AppDelegate.swift */; };
 		428B7D1F28044D22003DBBB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D1E28044D22003DBBB9 /* SceneDelegate.swift */; };
 		428B7D2128044D22003DBBB9 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D2028044D22003DBBB9 /* VideoPlayerViewController.swift */; };
@@ -68,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425C9CDF2836805100D996F6 /* Toast in Frameworks */,
 				424B6A7528046029009A043E /* YouTubeiOSPlayerHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,6 +159,7 @@
 			name = PirateRadio;
 			packageProductDependencies = (
 				424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */,
+				425C9CDE2836805100D996F6 /* Toast */,
 			);
 			productName = PirateRadio;
 			productReference = 428B7D1928044D22003DBBB9 /* PirateRadio.app */;
@@ -188,6 +191,7 @@
 			mainGroup = 428B7D1028044D22003DBBB9;
 			packageReferences = (
 				424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
+				425C9CDD2836805100D996F6 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 428B7D1A28044D22003DBBB9 /* Products */;
 			projectDirPath = "";
@@ -464,6 +468,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		425C9CDD2836805100D996F6 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -471,6 +483,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
 			productName = YouTubeiOSPlayerHelper;
+		};
+		425C9CDE2836805100D996F6 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 425C9CDD2836805100D996F6 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

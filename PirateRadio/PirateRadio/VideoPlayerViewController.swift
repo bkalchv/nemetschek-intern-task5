@@ -8,6 +8,7 @@
 import WebKit
 import UIKit
 import YouTubeiOSPlayerHelper
+import Toast
 
 class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDelegate, WKNavigationDelegate {
     
@@ -107,11 +108,13 @@ class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDeleg
         
         removeFileIfExisting(at: lastDownloadedFileLocalDestination!)
         
+        self.view.makeToast("Starting to download...")
+        
         completionHandler(lastDownloadedFileLocalDestination!)
     }
     
     func downloadDidFinish(_ download: WKDownload) {
-        print("Download finished")
+        self.view.makeToast("MP3 downloaded successfully!")
     }
     
     private func createYoutubeToMp3DownloadsDirectoryInCacheIfNonExistent() {
