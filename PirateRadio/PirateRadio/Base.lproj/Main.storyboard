@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ADB-ky-xsb">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,18 +13,18 @@
             <objects>
                 <viewController storyboardIdentifier="VideoPlayerVC" id="BYZ-38-t0r" customClass="VideoPlayerViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" restorationIdentifier="ytPlayerView" translatesAutoresizingMaskIntoConstraints="NO" id="wtz-K4-IrX" customClass="YTPlayerView">
-                                <rect key="frame" x="47" y="363" width="320" height="180"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="ytPlayerView" translatesAutoresizingMaskIntoConstraints="NO" id="wtz-K4-IrX" customClass="YTPlayerView">
+                                <rect key="frame" x="44" y="96" width="808" height="186"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="wtz-K4-IrX" secondAttribute="height" multiplier="16:9" id="cnT-gF-WW4"/>
+                                    <constraint firstAttribute="width" secondItem="wtz-K4-IrX" secondAttribute="height" multiplier="16:9" constant="83.333333333333371" id="cnT-gF-WW4"/>
                                 </constraints>
                             </view>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GA9-Go-or3">
-                                <rect key="frame" x="20" y="577" width="374" height="262"/>
+                            <wkWebView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GA9-Go-or3">
+                                <rect key="frame" x="64" y="422" width="768" height="262"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -35,13 +35,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GA9-Go-or3" secondAttribute="bottom" constant="23" id="4ox-Un-dcm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GA9-Go-or3" secondAttribute="bottom" constant="178" id="4ox-Un-dcm"/>
                             <constraint firstItem="wtz-K4-IrX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="62L-wv-ybg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GA9-Go-or3" secondAttribute="trailing" constant="20" id="Ieh-Rp-W9P"/>
                             <constraint firstItem="GA9-Go-or3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aZA-eA-Abk"/>
-                            <constraint firstItem="GA9-Go-or3" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="34" id="fqU-FP-E02"/>
-                            <constraint firstItem="wtz-K4-IrX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jau-vn-QiJ"/>
-                            <constraint firstItem="wtz-K4-IrX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="mbQ-6I-OXK"/>
+                            <constraint firstItem="GA9-Go-or3" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="140" id="fqU-FP-E02"/>
+                            <constraint firstItem="wtz-K4-IrX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-264" id="jau-vn-QiJ"/>
+                            <constraint firstItem="wtz-K4-IrX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mbQ-6I-OXK"/>
                             <constraint firstItem="GA9-Go-or3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wEp-A2-hvc"/>
                         </constraints>
                     </view>
@@ -53,14 +53,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3215.9420289855075" y="124.55357142857142"/>
+            <point key="canvasLocation" x="3101" y="123"/>
         </scene>
         <!--Sample View Controller-->
         <scene sceneID="q1B-i5-bRk">
             <objects>
                 <viewController id="Whx-FS-yfP" customClass="SampleViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ldh-EW-dxw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eld-qE-iWc">
@@ -103,46 +103,46 @@
             <objects>
                 <tableViewController id="FUN-G8-JaZ" customClass="SearchResultTableViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="NJN-Yj-6rC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="593"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="255"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="260" id="0t7-iT-n1A" customClass="SearchResultCell" customModule="PirateRadio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="260"/>
+                                <rect key="frame" x="0.0" y="44.5" width="393" height="260"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0t7-iT-n1A" id="r5K-Zb-ZgG">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
+                                    <rect key="frame" x="44" y="0.0" width="349" height="260"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="videoID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYV-xm-3ZC">
-                                            <rect key="frame" x="20" y="228.5" width="58" height="21"/>
+                                            <rect key="frame" x="20" y="191.5" width="58" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFL-JO-352">
-                                            <rect key="frame" x="20" y="199.5" width="33" height="21"/>
+                                            <rect key="frame" x="20" y="162.5" width="33" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="Tu5-AO-fbd"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="260" id="Tu5-AO-fbd"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Published time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ9-eD-Hdb">
-                                            <rect key="frame" x="286.5" y="199" width="112.5" height="21"/>
+                                            <rect key="frame" x="221.5" y="162.5" width="112.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G5H-dl-DF7">
-                                            <rect key="frame" x="47" y="11" width="320" height="180"/>
+                                            <rect key="frame" x="47" y="11" width="255" height="143.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="G5H-dl-DF7" secondAttribute="height" multiplier="16:9" id="bVF-tZ-CzQ"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iek-hG-mSb">
-                                            <rect key="frame" x="163" y="62" width="88" height="78"/>
+                                            <rect key="frame" x="130.5" y="43.5" width="88" height="78"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="play_circle_outline_white_64pt">
                                                 <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
@@ -163,7 +163,7 @@
                                         <constraint firstItem="QFL-JO-352" firstAttribute="leading" secondItem="r5K-Zb-ZgG" secondAttribute="leading" constant="20" symbolic="YES" id="eBp-Xj-dWV"/>
                                         <constraint firstItem="G5H-dl-DF7" firstAttribute="leading" secondItem="r5K-Zb-ZgG" secondAttribute="leading" constant="47" id="k4D-Eb-JSF"/>
                                         <constraint firstAttribute="trailing" secondItem="nJ9-eD-Hdb" secondAttribute="trailing" constant="15" id="mvO-6b-xGc"/>
-                                        <constraint firstItem="QFL-JO-352" firstAttribute="firstBaseline" secondItem="G5H-dl-DF7" secondAttribute="baseline" constant="24.5" symbolType="layoutAnchor" id="uOs-EU-5tm"/>
+                                        <constraint firstItem="QFL-JO-352" firstAttribute="top" secondItem="G5H-dl-DF7" secondAttribute="bottom" constant="8" symbolType="layoutAnchor" id="uOs-EU-5tm"/>
                                         <constraint firstItem="iek-hG-mSb" firstAttribute="centerY" secondItem="G5H-dl-DF7" secondAttribute="centerY" id="zbt-ao-BLe"/>
                                         <constraint firstItem="nJ9-eD-Hdb" firstAttribute="top" secondItem="G5H-dl-DF7" secondAttribute="bottom" constant="8" symbolic="YES" id="zsR-ZK-eul"/>
                                     </constraints>
@@ -185,14 +185,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5o-2y-e0i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2206" y="-537"/>
+            <point key="canvasLocation" x="2291" y="-478"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h4V-ud-zHw">
             <objects>
                 <navigationController id="ADB-ky-xsb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eog-hT-qFw">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -208,42 +208,103 @@
             <objects>
                 <viewController id="1UO-GT-CDm" customClass="SearchBarViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EZ9-DL-Y8Q">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="koB-u4-jzX">
-                                <rect key="frame" x="0.0" y="128" width="414" height="44"/>
+                            <searchBar contentMode="redraw" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="koB-u4-jzX">
+                                <rect key="frame" x="59" y="67" width="776" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YouTube PirateRadio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL2-qM-XS8">
-                                <rect key="frame" x="120" y="83" width="174" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4X-47-Evy">
-                                <rect key="frame" x="0.0" y="186" width="414" height="593"/>
+                                <rect key="frame" x="251.5" y="128" width="393" height="255"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="U4X-47-Evy" secondAttribute="height" multiplier="414:593" id="r1L-OY-Br0"/>
+                                    <constraint firstAttribute="width" constant="393" id="DjW-7v-qcC"/>
                                 </constraints>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="DjW-7v-qcC"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <segue destination="FUN-G8-JaZ" kind="embed" id="Cxh-9l-H7V"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YouTube PirateRadio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL2-qM-XS8">
+                                <rect key="frame" x="361" y="34" width="174" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qaj-Ih-vhj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Qaj-Ih-vhj" firstAttribute="bottom" secondItem="U4X-47-Evy" secondAttribute="bottom" constant="83" id="Tuq-nu-OyW"/>
+                            <constraint firstItem="Qaj-Ih-vhj" firstAttribute="bottom" secondItem="U4X-47-Evy" secondAttribute="bottom" constant="10" id="B2Z-Q8-JYX"/>
+                            <constraint firstItem="Qaj-Ih-vhj" firstAttribute="trailing" secondItem="koB-u4-jzX" secondAttribute="trailing" constant="17" id="Hd6-U6-NFD"/>
+                            <constraint firstItem="koB-u4-jzX" firstAttribute="leading" secondItem="Qaj-Ih-vhj" secondAttribute="leading" constant="15" id="Lnl-oS-7cG"/>
+                            <constraint firstItem="Qaj-Ih-vhj" firstAttribute="bottom" secondItem="U4X-47-Evy" secondAttribute="bottom" constant="78" id="Tuq-nu-OyW"/>
+                            <constraint firstItem="koB-u4-jzX" firstAttribute="top" secondItem="fL2-qM-XS8" secondAttribute="bottom" constant="10" id="Tzy-nk-4Xc"/>
                             <constraint firstItem="Qaj-Ih-vhj" firstAttribute="trailing" secondItem="koB-u4-jzX" secondAttribute="trailing" id="ULs-VF-x7p"/>
+                            <constraint firstItem="U4X-47-Evy" firstAttribute="centerX" secondItem="Qaj-Ih-vhj" secondAttribute="centerX" id="UV3-ar-LSg"/>
                             <constraint firstItem="Qaj-Ih-vhj" firstAttribute="trailing" secondItem="U4X-47-Evy" secondAttribute="trailing" id="bMk-3t-rMU"/>
-                            <constraint firstItem="U4X-47-Evy" firstAttribute="top" secondItem="koB-u4-jzX" secondAttribute="bottom" constant="7" id="bXh-8p-Rrs"/>
+                            <constraint firstItem="U4X-47-Evy" firstAttribute="top" secondItem="koB-u4-jzX" secondAttribute="bottom" constant="14" id="bXh-8p-Rrs">
+                                <variation key="heightClass=compact-widthClass=regular" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="U4X-47-Evy" firstAttribute="top" secondItem="koB-u4-jzX" secondAttribute="bottom" constant="10" id="jDu-2A-mOC"/>
                             <constraint firstItem="koB-u4-jzX" firstAttribute="leading" secondItem="Qaj-Ih-vhj" secondAttribute="leading" id="kOQ-13-Wuc"/>
                             <constraint firstItem="fL2-qM-XS8" firstAttribute="centerX" secondItem="Qaj-Ih-vhj" secondAttribute="centerX" id="r36-md-z8A"/>
-                            <constraint firstItem="koB-u4-jzX" firstAttribute="top" secondItem="fL2-qM-XS8" secondAttribute="bottom" constant="22" id="rps-el-CBN"/>
+                            <constraint firstItem="koB-u4-jzX" firstAttribute="top" secondItem="fL2-qM-XS8" secondAttribute="bottom" constant="20" id="rps-el-CBN"/>
                             <constraint firstItem="U4X-47-Evy" firstAttribute="leading" secondItem="Qaj-Ih-vhj" secondAttribute="leading" id="tph-bo-YbY"/>
-                            <constraint firstItem="Qaj-Ih-vhj" firstAttribute="top" secondItem="fL2-qM-XS8" secondAttribute="top" constant="5" id="y1g-6w-0FB"/>
+                            <constraint firstItem="fL2-qM-XS8" firstAttribute="top" secondItem="Qaj-Ih-vhj" secondAttribute="top" constant="-10" id="vLj-9I-zc7"/>
+                            <constraint firstItem="Qaj-Ih-vhj" firstAttribute="top" secondItem="fL2-qM-XS8" secondAttribute="top" id="y1g-6w-0FB"/>
+                            <constraint firstItem="fL2-qM-XS8" firstAttribute="centerX" secondItem="Qaj-Ih-vhj" secondAttribute="centerX" id="ymD-BG-5zP"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="B2Z-Q8-JYX"/>
+                                <exclude reference="Hd6-U6-NFD"/>
+                                <exclude reference="Tuq-nu-OyW"/>
+                                <exclude reference="ULs-VF-x7p"/>
+                                <exclude reference="bMk-3t-rMU"/>
+                                <exclude reference="y1g-6w-0FB"/>
+                                <exclude reference="Lnl-oS-7cG"/>
+                                <exclude reference="Tzy-nk-4Xc"/>
+                                <exclude reference="kOQ-13-Wuc"/>
+                                <exclude reference="rps-el-CBN"/>
+                                <exclude reference="UV3-ar-LSg"/>
+                                <exclude reference="bXh-8p-Rrs"/>
+                                <exclude reference="jDu-2A-mOC"/>
+                                <exclude reference="tph-bo-YbY"/>
+                                <exclude reference="r36-md-z8A"/>
+                                <exclude reference="vLj-9I-zc7"/>
+                                <exclude reference="ymD-BG-5zP"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="B2Z-Q8-JYX"/>
+                                <include reference="Hd6-U6-NFD"/>
+                                <include reference="Lnl-oS-7cG"/>
+                                <include reference="Tzy-nk-4Xc"/>
+                                <include reference="UV3-ar-LSg"/>
+                                <include reference="jDu-2A-mOC"/>
+                                <include reference="vLj-9I-zc7"/>
+                                <include reference="ymD-BG-5zP"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Tuq-nu-OyW"/>
+                                <include reference="ULs-VF-x7p"/>
+                                <include reference="bMk-3t-rMU"/>
+                                <include reference="y1g-6w-0FB"/>
+                                <include reference="kOQ-13-Wuc"/>
+                                <include reference="rps-el-CBN"/>
+                                <include reference="bXh-8p-Rrs"/>
+                                <include reference="tph-bo-YbY"/>
+                                <include reference="r36-md-z8A"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="UPq-4h-SHX"/>
                     <connections>
@@ -252,7 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKp-4f-Z56" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2291.304347826087" y="124.55357142857142"/>
+            <point key="canvasLocation" x="2290.8482142857142" y="123.18840579710145"/>
         </scene>
     </scenes>
     <resources>

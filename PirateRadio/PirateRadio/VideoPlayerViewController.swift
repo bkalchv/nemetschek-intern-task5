@@ -15,7 +15,6 @@ class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDeleg
     @IBOutlet weak var downloadButtonsWebView: WKWebView!
     @IBOutlet weak var ytPlayerView: YTPlayerView!
     var videoId: String = ""
-    var downloadDataTask: URLSessionDataTask? = nil
     
     private var lastDownloadedFileLocalDestination: URL?
        
@@ -62,7 +61,6 @@ class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDeleg
         let responseUrl = navigationResponse.response.url
         print(responseUrl!.absoluteString)
         
-        //TODO: if pathComponents
         if responseUrl!.pathComponents.contains("download")
             && responseUrl!.pathComponents.contains(videoId)
             && responseUrl!.pathComponents.contains("mp3") {
@@ -71,7 +69,6 @@ class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDeleg
         }
         
         if navigationResponse.canShowMIMEType {
-            //print(navigationResponse)
             decisionHandler(.allow)
         } else {
             decisionHandler(.download)

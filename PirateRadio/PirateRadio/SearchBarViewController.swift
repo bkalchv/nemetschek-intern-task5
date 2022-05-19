@@ -35,6 +35,11 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     }
     weak var delegate : SearchBarViewControllerDelegate? = nil
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        print("Orientation changed")
+    }
+    
     func didReachBottom() {
         let nextPageID = fetcher?.lastValidResponse?.nextPageToken
         fetcher?.executeYoutubeSearchAPI(withSearchText: searchBar.text!, nextPageID: nextPageID)

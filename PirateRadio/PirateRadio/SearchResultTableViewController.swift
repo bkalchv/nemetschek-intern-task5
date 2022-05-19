@@ -18,11 +18,9 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     var tableData : [YouTubeSearchResultItem] = []
     var searchResultCellHeight : CGFloat {
         get {
-            
-            if (delegate?.lastValidResponse) != nil {
+            if delegate?.lastValidResponse != nil {
                 return 260.00
             }
-            
             return 0.0
         }
     }
