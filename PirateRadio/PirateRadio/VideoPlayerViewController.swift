@@ -16,111 +16,34 @@ class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDeleg
     var videoId: String = ""
     var downloadDataTask: URLSessionDataTask? = nil
     
-    private var filePathLocalDestination: URL?
-    //weak var downloadDelegate: WebDownloadable?
-    
+    private var lastDownloadedFileLocalDestination: URL?
+       
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         ytPlayerView.load(withVideoId: videoId)
+        loadWebView(videoId: videoId)
+        setupBlockingRulesOfWebView()
+        downloadButtonsWebView.navigationDelegate = self
         
-        let myURL = URL(string: "https://api.vevioz.com/api/button/mp3/\(videoId)") // api.vevioz buttons (-) have lots of ads
-        
-        let contentToBlock = """
-                                [
-                                    { "trigger": {
-                                      "url-filter": "dozubatan.com*"
-                                    },
-                                    "action": {
-                                      "type": "block"
-                                    }
-                                  },
-                                    { "trigger": {
-                                      "url-filter": "pseepsie.com*"
-                                    },
-                                    "action": {
-                                      "type": "block"
-                                    }
-                                  },
-                                    { "trigger": {
-                                      "url-filter": "toglooman.com*"
-                                    },
-                                    "action": {
-                                      "type": "block"
-                                    }
-                                  },
-                                    { "trigger": {
-                                      "url-filter": "my.rtmark.net*"
-                                    },
-                                    "action": {
-                                      "type": "block"
-                                    }
-                                  },
-                                    { "trigger": {
-                                      "url-filter": "interstitial-07.com*"
-                                    },
-                                    "action": {
-                                      "type": "block"
-                                    }
-                                  },
-                            
-                                    { "trigger": {
-                                      "url-filter": "w0wtimelands.com*"
-                                    },
-                                    "action": {
-                                      "type": "block"
-                                    }
-                                  },
-                                  { "trigger": {
-                                    "url-filter": "googleads.g.doubleclick.net*"
-                                  },
-                                  "action": {
-                                    "type": "block"
-                                  }
-                                },
-                                {
-                                  "trigger": {
-                                    "url-filter": "pagead.googlesyndication.com*"
-                            
-                                  },
-                                  "action": {
-                                    "type": "block"
-                                  }
-                                },
-                                {
-                                  "trigger": {
-                                    "url-filter": "pagead1.googlesyndication.com*"
-                            
-                                  },
-                                  "action": {
-                                    "type": "block"
-                                  }
-                                },
-                                {
-                                  "trigger": {
-                                    "url-filter": "pagead2.googlesyndication.com*"
-                            
-                                  },
-                                  "action": {
-                                    "type": "block"
-                                  }
-                            }
-                                ]
-                            """
-        
+    }
+    
+    private func loadWebView(videoId: String) {
+        let myURL = Constants.MP3_DOWNLOADER_API_URL!.appendingPathComponent("\(videoId)")
+        let myRequest = URLRequest(url: myURL)
+        downloadButtonsWebView.load(myRequest)
+    }
+    
+    private func setupBlockingRulesOfWebView() {
         WKContentRuleListStore.default().compileContentRuleList(
             forIdentifier: "ContentBlockingRules",
-            encodedContentRuleList: contentToBlock) { (contentRuleList, error) in
+            encodedContentRuleList: Constants.CONTENT_TO_BLOCK_JSON) { (contentRuleList, error) in
                 if let error = error {
-                    print("error compiling rules = \(error)")
+                    print("Error compiling blocking rules = \(error)")
                     return
                 }
                 self.downloadButtonsWebView.configuration.userContentController.add(contentRuleList!)
             }
-        
-        let myRequest = URLRequest(url: myURL!)
-        downloadButtonsWebView.load(myRequest)
-        downloadButtonsWebView.navigationDelegate = self
     }
     
     // MARK: WKNavigationDelegate's methods
@@ -176,15 +99,15 @@ class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDeleg
     
     func download(_ download: WKDownload, decideDestinationUsing response: URLResponse, suggestedFilename: String, completionHandler: @escaping (URL?) -> Void) {
         
+        createYoutubeToMp3DownloadsDirectoryInCacheIfNonExistent()
+        
         let downloadsDirectory = Constants.YOUTUBE_TO_MP3_DOWNLOADS_DIRECTORY_URL
         
-        filePathLocalDestination = downloadsDirectory.appendingPathComponent(suggestedFilename)
+        lastDownloadedFileLocalDestination = downloadsDirectory.appendingPathComponent(suggestedFilename)
         
-        removeFileIfExisting(at: filePathLocalDestination!)
+        removeFileIfExisting(at: lastDownloadedFileLocalDestination!)
         
-        print(filePathLocalDestination!.absoluteString)
-        
-        completionHandler(filePathLocalDestination!)
+        completionHandler(lastDownloadedFileLocalDestination!)
     }
     
     func downloadDidFinish(_ download: WKDownload) {

@@ -37,5 +37,89 @@ struct Constants {
     static let YOUTUBE_WATCH_URL_AS_STRING = "https://www.youtube.com/watch"
     
     static let YOUTUBE_TO_MP3_DOWNLOADS_DIRECTORY_URL = Constants.CACHES_DIRECTORY_URL.appendingPathComponent("YouTubeToMp3Downloads")
+    
+    static let MP3_DOWNLOADER_API_URL = URL(string: "https://api.vevioz.com/api/button/mp3")
+    
+    static let CONTENT_TO_BLOCK_JSON = """
+                                [
+                                    { "trigger": {
+                                      "url-filter": "dozubatan.com*"
+                                    },
+                                    "action": {
+                                      "type": "block"
+                                    }
+                                  },
+                                    { "trigger": {
+                                      "url-filter": "pseepsie.com*"
+                                    },
+                                    "action": {
+                                      "type": "block"
+                                    }
+                                  },
+                                    { "trigger": {
+                                      "url-filter": "toglooman.com*"
+                                    },
+                                    "action": {
+                                      "type": "block"
+                                    }
+                                  },
+                                    { "trigger": {
+                                      "url-filter": "my.rtmark.net*"
+                                    },
+                                    "action": {
+                                      "type": "block"
+                                    }
+                                  },
+                                    { "trigger": {
+                                      "url-filter": "interstitial-07.com*"
+                                    },
+                                    "action": {
+                                      "type": "block"
+                                    }
+                                  },
+                            
+                                    { "trigger": {
+                                      "url-filter": "w0wtimelands.com*"
+                                    },
+                                    "action": {
+                                      "type": "block"
+                                    }
+                                  },
+                                  { "trigger": {
+                                    "url-filter": "googleads.g.doubleclick.net*"
+                                  },
+                                  "action": {
+                                    "type": "block"
+                                  }
+                                },
+                                {
+                                  "trigger": {
+                                    "url-filter": "pagead.googlesyndication.com*"
+                            
+                                  },
+                                  "action": {
+                                    "type": "block"
+                                  }
+                                },
+                                {
+                                  "trigger": {
+                                    "url-filter": "pagead1.googlesyndication.com*"
+                            
+                                  },
+                                  "action": {
+                                    "type": "block"
+                                  }
+                                },
+                                {
+                                  "trigger": {
+                                    "url-filter": "pagead2.googlesyndication.com*"
+                            
+                                  },
+                                  "action": {
+                                    "type": "block"
+                                  }
+                            }
+                                ]
+                            """
 }
 
