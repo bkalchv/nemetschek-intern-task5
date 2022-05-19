@@ -23,23 +23,8 @@
                                     <constraint firstAttribute="width" secondItem="wtz-K4-IrX" secondAttribute="height" multiplier="16:9" id="cnT-gF-WW4"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQz-oc-sY9">
-                                <rect key="frame" x="320.5" y="581" width="46.5" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="baseline_download_white_36pt"/>
-                                <connections>
-                                    <action selector="onDownloadMP3ButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PbY-uq-K3m"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download mp3:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBS-JQ-S9i">
-                                <rect key="frame" x="193" y="596" width="119.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GA9-Go-or3">
-                                <rect key="frame" x="20" y="639" width="374" height="202"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GA9-Go-or3">
+                                <rect key="frame" x="20" y="577" width="374" height="262"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -50,20 +35,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GA9-Go-or3" secondAttribute="bottom" constant="23" id="4ox-Un-dcm"/>
                             <constraint firstItem="wtz-K4-IrX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="62L-wv-ybg"/>
-                            <constraint firstItem="KQz-oc-sY9" firstAttribute="leading" secondItem="rBS-JQ-S9i" secondAttribute="trailing" constant="8" id="Fyp-jH-qy8"/>
-                            <constraint firstItem="rBS-JQ-S9i" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="53" id="VpR-TK-Lq0"/>
-                            <constraint firstItem="wtz-K4-IrX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="ePe-JB-0Kf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GA9-Go-or3" secondAttribute="trailing" constant="20" id="Ieh-Rp-W9P"/>
+                            <constraint firstItem="GA9-Go-or3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aZA-eA-Abk"/>
+                            <constraint firstItem="GA9-Go-or3" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="34" id="fqU-FP-E02"/>
                             <constraint firstItem="wtz-K4-IrX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jau-vn-QiJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KQz-oc-sY9" secondAttribute="trailing" constant="47" id="pVr-Hj-4DU"/>
-                            <constraint firstItem="KQz-oc-sY9" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="38" id="r4T-QN-Ag4"/>
-                            <constraint firstItem="rBS-JQ-S9i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="193" id="uZc-8Y-WRb"/>
+                            <constraint firstItem="wtz-K4-IrX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="mbQ-6I-OXK"/>
+                            <constraint firstItem="GA9-Go-or3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wEp-A2-hvc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cZu-PN-nSw"/>
                     <connections>
                         <outlet property="downloadButtonsWebView" destination="GA9-Go-or3" id="EEj-6b-8qR"/>
-                        <outlet property="downloadMP3Button" destination="KQz-oc-sY9" id="19x-OB-oil"/>
                         <outlet property="ytPlayerView" destination="wtz-K4-IrX" id="Pql-od-xyX"/>
                     </connections>
                 </viewController>
@@ -272,7 +256,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="baseline_download_white_36pt" width="36" height="36"/>
         <image name="play_circle_outline_white_64pt" width="64" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
