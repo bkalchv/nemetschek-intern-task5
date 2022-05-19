@@ -79,11 +79,23 @@ class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDeleg
         download.delegate = self
     }
     
-    func download(_ download: WKDownload, decideDestinationUsing response: URLResponse, suggestedFilename: String, completionHandler: @escaping (URL?) -> Void) { // have it
+    private func removeFileIfExisting(at url: URL) {
+        if FileManager.default.fileExists(atPath: url.absoluteString) {
+            do {
+               try FileManager.default.removeItem(at: url)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func download(_ download: WKDownload, decideDestinationUsing response: URLResponse, suggestedFilename: String, completionHandler: @escaping (URL?) -> Void) {
         
         let downloadsDirectory = Constants.YOUTUBE_TO_MP3_DOWNLOADS_DIRECTORY_URL
         
         filePathLocalDestination = downloadsDirectory.appendingPathComponent(suggestedFilename)
+        
+        removeFileIfExisting(at: filePathLocalDestination!)
         
         print(filePathLocalDestination!.absoluteString)
         
