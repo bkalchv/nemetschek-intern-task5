@@ -22,10 +22,11 @@ class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDeleg
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         ytPlayerView.load(withVideoId: videoId)
+        downloadButtonsWebView.contentMode = .scaleToFill
+        downloadButtonsWebView.scrollView.isScrollEnabled = false
         loadWebView(videoId: videoId)
         setupBlockingRulesOfWebView()
         downloadButtonsWebView.navigationDelegate = self
-        
     }
     
     private func loadWebView(videoId: String) {
