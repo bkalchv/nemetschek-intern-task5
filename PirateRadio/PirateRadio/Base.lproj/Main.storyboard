@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ADB-ky-xsb">
-    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,38 @@
             <objects>
                 <viewController storyboardIdentifier="VideoPlayerVC" id="BYZ-38-t0r" customClass="VideoPlayerViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" restorationIdentifier="ytPlayerView" translatesAutoresizingMaskIntoConstraints="NO" id="wtz-K4-IrX" customClass="YTPlayerView">
+                                <rect key="frame" x="0.0" y="79" width="414" height="230"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="53Z-q3-ms8"/>
+                                    <constraint firstAttribute="height" constant="230" id="GLb-OD-Gja"/>
+                                    <constraint firstAttribute="width" constant="305" id="b8d-Ju-yuq"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="53Z-q3-ms8"/>
+                                        <exclude reference="GLb-OD-Gja"/>
+                                        <exclude reference="b8d-Ju-yuq"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="b8d-Ju-yuq"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="53Z-q3-ms8"/>
+                                        <include reference="GLb-OD-Gja"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GA9-Go-or3">
-                                <rect key="frame" x="60" y="278" width="776" height="115"/>
+                                <rect key="frame" x="20" y="431" width="374" height="325"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="776" id="Kj3-Gp-Bgu"/>
@@ -27,55 +54,73 @@
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Kj3-Gp-Bgu"/>
+                                        <exclude reference="OcH-oV-3gT"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="Kj3-Gp-Bgu"/>
+                                        <include reference="OcH-oV-3gT"/>
+                                    </mask>
+                                </variation>
                             </wkWebView>
-                            <view contentMode="scaleToFill" restorationIdentifier="ytPlayerView" translatesAutoresizingMaskIntoConstraints="NO" id="wtz-K4-IrX" customClass="YTPlayerView">
-                                <rect key="frame" x="296" y="20" width="305" height="230"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="305" id="b8d-Ju-yuq"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wtz-K4-IrX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="4df-EY-8Uy"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GA9-Go-or3" secondAttribute="bottom" constant="178" id="4ox-Un-dcm"/>
-                            <constraint firstItem="wtz-K4-IrX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="62L-wv-ybg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GA9-Go-or3" secondAttribute="bottom" id="B3P-Ep-Qmu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GA9-Go-or3" secondAttribute="trailing" constant="20" id="BKw-3y-QpP"/>
                             <constraint firstItem="GA9-Go-or3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Bg3-he-jT1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GA9-Go-or3" secondAttribute="trailing" constant="20" id="Ieh-Rp-W9P"/>
+                            <constraint firstItem="wtz-K4-IrX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="E6s-yZ-9CP"/>
+                            <constraint firstItem="GA9-Go-or3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QLr-f5-FZ0"/>
+                            <constraint firstItem="GA9-Go-or3" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="122" id="Qtq-Vj-xbH"/>
                             <constraint firstItem="GA9-Go-or3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RqB-fA-GzV"/>
-                            <constraint firstItem="GA9-Go-or3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aZA-eA-Abk"/>
-                            <constraint firstItem="GA9-Go-or3" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="140" id="fqU-FP-E02"/>
-                            <constraint firstItem="wtz-K4-IrX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-264" id="jau-vn-QiJ"/>
-                            <constraint firstItem="wtz-K4-IrX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mbQ-6I-OXK"/>
+                            <constraint firstItem="wtz-K4-IrX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="eoc-ZX-YQD"/>
+                            <constraint firstItem="GA9-Go-or3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="g9R-MA-9Nl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GA9-Go-or3" secondAttribute="bottom" constant="106" id="mb5-p5-eSd"/>
                             <constraint firstItem="wtz-K4-IrX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="0.5" id="q8E-Qj-cx8"/>
                             <constraint firstItem="GA9-Go-or3" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="28" id="uqd-Hk-xzk"/>
-                            <constraint firstItem="GA9-Go-or3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wEp-A2-hvc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="4ox-Un-dcm"/>
-                                <exclude reference="Ieh-Rp-W9P"/>
-                                <exclude reference="62L-wv-ybg"/>
-                                <exclude reference="jau-vn-QiJ"/>
-                                <exclude reference="mbQ-6I-OXK"/>
-                                <exclude reference="aZA-eA-Abk"/>
-                                <exclude reference="fqU-FP-E02"/>
-                                <exclude reference="wEp-A2-hvc"/>
+                                <exclude reference="B3P-Ep-Qmu"/>
+                                <exclude reference="BKw-3y-QpP"/>
+                                <exclude reference="mb5-p5-eSd"/>
+                                <exclude reference="4df-EY-8Uy"/>
+                                <exclude reference="E6s-yZ-9CP"/>
+                                <exclude reference="eoc-ZX-YQD"/>
+                                <exclude reference="q8E-Qj-cx8"/>
+                                <exclude reference="Bg3-he-jT1"/>
+                                <exclude reference="QLr-f5-FZ0"/>
+                                <exclude reference="Qtq-Vj-xbH"/>
+                                <exclude reference="RqB-fA-GzV"/>
+                                <exclude reference="g9R-MA-9Nl"/>
+                                <exclude reference="uqd-Hk-xzk"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="B3P-Ep-Qmu"/>
+                                <include reference="4df-EY-8Uy"/>
+                                <include reference="q8E-Qj-cx8"/>
+                                <include reference="Bg3-he-jT1"/>
+                                <include reference="RqB-fA-GzV"/>
+                                <include reference="uqd-Hk-xzk"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="4ox-Un-dcm"/>
-                                <include reference="Ieh-Rp-W9P"/>
-                                <include reference="62L-wv-ybg"/>
-                                <include reference="jau-vn-QiJ"/>
-                                <include reference="mbQ-6I-OXK"/>
-                                <include reference="aZA-eA-Abk"/>
-                                <include reference="fqU-FP-E02"/>
-                                <include reference="wEp-A2-hvc"/>
+                                <include reference="BKw-3y-QpP"/>
+                                <include reference="mb5-p5-eSd"/>
+                                <include reference="E6s-yZ-9CP"/>
+                                <include reference="eoc-ZX-YQD"/>
+                                <include reference="QLr-f5-FZ0"/>
+                                <include reference="Qtq-Vj-xbH"/>
+                                <include reference="g9R-MA-9Nl"/>
                             </mask>
                         </variation>
                     </view>
@@ -87,14 +132,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3100.4464285714284" y="121.73913043478262"/>
+            <point key="canvasLocation" x="3100.0000000000005" y="121.20535714285714"/>
         </scene>
         <!--Sample View Controller-->
         <scene sceneID="q1B-i5-bRk">
             <objects>
                 <viewController id="Whx-FS-yfP" customClass="SampleViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ldh-EW-dxw">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eld-qE-iWc">
@@ -137,25 +182,25 @@
             <objects>
                 <tableViewController id="FUN-G8-JaZ" customClass="SearchResultTableViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="NJN-Yj-6rC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="255"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="588"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="260" id="0t7-iT-n1A" customClass="SearchResultCell" customModule="PirateRadio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="393" height="260"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="260"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0t7-iT-n1A" id="r5K-Zb-ZgG">
-                                    <rect key="frame" x="44" y="0.0" width="349" height="260"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="videoID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYV-xm-3ZC">
-                                            <rect key="frame" x="20" y="191.5" width="58" height="21"/>
+                                            <rect key="frame" x="20" y="228" width="58" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFL-JO-352">
-                                            <rect key="frame" x="20" y="162.5" width="33" height="21"/>
+                                            <rect key="frame" x="20" y="199" width="33" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="260" id="Tu5-AO-fbd"/>
                                             </constraints>
@@ -164,19 +209,19 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Published time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ9-eD-Hdb">
-                                            <rect key="frame" x="221.5" y="162.5" width="112.5" height="21"/>
+                                            <rect key="frame" x="286.5" y="199" width="112.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G5H-dl-DF7">
-                                            <rect key="frame" x="47" y="11" width="255" height="143.5"/>
+                                            <rect key="frame" x="47" y="11" width="320" height="180"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="G5H-dl-DF7" secondAttribute="height" multiplier="16:9" id="bVF-tZ-CzQ"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iek-hG-mSb">
-                                            <rect key="frame" x="130.5" y="43.5" width="88" height="78"/>
+                                            <rect key="frame" x="163" y="62" width="88" height="78"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="play_circle_outline_white_64pt">
                                                 <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
@@ -226,7 +271,7 @@
             <objects>
                 <navigationController id="ADB-ky-xsb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eog-hT-qFw">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -242,15 +287,15 @@
             <objects>
                 <viewController id="1UO-GT-CDm" customClass="SearchBarViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EZ9-DL-Y8Q">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="koB-u4-jzX">
-                                <rect key="frame" x="59" y="67" width="776" height="51"/>
+                                <rect key="frame" x="0.0" y="131" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4X-47-Evy">
-                                <rect key="frame" x="251.5" y="128" width="393" height="255"/>
+                                <rect key="frame" x="0.0" y="196" width="414" height="588"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="393" id="DjW-7v-qcC"/>
                                 </constraints>
@@ -264,7 +309,7 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YouTube PirateRadio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL2-qM-XS8">
-                                <rect key="frame" x="361" y="34" width="174" height="23"/>
+                                <rect key="frame" x="120" y="88" width="174" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
