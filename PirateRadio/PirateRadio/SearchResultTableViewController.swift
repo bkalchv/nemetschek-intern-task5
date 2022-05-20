@@ -19,7 +19,18 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     var searchResultCellHeight : CGFloat {
         get {
             if delegate?.lastValidResponse != nil {
-                return 260.00
+                
+                switch UIDevice.current.orientation {
+                case .portrait:
+                    return 260.00
+                case .landscapeLeft:
+                    return 255.00
+                case .landscapeRight:
+                    return 255.00
+                default:
+                    return 260.00
+                }
+                
             }
             return 0.0
         }

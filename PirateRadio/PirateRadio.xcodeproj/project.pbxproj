@@ -32,7 +32,6 @@
 		42AC3DCF282E715F003F1695 /* API_KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DCE282E715F003F1695 /* API_KEY.swift */; };
 		42AC3DD1282E728F003F1695 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DD0282E728F003F1695 /* Fetcher.swift */; };
 		42B027792819414300A86E58 /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B027782819414300A86E58 /* SampleViewController.swift */; };
-		42FEBFA228339F88001DB53C /* YOUTUBE_DOWNLOADER_API_TOKEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FEBFA128339F88001DB53C /* YOUTUBE_DOWNLOADER_API_TOKEN.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +60,6 @@
 		42AC3DCE282E715F003F1695 /* API_KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_KEY.swift; sourceTree = "<group>"; };
 		42AC3DD0282E728F003F1695 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		42B027782819414300A86E58 /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
-		42FEBFA128339F88001DB53C /* YOUTUBE_DOWNLOADER_API_TOKEN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOUTUBE_DOWNLOADER_API_TOKEN.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +116,6 @@
 				428B7D2728044D23003DBBB9 /* LaunchScreen.storyboard */,
 				428B7D2A28044D23003DBBB9 /* Info.plist */,
 				42AC3DCE282E715F003F1695 /* API_KEY.swift */,
-				42FEBFA128339F88001DB53C /* YOUTUBE_DOWNLOADER_API_TOKEN.swift */,
 				429533C8282BFF680007EA6C /* Constants.swift */,
 				429E739C282D32600073899E /* Extensions.swift */,
 			);
@@ -238,7 +235,6 @@
 				429533CD282C02600007EA6C /* SearchResultTableViewController.swift in Sources */,
 				429533B9282BE9DD0007EA6C /* YouTubeSearchResultItem.swift in Sources */,
 				429533C9282BFF680007EA6C /* Constants.swift in Sources */,
-				42FEBFA228339F88001DB53C /* YOUTUBE_DOWNLOADER_API_TOKEN.swift in Sources */,
 				423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */,
 				42AC3DD1282E728F003F1695 /* Fetcher.swift in Sources */,
 			);
