@@ -13,12 +13,13 @@ protocol SearchResultCellDelegate : AnyObject {
 
 class SearchResultCell: UITableViewCell {
 
-    @IBOutlet weak var videoIDLabel: UILabel!
+    //@IBOutlet weak var videoIDLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var publishTimeLabel: UILabel!
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     weak var delegate: SearchResultCellDelegate? = nil
+    var videoId: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,8 +33,7 @@ class SearchResultCell: UITableViewCell {
     }
     
     @IBAction func onPlayButtonPress(_ sender: Any) {
-        print("Play button pressed")
-        if let videoId =  videoIDLabel.text {
+        if !videoId.isEmpty {
             self.delegate?.presentVideoPlayerVC(videoId: videoId)
         }
     }

@@ -24,9 +24,9 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
                 case .portrait:
                     return 260.00
                 case .landscapeLeft:
-                    return 255.00
+                    return 240.00
                 case .landscapeRight:
-                    return 255.00
+                    return 240.00
                 default:
                     return 260.00
                 }
@@ -118,7 +118,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
             let cellPublishTime = searchResultItem.snippet.publishTime
             
             
-            cell.videoIDLabel.text = cellVideoID
+            cell.videoId = cellVideoID
             cell.titleLabel.text = cellTitle
             cell.publishTimeLabel.text = extractDateFromPublishTime(publishTime: cellPublishTime)
             cell.delegate = self
