@@ -10,11 +10,12 @@ import UIKit
 import YouTubeiOSPlayerHelper
 import Toast
 
-class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDelegate, WKNavigationDelegate {
+class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDelegate, WKDownloadDelegate, WKNavigationDelegate {
     
     @IBOutlet weak var downloadButtonsWebView: WKWebView!
     @IBOutlet weak var ytPlayerView: YTPlayerView!
     var videoId: String = ""
+    var hasEnteredBackgroundMode: Bool = false
     
     private var lastDownloadedFileLocalDestination: URL?
        
@@ -27,6 +28,23 @@ class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDeleg
         loadWebView(videoId: videoId)
         setupBlockingRulesOfWebView()
         downloadButtonsWebView.navigationDelegate = self
+        ytPlayerView.delegate = self
+        
+        if #available(iOS 13.0, *) {
+            NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIScene.willDeactivateNotification, object: nil)
+        } else {
+            NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(appCameToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc func willResignActive() {
+        hasEnteredBackgroundMode = true
+    }
+    
+    @objc func appCameToForeground() {
+        hasEnteredBackgroundMode = false
     }
     
     private func loadWebView(videoId: String) {
@@ -124,6 +142,18 @@ class VideoPlayerViewController: UIViewController, WKUIDelegate, WKDownloadDeleg
             } catch {
                 print(error)
             }
+        }
+    }
+    
+    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
+        switch state {
+        case .paused:
+            // TODO: if app in background
+            if hasEnteredBackgroundMode {
+                self.ytPlayerView.playVideo()
+            }
+        default:
+            break
         }
     }
 }
