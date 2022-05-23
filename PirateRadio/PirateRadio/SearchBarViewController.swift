@@ -30,13 +30,13 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     var fetcher : Fetcher? = nil
     var lastValidResponse: YouTubeSearchListResponse? {
         get {
-            fetcher?.lastValidResponse
+            fetcher?.lastValidSearchListResponse
         }
     }
     weak var delegate : SearchBarViewControllerDelegate? = nil
     
     func didReachBottom() {
-        let nextPageID = fetcher?.lastValidResponse?.nextPageToken
+        let nextPageID = fetcher?.lastValidSearchListResponse?.nextPageToken
         fetcher?.executeYoutubeSearchAPI(withSearchText: searchBar.text!, nextPageID: nextPageID)
     }
     

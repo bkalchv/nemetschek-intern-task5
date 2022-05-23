@@ -13,7 +13,7 @@ protocol FetcherDelegate : AnyObject {
 
 class Fetcher {
     
-    var lastValidResponse: YouTubeSearchListResponse? = nil
+    var lastValidSearchListResponse: YouTubeSearchListResponse? = nil
     var dataTask: URLSessionDataTask? = nil
     weak var delegate : FetcherDelegate? = nil
     
@@ -26,20 +26,6 @@ class Fetcher {
     public func cancelDataTask() {
         dataTask?.cancel()
     }
-    
-    private func areAllThumbnailFilesPresent() -> Bool {
-        for searchItem in lastValidResponse!.items {
-            let searchItemVideoID = searchItem.id.videoId
-            let thumbnailFilename = "\(searchItemVideoID)_thumbnail.jpg"
-            let thumbnailFileLocalURL = Constants.THUMBNAILS_DIRECTORY_URL.appendingPathComponent(thumbnailFilename)
-            
-            if !FileManager.default.fileExists(atPath: thumbnailFileLocalURL.path) {
-                return false
-            }
-        }
-        
-        return true
-    }
         
     private func updateLastValidResponse(forJSONString JSONString: String) {
         let responseData = Data(JSONString.utf8)
@@ -49,7 +35,7 @@ class Fetcher {
         
         do {
             let decodedSearchListResponse = try JSONDecoder.decode(YouTubeSearchListResponse.self, from: responseData)
-            self.lastValidResponse = decodedSearchListResponse
+            self.lastValidSearchListResponse = decodedSearchListResponse
             
         } catch {
             print("Error: \(error.localizedDescription)")
