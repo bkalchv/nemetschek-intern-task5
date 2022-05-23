@@ -121,5 +121,7 @@ struct Constants {
                             }
                                 ]
                             """
+    
+    static let YOUTUBE_VIDEOS_API_URL = "https://youtube.googleapis.com/youtube/v3/videos"
 }
 
