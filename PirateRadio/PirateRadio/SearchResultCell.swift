@@ -18,6 +18,7 @@ class SearchResultCell: UITableViewCell {
     @IBOutlet weak var publishTimeLabel: UILabel!
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var channelLabel: UILabel!
     weak var delegate: SearchResultCellDelegate? = nil
     var videoId: String = ""
     

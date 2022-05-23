@@ -22,13 +22,13 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
                 
                 switch UIDevice.current.orientation {
                 case .portrait:
-                    return 260.00
+                    return 280.00
                 case .landscapeLeft:
-                    return 240.00
+                    return 230.00
                 case .landscapeRight:
-                    return 240.00
+                    return 230.00
                 default:
-                    return 260.00
+                    return 280.00
                 }
                 
             }
@@ -116,11 +116,13 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
             let cellVideoID = searchResultItem.id.videoId
             let cellTitle = searchResultItem.snippet.title
             let cellPublishTime = searchResultItem.snippet.publishTime
+            let cellChannel = searchResultItem.snippet.channelTitle
             
             
             cell.videoId = cellVideoID
             cell.titleLabel.text = cellTitle
             cell.publishTimeLabel.text = extractDateFromPublishTime(publishTime: cellPublishTime)
+            cell.channelLabel.text = cellChannel
             cell.delegate = self
             
             // download thumbnail for missing videoId

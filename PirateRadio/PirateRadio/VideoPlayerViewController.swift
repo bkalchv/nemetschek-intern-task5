@@ -47,6 +47,18 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         hasEnteredBackgroundMode = false
     }
     
+    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
+        switch state {
+        case .paused:
+            // TODO: if app in background
+            if hasEnteredBackgroundMode {
+                self.ytPlayerView.playVideo()
+            }
+        default:
+            break
+        }
+    }
+    
     private func loadWebView(videoId: String) {
         let myURL = Constants.MP3_DOWNLOADER_API_URL!.appendingPathComponent("\(videoId)")
         let myRequest = URLRequest(url: myURL)
@@ -145,15 +157,4 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         }
     }
     
-    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
-        switch state {
-        case .paused:
-            // TODO: if app in background
-            if hasEnteredBackgroundMode {
-                self.ytPlayerView.playVideo()
-            }
-        default:
-            break
-        }
-    }
 }
