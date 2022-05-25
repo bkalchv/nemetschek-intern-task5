@@ -4,18 +4,17 @@
 //
 //  Created by Bogdan Kalchev on 11.05.22.
 //
-
 import UIKit
 
 protocol SearchBarViewControllerDelegate : AnyObject {
     func updateDataSource()
-    //func updateTableViewDataSourceDurations()
     func updateDataSourceItem(id: String, duration: String)
     func emptyTableViewDataSource()
     func scrollTableViewToTop()
 }
 
 class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResultTableViewControllerDelegate, FetcherDelegate {
+    
     @IBOutlet weak var searchBar: UISearchBar!
     var fetcher: Fetcher? = nil
     var lastValidSearchListResponse: YouTubeSearchListResponse? {
@@ -30,11 +29,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     func updateTableViewDataSourceItem(id: String, duration: String) {
         self.delegate?.updateDataSourceItem(id: id, duration: duration)
     }
-    
-//    func updateTableViewDataSourceDurations() {
-//        self.delegate?.updateTableViewDataSourceDurations()
-//    }
-    
+        
     func updateTableViewDataSource() {
         self.delegate?.updateDataSource()
     }

@@ -8,7 +8,6 @@
 import UIKit
 
 protocol SearchResultTableViewControllerDelegate: AnyObject {
-    // var lastValidVideoListResponse: YouTubeVideoListResponse? { get }
     var lastValidSearchListResponse: YouTubeSearchListResponse? { get }
     func didReachBottom()
 }
@@ -41,19 +40,14 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(didFinishThumbnailDownload(notification:)), name: .ThumbnailDownloadedNotification, object: nil)
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveDurations(notification:)), name: .DurationsReceivedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveDurations(notification:)), name: .DurationsReceivedNotification, object: nil)
     }
     
-//    @objc func didReceiveDurations(notification: Notification) {
-//        if let durations = notification.userInfo?["durations"] as? [String] {
-//            NSLog("Notified to reaload data.")
-//        }
-//    
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-//    }
+    @objc func didReceiveDurations(notification: Notification) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
     
     @objc func didFinishThumbnailDownload(notification: Notification) {
         if let indexPath = notification.userInfo?["indexPath"] as? IndexPath {
@@ -84,17 +78,6 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         }
     }
         
-    
-    
-//    func updateTableViewDataSourceDurations() {
-//        if let lastValidResponse = delegate?.lastValidSearchListResponse {
-//            tableData = lastValidResponse.items
-//        }
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-//    }
-    
     func emptyTableViewDataSource() {
         if !self.tableData.isEmpty { self.tableData = [] }
     }
@@ -105,13 +88,33 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         }
     }
     
-    func extractDateFromPublishTime(publishTime: String) -> String {
+    private func extractDateFromPublishTime(publishTime: String) -> String {
         
         if let upperBound = publishTime.firstIndex(of: "T") {
             return String(publishTime[publishTime.startIndex..<upperBound])
         }
         
         return ""
+    }
+    
+    private func formatDurationFromIso8601String(ISO8601Duration: String) -> String {
+        var duration = ISO8601Duration
+        
+        if duration.hasPrefix("PT") { duration.removeFirst(2) }
+        
+        let hour, minute, second: Double
+        if let index = duration.firstIndex(of: "H") {
+            hour = Double(duration[..<index]) ?? 0
+            duration.removeSubrange(...index)
+        } else { hour = 0 }
+        if let index = duration.firstIndex(of: "M") {
+            minute = Double(duration[..<index]) ?? 0
+            duration.removeSubrange(...index)
+        } else { minute = 0 }
+        if let index = duration.firstIndex(of: "S") {
+            second = Double(duration[..<index]) ?? 0
+        } else { second = 0 }
+        return Formatter.positional.string(from: hour * 3600 + minute * 60 + second) ?? "0:00"
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -149,7 +152,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
             let cellChannel = searchResultItem.snippet.channelTitle
             
             if let cellVideoDuration = searchResultItem.duration {
-                cell.durationLabel.text = cellVideoDuration
+                cell.durationLabel.text = formatDurationFromIso8601String(ISO8601Duration: cellVideoDuration)
             }
             
             cell.videoId = cellVideoID

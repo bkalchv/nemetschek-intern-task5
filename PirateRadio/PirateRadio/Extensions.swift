@@ -17,3 +17,11 @@ extension Notification.Name {
     static let ThumbnailDownloadedNotification = Notification.Name("ThumbnailDownloadedNotification")
     static let DurationsReceivedNotification = Notification.Name("DurationsReceivedNotification")
 }
+
+extension Formatter {
+    static let positional: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        return formatter
+    }()
+}

@@ -9,7 +9,6 @@ import UIKit
 
 protocol FetcherDelegate : AnyObject {
     func updateTableViewDataSource()
-    //func updateTableViewDataSourceDurations()
     func updateTableViewDataSourceItem(id: String, duration: String)
 }
 
@@ -196,17 +195,13 @@ class Fetcher {
                             self?.executeYoutubeVideoListAPI(videoIds: videoIds) { durations in
                                 for index in 0..<lastValidSearchListResponse.items.count {
                                     lastValidSearchListResponse.items[index].duration = durations[index]
-                                    // TODO: Ask if fine to update data source like that:
-                                    
+                                                
                                     let currentVideoId = lastValidSearchListResponse.items[index].id.videoId
                                     let currentDuration = durations[index]
                                     self?.delegate?.updateTableViewDataSourceItem(id: currentVideoId, duration: currentDuration)
                                     print("\(currentVideoId)'s duration should have been updated to \(currentDuration)")
                                 }
-                                // TODO: Ask if fine to update data source like that:
-                                // Notify that durations came in???
-                                
-                                //self?.delegate?.updateTableViewDataSourceDurations()
+                                NotificationCenter.default.post(name: .DurationsReceivedNotification, object: nil)
                             }
                         }
                         
@@ -221,14 +216,12 @@ class Fetcher {
                         self?.executeYoutubeVideoListAPI(videoIds: videoIds) { durations in
                             for index in 0..<lastValidSearchListResponse.items.count {
                                 lastValidSearchListResponse.items[index].duration = durations[index]
-                                // TODO: Ask if fine to update data source like that:
                                 
                                 let currentVideoId = lastValidSearchListResponse.items[index].id.videoId
                                 let currentDuration = durations[index]
                                 self?.delegate?.updateTableViewDataSourceItem(id: currentVideoId, duration: currentDuration)
-                                
                             }
-                            
+                            NotificationCenter.default.post(name: .DurationsReceivedNotification, object: nil)
                         }
                     }
                     
