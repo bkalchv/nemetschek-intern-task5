@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YouTubeSearchResultSnippet : Codable {
+class YouTubeSearchResultSnippet : Codable {
     var publishedAt : String
     var channelId : String
     var title : String

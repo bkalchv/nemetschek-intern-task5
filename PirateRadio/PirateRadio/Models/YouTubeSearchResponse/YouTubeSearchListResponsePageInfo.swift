@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YouTubeSearchListResponsePageInfo : Codable {
+class YouTubeSearchListResponsePageInfo : Codable {
     var totalResults : Int
     var resultsPerPage : Int
 }

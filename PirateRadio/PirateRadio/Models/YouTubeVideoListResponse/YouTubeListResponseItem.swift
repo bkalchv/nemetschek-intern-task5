@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YouTubeVideoListResponseItem : Codable {
+class YouTubeVideoListResponseItem : Codable {
     var kind : String
     var etag : String
     var id : String

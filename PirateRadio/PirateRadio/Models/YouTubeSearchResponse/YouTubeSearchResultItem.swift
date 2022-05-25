@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct YouTubeSearchResultItem : Codable {
+class YouTubeSearchResultItem : Codable {
     var kind : String
     var etag : String
     var id : YouTubeSearchResultID
     var snippet : YouTubeSearchResultSnippet
+    
+    var duration : String?
 }

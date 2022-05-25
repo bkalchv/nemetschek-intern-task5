@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YouTubeVideoContentDetails : Codable {
+class YouTubeVideoContentDetails : Codable {
     var duration : String
     var dimension : String
     var definition : String

@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct YouTubeVideoContentRating : Codable {
+class YouTubeVideoContentRating : Codable {
     
 }

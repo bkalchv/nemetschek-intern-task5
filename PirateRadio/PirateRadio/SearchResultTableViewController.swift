@@ -8,17 +8,18 @@
 import UIKit
 
 protocol SearchResultTableViewControllerDelegate: AnyObject {
-    var lastValidResponse : YouTubeSearchListResponse? { get }
+    // var lastValidVideoListResponse: YouTubeVideoListResponse? { get }
+    var lastValidSearchListResponse: YouTubeSearchListResponse? { get }
     func didReachBottom()
 }
 
 class SearchResultTableViewController: UITableViewController, SearchBarViewControllerDelegate, SearchResultCellDelegate {
-      
-    weak var delegate : SearchResultTableViewControllerDelegate?
-    var tableData : [YouTubeSearchResultItem] = []
+         
+    weak var delegate: SearchResultTableViewControllerDelegate?
+    var tableData: [YouTubeSearchResultItem] = []
     var searchResultCellHeight : CGFloat {
         get {
-            if delegate?.lastValidResponse != nil {
+            if delegate?.lastValidSearchListResponse != nil {
                 
                 switch UIDevice.current.orientation {
                 case .portrait:
@@ -36,12 +37,23 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         NotificationCenter.default.addObserver(self, selector: #selector(didFinishThumbnailDownload(notification:)), name: .ThumbnailDownloadedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didFinishThumbnailDownload(notification:)), name: .ThumbnailDownloadedNotification, object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveDurations(notification:)), name: .DurationsReceivedNotification, object: nil)
     }
+    
+//    @objc func didReceiveDurations(notification: Notification) {
+//        if let durations = notification.userInfo?["durations"] as? [String] {
+//            NSLog("Notified to reaload data.")
+//        }
+//    
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//    }
     
     @objc func didFinishThumbnailDownload(notification: Notification) {
         if let indexPath = notification.userInfo?["indexPath"] as? IndexPath {
@@ -65,12 +77,30 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         }
     }
     
+    func updateDataSourceItem(id: String, duration: String) {
+        if !tableData.isEmpty {
+            var item = tableData.first(where: { $0.id.videoId == id })
+            item?.duration = duration
+        }
+    }
+        
+    
+    
+//    func updateTableViewDataSourceDurations() {
+//        if let lastValidResponse = delegate?.lastValidSearchListResponse {
+//            tableData = lastValidResponse.items
+//        }
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//    }
+    
     func emptyTableViewDataSource() {
         if !self.tableData.isEmpty { self.tableData = [] }
     }
     
     func loadTableDataFromResponse() {
-        if let lastValidResponse = delegate?.lastValidResponse {
+        if let lastValidResponse = delegate?.lastValidSearchListResponse {
             tableData += lastValidResponse.items
         }
     }
@@ -111,13 +141,16 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as! SearchResultCell
         
         if !tableData.isEmpty && indexPath.row < tableData.count {
-                        
             let searchResultItem = tableData[indexPath.row]
+            
             let cellVideoID = searchResultItem.id.videoId
             let cellTitle = searchResultItem.snippet.title
             let cellPublishTime = searchResultItem.snippet.publishTime
             let cellChannel = searchResultItem.snippet.channelTitle
             
+            if let cellVideoDuration = searchResultItem.duration {
+                cell.durationLabel.text = cellVideoDuration
+            }
             
             cell.videoId = cellVideoID
             cell.titleLabel.text = cellTitle
@@ -146,7 +179,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
                     do {
                         print("\(thumbnailFileLocalURL) downloaded.")
                         try FileManager.default.moveItem(at: temporaryFileURL, to: thumbnailFileLocalURL)
-                        // TODO:
+                        
                         NotificationCenter.default.post(name: .ThumbnailDownloadedNotification, object: nil, userInfo: ["indexPath" : indexPath])
                     } catch {
                         print ("file error: \(error)")
@@ -183,7 +216,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: change
-        if let _ = delegate?.lastValidResponse {
+        if let _ = delegate?.lastValidSearchListResponse {
             return tableData.count
         }
         

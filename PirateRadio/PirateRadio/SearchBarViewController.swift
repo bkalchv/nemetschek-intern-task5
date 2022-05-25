@@ -9,13 +9,31 @@ import UIKit
 
 protocol SearchBarViewControllerDelegate : AnyObject {
     func updateDataSource()
+    //func updateTableViewDataSourceDurations()
+    func updateDataSourceItem(id: String, duration: String)
     func emptyTableViewDataSource()
     func scrollTableViewToTop()
 }
 
 class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResultTableViewControllerDelegate, FetcherDelegate {
+    @IBOutlet weak var searchBar: UISearchBar!
+    var fetcher: Fetcher? = nil
+    var lastValidSearchListResponse: YouTubeSearchListResponse? {
+        get {
+            fetcher?.lastValidSearchListResponse
+        }
+    }
+    weak var delegate: SearchBarViewControllerDelegate? = nil
     
     // MARK: FetcherDelegate's methods
+    
+    func updateTableViewDataSourceItem(id: String, duration: String) {
+        self.delegate?.updateDataSourceItem(id: id, duration: duration)
+    }
+    
+//    func updateTableViewDataSourceDurations() {
+//        self.delegate?.updateTableViewDataSourceDurations()
+//    }
     
     func updateTableViewDataSource() {
         self.delegate?.updateDataSource()
@@ -24,16 +42,6 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     func scrollTableViewToTop() {
         self.delegate?.scrollTableViewToTop()
     }
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-
-    var fetcher : Fetcher? = nil
-    var lastValidResponse: YouTubeSearchListResponse? {
-        get {
-            fetcher?.lastValidSearchListResponse
-        }
-    }
-    weak var delegate : SearchBarViewControllerDelegate? = nil
     
     func didReachBottom() {
         let nextPageID = fetcher?.lastValidSearchListResponse?.nextPageToken

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YouTubeSearchResultID : Codable {
+class YouTubeSearchResultID : Codable {
     var kind : String
     var videoId : String
 }

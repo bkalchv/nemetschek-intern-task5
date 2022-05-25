@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YoutubeToMp3ResponseUploadedAt : Codable {
+class YoutubeToMp3ResponseUploadedAt : Codable {
     var date: String
     var timezone_type: Int
     var timezone: String

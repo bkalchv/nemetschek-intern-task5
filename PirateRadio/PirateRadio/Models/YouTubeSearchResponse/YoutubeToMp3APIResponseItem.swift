@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YoutubeToMp3Response : Codable {
+class YoutubeToMp3Response : Codable {
     var error: Bool
     var youtube_id: String
     var title: String

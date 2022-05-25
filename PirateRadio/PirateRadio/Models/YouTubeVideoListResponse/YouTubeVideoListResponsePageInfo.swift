@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YouTubeVideoPageInfo : Codable {
+class YouTubeVideoPageInfo : Codable {
     var totalResults : Int
     var resultsPerPage : Int
 }

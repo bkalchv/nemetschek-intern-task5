@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YouTubeSearchListResponse : Codable {
+class YouTubeSearchListResponse : Codable {
     var kind : String
     var etag : String
     var nextPageToken : String

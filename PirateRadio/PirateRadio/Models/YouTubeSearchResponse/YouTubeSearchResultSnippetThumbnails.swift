@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YouTubeSearchResultSnippetThumbnails : Codable {
+class YouTubeSearchResultSnippetThumbnails : Codable {
     var `default` : YouTubeSearchResultSnippetThumbnailData
     var medium : YouTubeSearchResultSnippetThumbnailData
     var high : YouTubeSearchResultSnippetThumbnailData

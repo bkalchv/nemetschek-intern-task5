@@ -15,4 +15,5 @@ extension URL {
 
 extension Notification.Name {
     static let ThumbnailDownloadedNotification = Notification.Name("ThumbnailDownloadedNotification")
+    static let DurationsReceivedNotification = Notification.Name("DurationsReceivedNotification")
 }
