@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ADB-ky-xsb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s3w-Gk-Qva">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -181,7 +181,7 @@
             <objects>
                 <tableViewController id="FUN-G8-JaZ" customClass="SearchResultTableViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="NJN-Yj-6rC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="588"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="539"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -394,10 +394,30 @@
             </objects>
             <point key="canvasLocation" x="2291.1830357142858" y="-447.10144927536237"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="M7v-yt-huQ">
+            <objects>
+                <tabBarController id="s3w-Gk-Qva" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eJU-XW-yP4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ADB-ky-xsb" kind="relationship" relationship="viewControllers" id="y1U-GQ-iKx"/>
+                        <segue destination="HYX-f0-fov" kind="relationship" relationship="viewControllers" id="N2G-4o-E7N"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fe2-ux-9OC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="454" y="402"/>
+        </scene>
+        <!--YouTube-->
         <scene sceneID="h4V-ud-zHw">
             <objects>
                 <navigationController id="ADB-ky-xsb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="YouTube" image="outline_video_library_black_36pt" id="okg-Pp-wtk"/>
+                    <navigationItem key="navigationItem" id="lLs-Dr-znR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eog-hT-qFw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -409,6 +429,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iht-00-k7R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1452" y="125"/>
+        </scene>
+        <!--Pirated Music-->
+        <scene sceneID="GrD-70-UPI">
+            <objects>
+                <viewController id="HYX-f0-fov" customClass="PirateMusicViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JHd-xc-a5a">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="wat-S6-EL5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Pirated Music" image="outline_music_note_black_36pt" id="Dbl-nt-bo6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q2M-qa-dg3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1451" y="794"/>
         </scene>
         <!--Search Bar View Controller-->
         <scene sceneID="PIc-v1-8Ev">
@@ -423,7 +459,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4X-47-Evy">
-                                <rect key="frame" x="0.0" y="196" width="414" height="588"/>
+                                <rect key="frame" x="0.0" y="196" width="414" height="539"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="DTj-4P-yiP"/>
                                     <constraint firstAttribute="width" constant="393" id="DjW-7v-qcC"/>
@@ -539,6 +575,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="outline_music_note_black_36pt" width="36" height="36"/>
+        <image name="outline_video_library_black_36pt" width="36" height="36"/>
         <image name="play_circle_outline_white_64pt" width="64" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -37,6 +37,7 @@
 		42C86E0D283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E0C283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift */; };
 		42C86E0F283BA7A40075C72A /* YouTubeVideoContentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E0E283BA7A40075C72A /* YouTubeVideoContentDetails.swift */; };
 		42C86E11283BA8BB0075C72A /* YouTubeVideoContentRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */; };
+		42CE7AFC283FBBFE00378A1A /* PirateMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE7AFB283FBBFE00378A1A /* PirateMusicViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		42C86E0C283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoListResponsePageInfo.swift; sourceTree = "<group>"; };
 		42C86E0E283BA7A40075C72A /* YouTubeVideoContentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentDetails.swift; sourceTree = "<group>"; };
 		42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentRating.swift; sourceTree = "<group>"; };
+		42CE7AFB283FBBFE00378A1A /* PirateMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateMusicViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				429533CE282C10840007EA6C /* SearchBarViewController.swift */,
 				429E739A282D0A2F0073899E /* SearchResultCell.swift */,
 				429533CC282C02600007EA6C /* SearchResultTableViewController.swift */,
+				42CE7AFB283FBBFE00378A1A /* PirateMusicViewController.swift */,
 				42AC3DD0282E728F003F1695 /* Fetcher.swift */,
 				428B7D2228044D22003DBBB9 /* Main.storyboard */,
 				428B7D2528044D23003DBBB9 /* Assets.xcassets */,
@@ -273,6 +276,7 @@
 				42C86E0A283BA60E0075C72A /* YouTubeListResponseItem.swift in Sources */,
 				423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */,
 				42AC3DD1282E728F003F1695 /* Fetcher.swift in Sources */,
+				42CE7AFC283FBBFE00378A1A /* PirateMusicViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +425,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GKHHS42JFG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PirateRadio/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -449,7 +453,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GKHHS42JFG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PirateRadio/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

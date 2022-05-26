@@ -54,7 +54,6 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     }
     
     @objc func didReceiveDurations(notification: Notification) {
-        
         if let videoIds = notification.userInfo?["videoIds"] as? [String] {
             let accumulatedIndexPaths = accumulateIndexPaths(ofVideoIds: videoIds)
             if !accumulatedIndexPaths.isEmpty {
