@@ -15,7 +15,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     @IBOutlet weak var downloadButtonsWebView: WKWebView!
     @IBOutlet weak var ytPlayerView: YTPlayerView!
     var videoId: String = ""
-    var hasEnteredBackgroundMode: Bool = false
+    var appHasEnteredBackgroundMode: Bool = false
     
     private var lastDownloadedFileLocalDestination: URL?
        
@@ -37,28 +37,31 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(appCameToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(playVideo), name: .PlayVideoNotification, object: nil)
     }
     
     @objc func willResignActive() {
-        hasEnteredBackgroundMode = true
+        appHasEnteredBackgroundMode = true
     }
     
     @objc func appCameToForeground() {
-        hasEnteredBackgroundMode = false
+        appHasEnteredBackgroundMode = false
+    }
+    
+    @objc func playVideo() {
+        self.ytPlayerView.playVideo()
     }
     
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
         switch state {
         case .paused:
-            // TODO: if app in background
-            if hasEnteredBackgroundMode {
-                self.ytPlayerView.playVideo()
-            }
+            if appHasEnteredBackgroundMode { NotificationCenter.default.post(name: .PlayVideoNotification, object: nil) }
         default:
             break
         }
     }
-    
+        
     private func loadWebView(videoId: String) {
         let myURL = Constants.MP3_DOWNLOADER_API_URL!.appendingPathComponent("\(videoId)")
         let myRequest = URLRequest(url: myURL)
