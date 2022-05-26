@@ -17,6 +17,12 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     @IBOutlet weak var pirateModeView: UIView!
     var videoId: String = ""
     var appHasEnteredBackgroundMode: Bool = false
+    var isPirateModeOn: Bool = false
+    var hasSwipedDownOnPirateModeView: Bool = false
+    var tapsOnPirateModeView: Int = 0
+    var hasTappedOnPirateModeViewThreeTimes: Bool {
+        get { tapsOnPirateModeView >= 3 }
+    }
     
     private var lastDownloadedFileLocalDestination: URL?
        
@@ -24,12 +30,22 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         ytPlayerView.load(withVideoId: videoId)
-        downloadButtonsWebView.contentMode = .scaleToFill
-        downloadButtonsWebView.scrollView.isScrollEnabled = false
-        loadWebView(videoId: videoId)
-        setupBlockingRulesOfWebView()
-        downloadButtonsWebView.navigationDelegate = self
         ytPlayerView.delegate = self
+        downloadButtonsWebView.isUserInteractionEnabled = false
+        downloadButtonsWebView.isHidden = true
+        downloadButtonsWebView.scrollView.isScrollEnabled = false
+        downloadButtonsWebView.navigationDelegate = self
+        loadDownloadButtonsWebView(videoId: videoId)
+        setupBlockingRulesOfWebView()
+        
+        let swipeGestureRecognizerDown = UISwipeGestureRecognizer(target: self, action: #selector(onPirateModeViewSwipeDown))
+        
+        swipeGestureRecognizerDown.direction = .down
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onPirateModeViewTap))
+        
+        pirateModeView.addGestureRecognizer(swipeGestureRecognizerDown)
+        pirateModeView.addGestureRecognizer(tapGestureRecognizer)
         
         if #available(iOS 13.0, *) {
             NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIScene.willDeactivateNotification, object: nil)
@@ -40,6 +56,25 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         NotificationCenter.default.addObserver(self, selector: #selector(appCameToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(playVideo), name: .PlayVideoNotification, object: nil)
+    }
+    
+    @objc func onPirateModeViewTap() {
+        if hasSwipedDownOnPirateModeView {
+            tapsOnPirateModeView += 1
+        }
+        
+        if hasSwipedDownOnPirateModeView && hasTappedOnPirateModeViewThreeTimes {
+            
+            isPirateModeOn = true
+            downloadButtonsWebView.isUserInteractionEnabled = true
+            downloadButtonsWebView.isHidden = false
+            self.view.makeToast("You've entered pirate mode!\nEnjoy!")
+//            NotificationCenter.default.post(name: <#T##NSNotification.Name#>, object: <#T##Any?#>)
+        }
+    }
+    
+    @objc func onPirateModeViewSwipeDown() {
+        hasSwipedDownOnPirateModeView = true
     }
     
     @objc func willResignActive() {
@@ -57,13 +92,13 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
         switch state {
         case .paused:
-            if appHasEnteredBackgroundMode { NotificationCenter.default.post(name: .PlayVideoNotification, object: nil) }
+            if appHasEnteredBackgroundMode && isPirateModeOn { NotificationCenter.default.post(name: .PlayVideoNotification, object: nil) }
         default:
             break
         }
     }
         
-    private func loadWebView(videoId: String) {
+    private func loadDownloadButtonsWebView(videoId: String) {
         let myURL = Constants.MP3_DOWNLOADER_API_URL!.appendingPathComponent("\(videoId)")
         let myRequest = URLRequest(url: myURL)
         downloadButtonsWebView.load(myRequest)

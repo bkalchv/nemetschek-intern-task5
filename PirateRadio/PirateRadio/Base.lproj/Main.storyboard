@@ -69,7 +69,6 @@
                             </wkWebView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Wo-At-qoZ">
                                 <rect key="frame" x="0.0" y="329" width="414" height="190"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="OUm-dM-kM5"/>
                                     <constraint firstAttribute="height" constant="190" id="att-93-EZ5"/>
