@@ -23,6 +23,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     var hasTappedOnPirateModeViewThreeTimes: Bool {
         get { tapsOnPirateModeView >= 3 }
     }
+    var gestureTimer: Timer? = nil
     
     private var lastDownloadedFileLocalDestination: URL?
        
@@ -50,6 +51,16 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         NotificationCenter.default.addObserver(self, selector: #selector(activatePirateMode), name: .PirateModeRequirementsFulfilledNotification, object: nil)
     }
     
+    @objc func onGestureTimerFired() {
+
+        if hasTappedOnPirateModeViewThreeTimes {
+            NotificationCenter.default.post(name: .PirateModeRequirementsFulfilledNotification, object: nil)
+        } else {
+            hasSwipedDownOnPirateModeView = false
+            tapsOnPirateModeView = 0
+        }
+    }
+    
     @objc func activatePirateMode() {
         isPirateModeOn = true
         
@@ -72,14 +83,25 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     @objc func onPirateModeViewTap() {
         if hasSwipedDownOnPirateModeView {
             tapsOnPirateModeView += 1
-        }
-        
-        if hasSwipedDownOnPirateModeView && hasTappedOnPirateModeViewThreeTimes {
-            NotificationCenter.default.post(name: .PirateModeRequirementsFulfilledNotification, object: nil)
+            
+            // TODO: Ask if gestureTimer check needed
+            // Logic: if hasSwipedDownOnPirateModeView == true
+            // a timer surely exists
+            if hasTappedOnPirateModeViewThreeTimes {
+                gestureTimer!.fire()
+            }
         }
     }
     
     @objc func onPirateModeViewSwipeDown() {
+        
+        if gestureTimer != nil {
+            self.gestureTimer!.invalidate()
+            print("Gesture timer invalidated")
+        }
+        
+        gestureTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(onGestureTimerFired), userInfo: nil, repeats: false)
+        print("New gesture timer initialized")
         hasSwipedDownOnPirateModeView = true
     }
     
