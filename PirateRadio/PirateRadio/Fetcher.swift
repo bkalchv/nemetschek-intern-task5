@@ -199,9 +199,8 @@ class Fetcher {
                                     let currentVideoId = lastValidSearchListResponse.items[index].id.videoId
                                     let currentDuration = durations[index]
                                     self?.delegate?.updateTableViewDataSourceItem(id: currentVideoId, duration: currentDuration)
-                                    print("\(currentVideoId)'s duration should have been updated to \(currentDuration)")
                                 }
-                                NotificationCenter.default.post(name: .DurationsReceivedNotification, object: nil)
+                                NotificationCenter.default.post(name: .DurationsReceivedNotification, object: nil, userInfo: ["videoIds" : videoIds])
                             }
                         }
                         

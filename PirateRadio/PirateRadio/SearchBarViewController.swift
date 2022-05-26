@@ -10,6 +10,7 @@ protocol SearchBarViewControllerDelegate : AnyObject {
     func updateDataSource()
     func updateDataSourceItem(id: String, duration: String)
     func emptyTableViewDataSource()
+    func emptyTableViewIndexPaths()
     func scrollTableViewToTop()
 }
 

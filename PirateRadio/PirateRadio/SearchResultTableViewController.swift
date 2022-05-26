@@ -13,7 +13,7 @@ protocol SearchResultTableViewControllerDelegate: AnyObject {
 }
 
 class SearchResultTableViewController: UITableViewController, SearchBarViewControllerDelegate, SearchResultCellDelegate {
-         
+    var indexPaths: [String:IndexPath] = [:]
     weak var delegate: SearchResultTableViewControllerDelegate?
     var tableData: [YouTubeSearchResultItem] = []
     var searchResultCellHeight : CGFloat {
@@ -43,9 +43,25 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveDurations(notification:)), name: .DurationsReceivedNotification, object: nil)
     }
     
+    private func accumulateIndexPaths(ofVideoIds videoIds: [String]) -> [IndexPath] {
+        var accumulatedIndexPaths: [IndexPath] = []
+        for videoId in videoIds {
+            if let currentIndexPath = indexPaths[videoId] {
+                accumulatedIndexPaths.append(currentIndexPath)
+            }
+        }
+        return accumulatedIndexPaths
+    }
+    
     @objc func didReceiveDurations(notification: Notification) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        
+        if let videoIds = notification.userInfo?["videoIds"] as? [String] {
+            let accumulatedIndexPaths = accumulateIndexPaths(ofVideoIds: videoIds)
+            if !accumulatedIndexPaths.isEmpty {
+                DispatchQueue.main.async {
+                    self.tableView.reloadRows(at: accumulatedIndexPaths, with: .automatic)
+                }
+            }
         }
     }
     
@@ -72,15 +88,18 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     }
     
     func updateDataSourceItem(id: String, duration: String) {
-        // TODO: Optimize?
-        if !tableData.isEmpty {
-            var item = tableData.first(where: { $0.id.videoId == id })
-            item?.duration = duration
+        if !tableData.isEmpty, let itemIndexPath = indexPaths[id] {
+            let item = tableData[itemIndexPath.row]
+            item.duration = duration
         }
     }
         
     func emptyTableViewDataSource() {
         if !self.tableData.isEmpty { self.tableData = [] }
+    }
+    
+    func emptyTableViewIndexPaths() {
+        indexPaths.removeAll()
     }
     
     func loadTableDataFromResponse() {
@@ -193,7 +212,9 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
                 
             }
         }
-                
+         
+        indexPaths[cell.videoId] = indexPath
+        
         return cell
     }
     
