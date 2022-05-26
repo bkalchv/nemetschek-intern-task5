@@ -14,6 +14,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     
     @IBOutlet weak var downloadButtonsWebView: WKWebView!
     @IBOutlet weak var ytPlayerView: YTPlayerView!
+    @IBOutlet weak var pirateModeView: UIView!
     var videoId: String = ""
     var appHasEnteredBackgroundMode: Bool = false
     

@@ -44,7 +44,7 @@
                                 </variation>
                             </view>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GA9-Go-or3">
-                                <rect key="frame" x="20" y="431" width="374" height="325"/>
+                                <rect key="frame" x="20" y="527" width="374" height="335"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="775" id="Kj3-Gp-Bgu"/>
@@ -67,39 +67,75 @@
                                     </mask>
                                 </variation>
                             </wkWebView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Wo-At-qoZ">
+                                <rect key="frame" x="0.0" y="329" width="414" height="190"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="216" id="OUm-dM-kM5"/>
+                                    <constraint firstAttribute="height" constant="190" id="att-93-EZ5"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OUm-dM-kM5"/>
+                                        <exclude reference="att-93-EZ5"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="OUm-dM-kM5"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="att-93-EZ5"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wtz-K4-IrX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="4df-EY-8Uy"/>
+                            <constraint firstItem="7Wo-At-qoZ" firstAttribute="leading" secondItem="wtz-K4-IrX" secondAttribute="trailing" constant="8.5" id="4fU-k3-aqg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GA9-Go-or3" secondAttribute="bottom" id="B3P-Ep-Qmu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GA9-Go-or3" secondAttribute="trailing" constant="20" id="BKw-3y-QpP"/>
                             <constraint firstItem="GA9-Go-or3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Bg3-he-jT1"/>
                             <constraint firstItem="wtz-K4-IrX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="E6s-yZ-9CP"/>
+                            <constraint firstItem="7Wo-At-qoZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="EMh-ks-5M4"/>
+                            <constraint firstItem="GA9-Go-or3" firstAttribute="top" secondItem="7Wo-At-qoZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Imh-M5-hgV"/>
+                            <constraint firstItem="7Wo-At-qoZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Khu-sm-iVK"/>
                             <constraint firstItem="GA9-Go-or3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QLr-f5-FZ0"/>
-                            <constraint firstItem="GA9-Go-or3" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="122" id="Qtq-Vj-xbH"/>
                             <constraint firstItem="GA9-Go-or3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RqB-fA-GzV"/>
                             <constraint firstItem="wtz-K4-IrX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="eoc-ZX-YQD"/>
                             <constraint firstItem="GA9-Go-or3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="g9R-MA-9Nl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GA9-Go-or3" secondAttribute="bottom" constant="106" id="mb5-p5-eSd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Wo-At-qoZ" secondAttribute="trailing" id="ggT-pM-oOz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GA9-Go-or3" secondAttribute="bottom" id="mb5-p5-eSd"/>
                             <constraint firstItem="wtz-K4-IrX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="0.5" id="q8E-Qj-cx8"/>
                             <constraint firstItem="GA9-Go-or3" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="8" id="uqd-Hk-xzk"/>
+                            <constraint firstItem="7Wo-At-qoZ" firstAttribute="top" secondItem="wtz-K4-IrX" secondAttribute="bottom" constant="20" id="wOq-ZX-IAF"/>
+                            <constraint firstItem="GA9-Go-or3" firstAttribute="top" secondItem="7Wo-At-qoZ" secondAttribute="bottom" constant="8" symbolic="YES" id="yY6-31-y2h"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="B3P-Ep-Qmu"/>
                                 <exclude reference="BKw-3y-QpP"/>
+                                <exclude reference="ggT-pM-oOz"/>
                                 <exclude reference="mb5-p5-eSd"/>
                                 <exclude reference="4df-EY-8Uy"/>
                                 <exclude reference="E6s-yZ-9CP"/>
                                 <exclude reference="eoc-ZX-YQD"/>
                                 <exclude reference="q8E-Qj-cx8"/>
                                 <exclude reference="Bg3-he-jT1"/>
+                                <exclude reference="Imh-M5-hgV"/>
                                 <exclude reference="QLr-f5-FZ0"/>
-                                <exclude reference="Qtq-Vj-xbH"/>
                                 <exclude reference="RqB-fA-GzV"/>
                                 <exclude reference="g9R-MA-9Nl"/>
                                 <exclude reference="uqd-Hk-xzk"/>
+                                <exclude reference="yY6-31-y2h"/>
+                                <exclude reference="4fU-k3-aqg"/>
+                                <exclude reference="EMh-ks-5M4"/>
+                                <exclude reference="Khu-sm-iVK"/>
+                                <exclude reference="wOq-ZX-IAF"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
@@ -110,29 +146,36 @@
                                 <include reference="Bg3-he-jT1"/>
                                 <include reference="RqB-fA-GzV"/>
                                 <include reference="uqd-Hk-xzk"/>
+                                <include reference="yY6-31-y2h"/>
+                                <include reference="4fU-k3-aqg"/>
+                                <include reference="EMh-ks-5M4"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="BKw-3y-QpP"/>
+                                <include reference="ggT-pM-oOz"/>
                                 <include reference="mb5-p5-eSd"/>
                                 <include reference="E6s-yZ-9CP"/>
                                 <include reference="eoc-ZX-YQD"/>
+                                <include reference="Imh-M5-hgV"/>
                                 <include reference="QLr-f5-FZ0"/>
-                                <include reference="Qtq-Vj-xbH"/>
                                 <include reference="g9R-MA-9Nl"/>
+                                <include reference="Khu-sm-iVK"/>
+                                <include reference="wOq-ZX-IAF"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="cZu-PN-nSw"/>
                     <connections>
                         <outlet property="downloadButtonsWebView" destination="GA9-Go-or3" id="EEj-6b-8qR"/>
+                        <outlet property="pirateModeView" destination="7Wo-At-qoZ" id="hTp-bN-Mdw"/>
                         <outlet property="ytPlayerView" destination="wtz-K4-IrX" id="Pql-od-xyX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3099.7767857142858" y="120.28985507246378"/>
+            <point key="canvasLocation" x="3098.4375" y="118.84057971014494"/>
         </scene>
         <!--Search Result Table View Controller-->
         <scene sceneID="gDu-Mg-60q">
