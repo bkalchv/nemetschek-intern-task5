@@ -72,6 +72,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
     }
     
     func updateDataSourceItem(id: String, duration: String) {
+        // TODO: Optimize?
         if !tableData.isEmpty {
             var item = tableData.first(where: { $0.id.videoId == id })
             item?.duration = duration

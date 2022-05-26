@@ -17,6 +17,7 @@ extension Notification.Name {
     static let ThumbnailDownloadedNotification = Notification.Name("ThumbnailDownloadedNotification")
     static let DurationsReceivedNotification = Notification.Name("DurationsReceivedNotification")
     static let PlayVideoNotification = Notification.Name("PlayVideoNotification")
+    static let PirateModeRequirementsFulfilledNotification = Notification.Name("PirateModeRequirementsFulfilledNotification")
 }
 
 extension Formatter {

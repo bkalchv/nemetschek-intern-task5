@@ -47,6 +47,12 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         pirateModeView.addGestureRecognizer(swipeGestureRecognizerDown)
         pirateModeView.addGestureRecognizer(tapGestureRecognizer)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(activatePirateMode), name: .PirateModeRequirementsFulfilledNotification, object: nil)
+    }
+    
+    @objc func activatePirateMode() {
+        isPirateModeOn = true
+        
         if #available(iOS 13.0, *) {
             NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIScene.willDeactivateNotification, object: nil)
         } else {
@@ -56,6 +62,11 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         NotificationCenter.default.addObserver(self, selector: #selector(appCameToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(playVideo), name: .PlayVideoNotification, object: nil)
+        
+        downloadButtonsWebView.isUserInteractionEnabled = true
+        downloadButtonsWebView.isHidden = false
+        
+        self.view.makeToast("You've entered pirate mode!")
     }
     
     @objc func onPirateModeViewTap() {
@@ -64,12 +75,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         }
         
         if hasSwipedDownOnPirateModeView && hasTappedOnPirateModeViewThreeTimes {
-            
-            isPirateModeOn = true
-            downloadButtonsWebView.isUserInteractionEnabled = true
-            downloadButtonsWebView.isHidden = false
-            self.view.makeToast("You've entered pirate mode!\nEnjoy!")
-//            NotificationCenter.default.post(name: <#T##NSNotification.Name#>, object: <#T##Any?#>)
+            NotificationCenter.default.post(name: .PirateModeRequirementsFulfilledNotification, object: nil)
         }
     }
     
