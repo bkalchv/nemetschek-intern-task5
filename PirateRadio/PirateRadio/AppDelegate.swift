@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO:
 //        let audioSession = AVAudioSession.sharedInstance()
 //        do {
-//            try audioSession.setCategory(.playback)
+//            try audioSessяion.setCategory(.playback)
 //            try audioSession.setActive(true)
 //        } catch {
 //            print("Setting category to AVAudioSessionCategoryPlayback failed.")

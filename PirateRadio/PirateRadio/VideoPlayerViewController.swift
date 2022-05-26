@@ -16,11 +16,13 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     @IBOutlet weak var ytPlayerView: YTPlayerView!
     @IBOutlet weak var pirateModeView: UIView!
     var videoId: String = ""
-    var appHasEnteredBackgroundMode: Bool = false
-    var isPirateModeOn: Bool = false
-    var hasSwipedDownOnPirateModeView: Bool = false
-    var tapsOnPirateModeView: Int = 0
-    var hasTappedOnPirateModeViewThreeTimes: Bool {
+    static var appHasEnteredBackgroundMode: Bool = false
+    static var isPirateModeOn: Bool {
+        get { hasSwipedDownOnPirateModeView && hasTappedOnPirateModeViewThreeTimes }
+    }
+    static var hasSwipedDownOnPirateModeView: Bool = false
+    static var tapsOnPirateModeView: Int = 0
+    static var hasTappedOnPirateModeViewThreeTimes: Bool {
         get { tapsOnPirateModeView >= 3 }
     }
     var gestureTimer: Timer? = nil
@@ -52,18 +54,16 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     }
     
     @objc func onGestureTimerFired() {
-
-        if hasTappedOnPirateModeViewThreeTimes {
+        if VideoPlayerViewController.hasTappedOnPirateModeViewThreeTimes {
             NotificationCenter.default.post(name: .PirateModeRequirementsFulfilledNotification, object: nil)
         } else {
-            hasSwipedDownOnPirateModeView = false
-            tapsOnPirateModeView = 0
+            VideoPlayerViewController.hasSwipedDownOnPirateModeView = false
+            VideoPlayerViewController.tapsOnPirateModeView = 0
         }
     }
     
     @objc func activatePirateMode() {
-        isPirateModeOn = true
-        
+                
         if #available(iOS 13.0, *) {
             NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIScene.willDeactivateNotification, object: nil)
         } else {
@@ -81,13 +81,10 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     }
     
     @objc func onPirateModeViewTap() {
-        if hasSwipedDownOnPirateModeView {
-            tapsOnPirateModeView += 1
+        if VideoPlayerViewController.hasSwipedDownOnPirateModeView {
+            VideoPlayerViewController.tapsOnPirateModeView += 1
             
-            // TODO: Ask if gestureTimer check needed
-            // Logic: if hasSwipedDownOnPirateModeView == true
-            // a timer surely exists
-            if hasTappedOnPirateModeViewThreeTimes {
+            if VideoPlayerViewController.hasTappedOnPirateModeViewThreeTimes {
                 gestureTimer!.fire()
             }
         }
@@ -102,15 +99,15 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         
         gestureTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(onGestureTimerFired), userInfo: nil, repeats: false)
         print("New gesture timer initialized")
-        hasSwipedDownOnPirateModeView = true
+        VideoPlayerViewController.hasSwipedDownOnPirateModeView = true
     }
     
     @objc func willResignActive() {
-        appHasEnteredBackgroundMode = true
+        VideoPlayerViewController.appHasEnteredBackgroundMode = true
     }
     
     @objc func appCameToForeground() {
-        appHasEnteredBackgroundMode = false
+        VideoPlayerViewController.appHasEnteredBackgroundMode = false
     }
     
     @objc func playVideo() {
@@ -120,7 +117,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
         switch state {
         case .paused:
-            if appHasEnteredBackgroundMode && isPirateModeOn { NotificationCenter.default.post(name: .PlayVideoNotification, object: nil) }
+            if VideoPlayerViewController.appHasEnteredBackgroundMode && VideoPlayerViewController.isPirateModeOn { NotificationCenter.default.post(name: .PlayVideoNotification, object: nil) }
         default:
             break
         }
