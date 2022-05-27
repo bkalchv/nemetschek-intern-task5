@@ -13,7 +13,7 @@ class MusicPlayerLibraryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.isUserInteractionEnabled = false
+        self.tableView.isScrollEnabled = false
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -45,6 +45,29 @@ class MusicPlayerLibraryTableViewController: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedMenuItem = menuItems[indexPath.row]
+        
+        switch selectedMenuItem.name {
+        case "Playlists":
+            print("Playlists pressed. (Not implemented yet)")
+        case "Artists":
+            print("Artists pressed. (Not implemented yet)")
+        case "Songs":
+            print("Songs pressed.")
+            presentMusicPlayerSongsViewController()
+        default:
+            print("Unhandled menu item press!")
+        }
+        
+    }
+    
+    private func presentMusicPlayerSongsViewController() {
+        let musicPlayerSongsVC = self.storyboard!.instantiateViewController(withIdentifier: "MusicPlayerSongsViewController") as! MusicPlayerSongsViewController
+        self.navigationController!.pushViewController(musicPlayerSongsVC, animated: true)
     }
     
 
