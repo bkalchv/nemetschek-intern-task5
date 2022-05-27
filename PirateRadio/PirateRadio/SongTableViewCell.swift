@@ -9,6 +9,9 @@ import UIKit
 
 class SongTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var songTitleLabel: UILabel!
+    @IBOutlet weak var songDurationLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
