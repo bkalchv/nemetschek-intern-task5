@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PiratedMusicViewController: UIViewController {
+class MusicPlayerSongsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

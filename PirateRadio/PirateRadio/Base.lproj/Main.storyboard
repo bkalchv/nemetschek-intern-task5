@@ -453,7 +453,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qaH-Q4-kh9">
-                                            <rect key="frame" x="20" y="2" width="45" height="45"/>
+                                            <rect key="frame" x="20" y="2.5" width="45" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="qaH-Q4-kh9" secondAttribute="height" multiplier="1:1" id="3ir-IC-gA4"/>
                                             </constraints>
@@ -548,10 +548,10 @@
             </objects>
             <point key="canvasLocation" x="2243.4782608695655" y="811.60714285714278"/>
         </scene>
-        <!--Pirated Music View Controller-->
+        <!--Music Player Songs View Controller-->
         <scene sceneID="GrD-70-UPI">
             <objects>
-                <viewController id="HYX-f0-fov" customClass="PiratedMusicViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MusicPlayerSongsViewController" id="HYX-f0-fov" customClass="MusicPlayerSongsViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JHd-xc-a5a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

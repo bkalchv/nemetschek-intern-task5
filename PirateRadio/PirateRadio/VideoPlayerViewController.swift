@@ -17,9 +17,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     @IBOutlet weak var pirateModeView: UIView!
     var videoId: String = ""
     static var appHasEnteredBackgroundMode: Bool = false
-    static var isPirateModeOn: Bool {
-        get { hasSwipedDownOnPirateModeView && hasTappedOnPirateModeViewThreeTimes }
-    }
+    static var isPirateModeOn: Bool = false
     static var hasSwipedDownOnPirateModeView: Bool = false
     static var tapsOnPirateModeView: Int = 0
     static var hasTappedOnPirateModeViewThreeTimes: Bool {
@@ -50,7 +48,11 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     }
     
     @objc func activatePirateMode() {
-                
+        
+        VideoPlayerViewController.isPirateModeOn = true
+        // MARK: Disabling User Interaction!
+        pirateModeView.isUserInteractionEnabled = false
+        
         if #available(iOS 13.0, *) {
             NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIScene.willDeactivateNotification, object: nil)
         } else {
@@ -102,7 +104,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     }
     
     private func setupDownloadButtonsWebView() {
-        downloadButtonsWebView.isUserInteractionEnabled = false
+        downloadButtonsWebView.isUserInteractionEnabled = VideoPlayerViewController.isPirateModeOn
         downloadButtonsWebView.isHidden = !VideoPlayerViewController.isPirateModeOn
         downloadButtonsWebView.scrollView.isScrollEnabled = false
         downloadButtonsWebView.navigationDelegate = self
