@@ -34,21 +34,8 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         // Do any additional setup after loading the view.
         ytPlayerView.load(withVideoId: videoId)
         ytPlayerView.delegate = self
-        downloadButtonsWebView.isUserInteractionEnabled = false
-        downloadButtonsWebView.isHidden = true
-        downloadButtonsWebView.scrollView.isScrollEnabled = false
-        downloadButtonsWebView.navigationDelegate = self
-        loadDownloadButtonsWebView(videoId: videoId)
-        setupBlockingRulesOfWebView()
-        
-        let swipeGestureRecognizerDown = UISwipeGestureRecognizer(target: self, action: #selector(onPirateModeViewSwipeDown))
-        
-        swipeGestureRecognizerDown.direction = .down
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onPirateModeViewTap))
-        
-        pirateModeView.addGestureRecognizer(swipeGestureRecognizerDown)
-        pirateModeView.addGestureRecognizer(tapGestureRecognizer)
+        setupDownloadButtonsWebView()
+        setupPirateModeView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(activatePirateMode), name: .PirateModeRequirementsFulfilledNotification, object: nil)
     }
@@ -112,6 +99,26 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     
     @objc func playVideo() {
         self.ytPlayerView.playVideo()
+    }
+    
+    private func setupDownloadButtonsWebView() {
+        downloadButtonsWebView.isUserInteractionEnabled = false
+        downloadButtonsWebView.isHidden = !VideoPlayerViewController.isPirateModeOn
+        downloadButtonsWebView.scrollView.isScrollEnabled = false
+        downloadButtonsWebView.navigationDelegate = self
+        loadDownloadButtonsWebView(videoId: videoId)
+        setupBlockingRulesOfWebView()
+    }
+    
+    private func setupPirateModeView() {
+        let swipeGestureRecognizerDown = UISwipeGestureRecognizer(target: self, action: #selector(onPirateModeViewSwipeDown))
+        
+        swipeGestureRecognizerDown.direction = .down
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onPirateModeViewTap))
+        
+        pirateModeView.addGestureRecognizer(swipeGestureRecognizerDown)
+        pirateModeView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
