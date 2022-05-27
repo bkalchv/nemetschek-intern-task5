@@ -11,16 +11,26 @@ class DownloadedSongsTableViewController: UITableViewController {
     
     private var tableData: [Song] = []
     
+    private func updateTableData() {
+        tableData = DownloadedMP3sFileReader.downloadedSongsSortedByDateOfCreation()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableData = DownloadedMP3sFileReader.downloadedSongsSortedByDateOfCreation()
-               
+        updateTableData()
+                       
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if tableData.count != DownloadedMP3sFileReader.downloadedSongsSortedByDateOfCreation().count {
+            updateTableData()
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -47,7 +57,9 @@ class DownloadedSongsTableViewController: UITableViewController {
         return cell
     }
     
-
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "All Downloaded MP3s"
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
