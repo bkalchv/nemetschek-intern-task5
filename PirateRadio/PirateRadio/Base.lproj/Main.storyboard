@@ -562,7 +562,7 @@
                                     <constraint firstAttribute="width" secondItem="NKD-lQ-J6R" secondAttribute="height" multiplier="374:541" id="A9J-fp-2Ky"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="bpb-ca-SCB" kind="embed" id="HCa-hf-FmD"/>
+                                    <segue destination="bpb-ca-SCB" kind="embed" identifier="downloadedSongsSegue" id="HCa-hf-FmD"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXX-Pv-O62">
@@ -575,16 +575,25 @@
                                         <rect key="frame" x="157" y="132.5" width="60" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="baseline_play_arrow_black_36pt"/>
+                                        <connections>
+                                            <action selector="onPlayPauseButtonPress:" destination="HYX-f0-fov" eventType="touchUpInside" id="RRr-mk-s5j"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGV-Rq-LB5">
                                         <rect key="frame" x="8" y="132.5" width="99" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="baseline_skip_previous_black_36pt"/>
+                                        <connections>
+                                            <action selector="onPrevButtonPress:" destination="HYX-f0-fov" eventType="touchUpInside" id="DAH-Er-7g4"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4P-Ph-rc5">
                                         <rect key="frame" x="267" y="132.5" width="99" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="baseline_skip_next_black_36pt"/>
+                                        <connections>
+                                            <action selector="onNextButtonPress:" destination="HYX-f0-fov" eventType="touchUpInside" id="wCh-YP-mIu"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFk-Kb-6at">
                                         <rect key="frame" x="316" y="78" width="46" height="21"/>
@@ -635,6 +644,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xKB-mT-kkK"/>
+                    <connections>
+                        <outlet property="nextButton" destination="B4P-Ph-rc5" id="9SR-v3-OaL"/>
+                        <outlet property="playPauseButton" destination="5s5-cu-GxE" id="QpC-18-GgP"/>
+                        <outlet property="prevButton" destination="lGV-Rq-LB5" id="gfn-lr-gu8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q2M-qa-dg3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

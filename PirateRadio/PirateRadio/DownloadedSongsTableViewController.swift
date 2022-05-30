@@ -8,24 +8,25 @@
 import UIKit
 import AVFAudio
 
+protocol DownloadedSongsTableViewControllerDelegate: AnyObject {
+    var player: AudioPlayer? { get }
+    func updatePlayerSongs()
+}
 
-class DownloadedSongsTableViewController: UITableViewController {
+class DownloadedSongsTableViewController: UITableViewController, MusicPlayerSongsViewControllerDelegate {
     
-    private var tableData: [Song] = []
-    private var player: AudioPlayer? = nil
+    internal var tableData: [Song] = []
+    weak var delegate: DownloadedSongsTableViewControllerDelegate? = nil
     
     private func updateTableData() {
         tableData = DownloadedMP3sFileReader.downloadedSongsSortedByDateOfCreation()
     }
-    
-    private func updatePlayerSongs() {
-        self.player = AudioPlayer(songs: tableData)
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateTableData()
-        updatePlayerSongs()
+        self.delegate?.updatePlayerSongs()
                 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,7 +38,7 @@ class DownloadedSongsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         if tableData.count != DownloadedMP3sFileReader.downloadedSongsSortedByDateOfCreation().count {
             updateTableData()
-            updatePlayerSongs()
+            self.delegate?.updatePlayerSongs()
             self.tableView.reloadData()
         }
     }
@@ -76,7 +77,7 @@ class DownloadedSongsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let player = player {
+        if let player = delegate?.player {
             player.playSongAtIndex(index: indexPath.row)
         }
     }
