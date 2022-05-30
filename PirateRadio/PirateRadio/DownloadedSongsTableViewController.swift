@@ -8,10 +8,11 @@
 import UIKit
 import AVFAudio
 
+
 class DownloadedSongsTableViewController: UITableViewController {
     
     private var tableData: [Song] = []
-    
+    private var player: AudioPlayer? = nil
     
     private func updateTableData() {
         tableData = DownloadedMP3sFileReader.downloadedSongsSortedByDateOfCreation()
