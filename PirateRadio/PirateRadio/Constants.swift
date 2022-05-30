@@ -131,4 +131,6 @@ struct Constants {
     static let MUSIC_PLAYER_LIBRARY_ARTISTS_ICON_FILENAME = "music_artists_black_24pt"
     
     static let MUSIC_PLAYER_LIBRARY_SONGS_ICON_FILENAME = "music_songs_black_24pt"
+    
+    static let SONG_DEFAULT_ARTIST_VALUE = "Unknown"
 }

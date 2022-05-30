@@ -53,6 +53,7 @@ class DownloadedSongsTableViewController: UITableViewController {
         
         cell.songTitleLabel.text = song.title
         cell.songDurationLabel.text = song.duration
+        cell.songArtistLabel.text = song.artist
         
         return cell
     }
@@ -60,6 +61,11 @@ class DownloadedSongsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "All Downloaded MP3s"
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70.0
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

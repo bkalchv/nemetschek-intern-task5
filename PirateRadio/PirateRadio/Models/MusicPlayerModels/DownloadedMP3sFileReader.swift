@@ -46,18 +46,42 @@ class DownloadedMP3sFileReader {
         }
     }
     
-    static private func extractFilenameFromUrl(url: URL) -> String {
+    static private func extractFilenameFromURL(url: URL) -> String {
         return url.deletingPathExtension().lastPathComponent
     }
+    
+    static private func extractArtistFromFilename(filename: String) -> String {
+        let delimiter = "-"
+        if filename.contains(delimiter) {
+            let artistName = filename.components(separatedBy: delimiter).first ?? Constants.SONG_DEFAULT_ARTIST_VALUE
+            return artistName.trimmingCharacters(in: .whitespaces)
+        } else {
+            return Constants.SONG_DEFAULT_ARTIST_VALUE
+        }
+    }
+    
+    static private func extractTitleFromFilename(filename: String) -> String {
+        let delimiter: Character = "-"
+        if let delimiterFirstAppearance = filename.firstIndex(of: delimiter) {
+            
+            let title = String(filename[filename.index(after: delimiterFirstAppearance)...])
+            return title.trimmingCharacters(in: .whitespaces)
+        } else {
+            return filename
+        }
+    }
+
     
     static public func downloadedSongsSortedByDateOfCreation() -> [Song] {
         if let downloadedMP3FilesURLs = downloadedMP3FilesURLsSortedByDescendingDateOfCreation() {
             var downloadedSongs: [Song] = []
             for fileURL in downloadedMP3FilesURLs {
-                let title = extractFilenameFromUrl(url: fileURL)
+                let filename = extractFilenameFromURL(url: fileURL)
+                let title = extractTitleFromFilename(filename: filename)
+                let artist = extractArtistFromFilename(filename: filename)
                 let audioAsset = AVAsset(url: fileURL)
                 let duration = audioAsset.duration.positionalTime
-                downloadedSongs.append(Song(title: title, duration: duration, localURL: fileURL))
+                downloadedSongs.append(Song(title: title, artist: artist, duration: duration, localURL: fileURL))
             }
             return downloadedSongs
         }

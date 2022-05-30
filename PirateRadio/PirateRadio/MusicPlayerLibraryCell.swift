@@ -9,7 +9,7 @@ import UIKit
 
 class MusicPlayerLibraryCell: UITableViewCell {
 
-    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var menuIconImageView: UIImageView!
     @IBOutlet weak var menuNameLabel: UILabel!
     
     override func awakeFromNib() {

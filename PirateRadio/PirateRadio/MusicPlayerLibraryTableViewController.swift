@@ -40,7 +40,7 @@ class MusicPlayerLibraryTableViewController: UITableViewController {
         let menuItem = menuItems[indexPath.row]
                 
         cell.menuNameLabel.text = menuItem.name
-        cell.iconImageView.image = UIImage(named: menuItem.iconImageFilename)
+        cell.menuIconImageView.image = UIImage(named: menuItem.iconImageFilename)
         cell.accessoryType = .disclosureIndicator
         // Configure the cell...
 
@@ -57,7 +57,6 @@ class MusicPlayerLibraryTableViewController: UITableViewController {
         case "Artists":
             print("Artists pressed. (Not implemented yet)")
         case "Songs":
-            print("Songs pressed.")
             presentMusicPlayerSongsViewController()
         default:
             print("Unhandled menu item press!")
