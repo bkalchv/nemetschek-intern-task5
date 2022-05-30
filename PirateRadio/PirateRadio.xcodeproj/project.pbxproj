@@ -11,6 +11,7 @@
 		423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423AAC3E2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift */; };
 		424B6A7528046029009A043E /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */; };
 		425C9CDF2836805100D996F6 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 425C9CDE2836805100D996F6 /* Toast */; };
+		427E6FE42844E7490049C4FF /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E6FE32844E7490049C4FF /* AudioPlayer.swift */; };
 		428B7D1D28044D22003DBBB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D1C28044D22003DBBB9 /* AppDelegate.swift */; };
 		428B7D1F28044D22003DBBB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D1E28044D22003DBBB9 /* SceneDelegate.swift */; };
 		428B7D2128044D22003DBBB9 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B7D2028044D22003DBBB9 /* VideoPlayerViewController.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		423AAC3C2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeToMp3APIResponseItem.swift; sourceTree = "<group>"; };
 		423AAC3E2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeToMp3ResponseUploadedAt.swift; sourceTree = "<group>"; };
+		427E6FE32844E7490049C4FF /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		428B7D1928044D22003DBBB9 /* PirateRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PirateRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		428B7D1C28044D22003DBBB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		428B7D1E28044D22003DBBB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				429EA8602841091C00C79684 /* MusicPlayerLibraryCell.swift */,
 				42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */,
 				429EA85A2840BEC300C79684 /* DownloadedSongsTableViewController.swift */,
+				427E6FE32844E7490049C4FF /* AudioPlayer.swift */,
 				429EA8582840BE8800C79684 /* SongTableViewCell.swift */,
 				42AC3DD0282E728F003F1695 /* Fetcher.swift */,
 				428B7D2228044D22003DBBB9 /* Main.storyboard */,
@@ -279,6 +282,7 @@
 			files = (
 				429EA8612841091C00C79684 /* MusicPlayerLibraryCell.swift in Sources */,
 				429533CF282C10840007EA6C /* SearchBarViewController.swift in Sources */,
+				427E6FE42844E7490049C4FF /* AudioPlayer.swift in Sources */,
 				429533BD282BEAB60007EA6C /* YouTubeSearchResultSnippet.swift in Sources */,
 				429533C1282BECC50007EA6C /* YouTubeSearchResultSnippetThumbnailData.swift in Sources */,
 				429EA8632841162C00C79684 /* MusicPlayerLibraryMenuItem.swift in Sources */,

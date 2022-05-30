@@ -73,19 +73,16 @@ class DownloadedMP3sFileReader {
 
     
     static public func downloadedSongsSortedByDateOfCreation() -> [Song] {
-        if let downloadedMP3FilesURLs = downloadedMP3FilesURLsSortedByDescendingDateOfCreation() {
-            var downloadedSongs: [Song] = []
-            for fileURL in downloadedMP3FilesURLs {
-                let filename = extractFilenameFromURL(url: fileURL)
-                let title = extractTitleFromFilename(filename: filename)
-                let artist = extractArtistFromFilename(filename: filename)
-                let audioAsset = AVAsset(url: fileURL)
-                let duration = audioAsset.duration.positionalTime
-                downloadedSongs.append(Song(title: title, artist: artist, duration: duration, localURL: fileURL))
-            }
-            return downloadedSongs
-        }
+        guard let downloadedMP3FilesURLs = downloadedMP3FilesURLsSortedByDescendingDateOfCreation() else { return [] }
         
-        return []
+        return downloadedMP3FilesURLs.map { fileURL in
+            let filename = extractFilenameFromURL(url: fileURL)
+            let title = extractTitleFromFilename(filename: filename)
+            let artist = extractArtistFromFilename(filename: filename)
+            let audioAsset = AVAsset(url: fileURL)
+            let duration = audioAsset.duration.positionalTime
+            
+            return Song(title: title, artist: artist, duration: duration, localURL: fileURL)
+        }
     }
 }

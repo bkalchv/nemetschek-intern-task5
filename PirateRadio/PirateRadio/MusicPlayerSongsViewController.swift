@@ -8,7 +8,9 @@
 import UIKit
 
 class MusicPlayerSongsViewController: UIViewController {
-
+    // TODO:
+    private var player: AudioPlayer? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

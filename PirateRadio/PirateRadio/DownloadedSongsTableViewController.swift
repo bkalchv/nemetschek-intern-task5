@@ -6,19 +6,26 @@
 //
 
 import UIKit
+import AVFAudio
 
 class DownloadedSongsTableViewController: UITableViewController {
     
     private var tableData: [Song] = []
     
+    
     private func updateTableData() {
         tableData = DownloadedMP3sFileReader.downloadedSongsSortedByDateOfCreation()
+    }
+    
+    private func updatePlayerSongs() {
+        self.player = AudioPlayer(songs: tableData)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateTableData()
-                       
+        updatePlayerSongs()
+                
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,6 +36,7 @@ class DownloadedSongsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         if tableData.count != DownloadedMP3sFileReader.downloadedSongsSortedByDateOfCreation().count {
             updateTableData()
+            updatePlayerSongs()
             self.tableView.reloadData()
         }
     }
@@ -64,6 +72,12 @@ class DownloadedSongsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70.0
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let player = player {
+            player.playSongAtIndex(index: indexPath.row)
+        }
     }
     
     /*

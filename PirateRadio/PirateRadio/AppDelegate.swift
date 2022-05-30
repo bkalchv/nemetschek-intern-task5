@@ -15,13 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // TODO:
-//        let audioSession = AVAudioSession.sharedInstance()
-//        do {
-//            try audioSessяion.setCategory(.playback)
-//            try audioSession.setActive(true)
-//        } catch {
-//            print("Setting category to AVAudioSessionCategoryPlayback failed.")
-//        }
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(.playback)
+            try audioSession.setActive(true)
+        } catch {
+            print("Setting category to AVAudioSessionCategoryPlayback failed.")
+        }
             
         return true
     }

@@ -13,6 +13,12 @@ class Song {
     var duration: String = ""
     var localURL: URL!
     
+    // add album: String
+    // add artwork: URL
+    // TODO: edit artist, title etc
+    // TODO: add artowrk for album
+    // if no artwork found -> show thumbnail
+    
     init(title: String, artist: String, duration: String, localURL: URL) {
         self.title = title
         self.artist = artist
