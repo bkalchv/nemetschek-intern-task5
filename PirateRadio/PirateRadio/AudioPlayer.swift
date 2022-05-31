@@ -74,7 +74,7 @@ class AudioPlayer {
         self.delegate?.updateMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
     }
 
-    public func playNext() {
+    public func playNextSong() {
         if currentSongIndex + 1 < songs.count {
             currentSongIndex += 1
             if self.isPlaying { self.pause() }
@@ -83,7 +83,7 @@ class AudioPlayer {
         }
     }
     
-    public func playPrev() {
+    public func playPreviousSong() {
         if currentSongIndex - 1 >= 0 {
             currentSongIndex -= 1
             if self.isPlaying { self.pause() }

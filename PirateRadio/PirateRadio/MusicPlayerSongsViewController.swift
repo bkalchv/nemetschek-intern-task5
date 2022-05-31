@@ -44,12 +44,14 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         // Pass the selected object to the new view controller.
     }
     */
+    
     @IBAction func onPrevButtonPress(_ sender: Any) {
         if let player = player {
             if player.isPlaying {
-                player.playPrev()
+                player.playPreviousSong()
             } else {
                 print("Not implemented yet!")
+                // player.loadPreviousSong()
             }
         }
     }
@@ -71,7 +73,7 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     @IBAction func onNextButtonPress(_ sender: Any) {
         if let player = player {
             if player.isPlaying {
-                player.playNext()
+                player.playNextSong()
             } else {
                 print("Not implemented yet!")
             }
