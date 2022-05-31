@@ -189,7 +189,7 @@ class Fetcher {
                         self?.updateLastValidSearchListResponse(forJSONString: JSONString)
                         self?.delegate?.updateTableViewDataSource()
                         
-                        if var lastValidSearchListResponse = self?.lastValidSearchListResponse, shouldRequestDuration {
+                        if let lastValidSearchListResponse = self?.lastValidSearchListResponse, shouldRequestDuration {
                             
                             let videoIds = lastValidSearchListResponse.items.map { $0.id.videoId }
                             self?.executeYoutubeVideoListAPI(videoIds: videoIds) { durations in
@@ -209,7 +209,7 @@ class Fetcher {
                     self?.updateLastValidSearchListResponse(forJSONString: self?.mockResponses.first ?? "")
                     self?.delegate?.updateTableViewDataSource()
                     
-                    if var lastValidSearchListResponse = self?.lastValidSearchListResponse, shouldRequestDuration {
+                    if let lastValidSearchListResponse = self?.lastValidSearchListResponse, shouldRequestDuration {
                         
                         let videoIds = lastValidSearchListResponse.items.map { $0.id.videoId }
                         self?.executeYoutubeVideoListAPI(videoIds: videoIds) { durations in
