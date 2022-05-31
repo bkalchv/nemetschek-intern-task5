@@ -9,9 +9,9 @@ import UIKit
 import AVFAudio
 
 protocol AudioPlayerDelegate: AnyObject {
-    func updateMusicPlayerViewCurrentSongTitleLabel(title: String)
-    func updateMusicPlayerViewCurrentSongDurationLabel(duration: String)
-    func updateSliderProgress(value: Float)
+    func setMusicPlayerViewCurrentSongTitleLabel(title: String)
+    func setMusicPlayerViewCurrentSongRemainingLabel(duration: String)
+    func setSliderProgress(value: Float)
 }
 
 class AudioPlayer {
@@ -50,7 +50,7 @@ class AudioPlayer {
     }
     
     @objc private func updateSliderProgress() {
-        self.delegate?.updateSliderProgress(value: Float(self.audioPlayer!.currentTime))
+        self.delegate?.setSliderProgress(value: Float(self.audioPlayer!.currentTime))
     }
     
     public func play() {
@@ -76,8 +76,8 @@ class AudioPlayer {
             print(error)
         }
         
-        self.delegate?.updateMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
-        delegate?.updateMusicPlayerViewCurrentSongDurationLabel(duration: currentSong.duration)
+        self.delegate?.setMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
+        delegate?.setMusicPlayerViewCurrentSongRemainingLabel(duration: currentSong.duration)
     }
     
     private func loadSongAtIndex(index: Int) {

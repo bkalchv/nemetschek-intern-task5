@@ -14,7 +14,7 @@ protocol MusicPlayerSongsViewControllerDelegate: AnyObject {
 class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableViewControllerDelegate, AudioPlayerDelegate {
     @IBOutlet weak var currentSongTitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var currentSongDurationLabel: UILabel!
+    @IBOutlet weak var currentSongRemainingLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var prevButton: UIButton!
@@ -26,15 +26,15 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         self.player = AudioPlayer(songs: delegate.tableData)
     }
     
-    internal func updateMusicPlayerViewCurrentSongTitleLabel(title: String) {
+    internal func setMusicPlayerViewCurrentSongTitleLabel(title: String) {
         currentSongTitleLabel.text = title
     }
     
-    internal func updateMusicPlayerViewCurrentSongDurationLabel(duration: String) {
-        currentSongDurationLabel.text = duration
+    internal func setMusicPlayerViewCurrentSongRemainingLabel(duration: String) {
+        currentSongRemainingLabel.text = duration
     }
     
-    func updateSliderProgress(value: Float) {
+    func setSliderProgress(value: Float) {
         slider.value = value
     }
     
@@ -49,8 +49,8 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     
     private func setupMusicPlayerViewInitialState() {
         let audioPlayerCurrentSong = self.player!.getCurrentSong()
-        updateMusicPlayerViewCurrentSongTitleLabel(title: audioPlayerCurrentSong.title)
-        updateMusicPlayerViewCurrentSongDurationLabel(duration: audioPlayerCurrentSong.duration)
+        setMusicPlayerViewCurrentSongTitleLabel(title: audioPlayerCurrentSong.title)
+        setMusicPlayerViewCurrentSongRemainingLabel(duration: audioPlayerCurrentSong.duration)
         slider.value = 0.0
         slider.maximumValue = Float(self.player!.getLoadedSongDuration())
     }
