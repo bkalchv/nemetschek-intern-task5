@@ -11,6 +11,7 @@ import AVFAudio
 protocol AudioPlayerDelegate: AnyObject {
     func updateMusicPlayerViewCurrentSongTitleLabel(title: String)
     func updateMusicPlayerViewCurrentSongDurationLabel(duration: String)
+    func updateSliderProgress(value: Float)
 }
 
 class AudioPlayer {
@@ -43,9 +44,13 @@ class AudioPlayer {
             print(error)
         }
         
-//        if timer == nil {
-//            timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
-//        }
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateSliderProgress), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc private func updateSliderProgress() {
+        self.delegate?.updateSliderProgress(value: Float(self.audioPlayer!.currentTime))
     }
     
     public func play() {
@@ -120,10 +125,9 @@ class AudioPlayer {
         return songs[currentSongIndex]
     }
     
-    
-//    @objc private func updateProgress() {
-//
-//    }
+    public func getLoadedSongDuration() -> TimeInterval {
+        return audioPlayer!.duration
+    }
 }
 
 // Play next song when on audioPlayerDidFinishPlaying

@@ -15,6 +15,7 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     @IBOutlet weak var currentSongTitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var currentSongDurationLabel: UILabel!
+    @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var prevButton: UIButton!
     internal var player: AudioPlayer? = nil
@@ -33,6 +34,10 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         currentSongDurationLabel.text = duration
     }
     
+    func updateSliderProgress(value: Float) {
+        slider.value = value
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateAudioPlayerSongs()
@@ -46,6 +51,8 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         let audioPlayerCurrentSong = self.player!.getCurrentSong()
         updateMusicPlayerViewCurrentSongTitleLabel(title: audioPlayerCurrentSong.title)
         updateMusicPlayerViewCurrentSongDurationLabel(duration: audioPlayerCurrentSong.duration)
+        slider.value = 0.0
+        slider.maximumValue = Float(self.player!.getLoadedSongDuration())
     }
 
     /*

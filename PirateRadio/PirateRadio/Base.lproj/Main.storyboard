@@ -650,6 +650,7 @@
                         <outlet property="nextButton" destination="B4P-Ph-rc5" id="9SR-v3-OaL"/>
                         <outlet property="playPauseButton" destination="5s5-cu-GxE" id="QpC-18-GgP"/>
                         <outlet property="prevButton" destination="lGV-Rq-LB5" id="gfn-lr-gu8"/>
+                        <outlet property="slider" destination="yNP-Za-h3t" id="GCk-xv-XAc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q2M-qa-dg3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
