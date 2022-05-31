@@ -46,7 +46,7 @@ class AudioPlayer {
         }
         
         if timer == nil {
-            timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.0001, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
         }
     }
     
@@ -59,6 +59,11 @@ class AudioPlayer {
     }
     
     public func play() {
+        
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 0.0001, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
+        }
+        
         if let audioPlayer = audioPlayer {
             audioPlayer.prepareToPlay()
             audioPlayer.play()
@@ -66,6 +71,8 @@ class AudioPlayer {
     }
     
     public func pause() {
+        timer?.invalidate()
+        timer = nil
         if let audioPlayer = audioPlayer {
             audioPlayer.pause()
         }
@@ -84,6 +91,7 @@ class AudioPlayer {
         self.delegate?.setMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
         self.delegate?.setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: currentSong.duration)
         self.delegate?.setSliderMaximumValue(maximumValue: Float(getLoadedSongDuration()))
+        self.delegate?.setSliderProgress(value: 0.0)
     }
     
     private func loadSongAtIndex(index: Int) {
@@ -136,9 +144,3 @@ class AudioPlayer {
     }
 }
 
-// Play next song when on audioPlayerDidFinishPlaying
-//extension AudioPlayerView: AVAudioPlayerDelegate {
-//    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-//        <#code#>
-//    }
-//}
