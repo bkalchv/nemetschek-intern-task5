@@ -10,6 +10,7 @@ import AVFAudio
 
 protocol AudioPlayerDelegate: AnyObject {
     func updateMusicPlayerViewCurrentSongTitleLabel(title: String)
+    func updateMusicPlayerViewCurrentSongDurationLabel(duration: String)
 }
 
 class AudioPlayer {
@@ -41,7 +42,6 @@ class AudioPlayer {
         } catch let error {
             print(error)
         }
-        delegate?.updateMusicPlayerViewCurrentSongTitleLabel(title: song.title)
         
 //        if timer == nil {
 //            timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
@@ -72,6 +72,7 @@ class AudioPlayer {
         }
         
         self.delegate?.updateMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
+        delegate?.updateMusicPlayerViewCurrentSongDurationLabel(duration: currentSong.duration)
     }
     
     private func loadSongAtIndex(index: Int) {
@@ -115,7 +116,9 @@ class AudioPlayer {
         }
     }
     
-    
+    public func getCurrentSong() -> Song {
+        return songs[currentSongIndex]
+    }
     
     
 //    @objc private func updateProgress() {

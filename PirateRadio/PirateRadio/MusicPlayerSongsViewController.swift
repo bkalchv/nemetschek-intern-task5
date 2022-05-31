@@ -14,12 +14,14 @@ protocol MusicPlayerSongsViewControllerDelegate: AnyObject {
 class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableViewControllerDelegate, AudioPlayerDelegate {
     @IBOutlet weak var currentSongTitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var currentSongDurationLabel: UILabel!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var prevButton: UIButton!
     internal var player: AudioPlayer? = nil
     weak var delegate: MusicPlayerSongsViewControllerDelegate!
     
     internal func updateAudioPlayerSongs() {
+        // TODO: Ask if using the initiializer like that is appropriate
         self.player = AudioPlayer(songs: delegate.tableData)
     }
     
@@ -27,12 +29,23 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         currentSongTitleLabel.text = title
     }
     
+    internal func updateMusicPlayerViewCurrentSongDurationLabel(duration: String) {
+        currentSongDurationLabel.text = duration
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateAudioPlayerSongs()
-        updateMusicPlayerViewCurrentSongTitleLabel(title: self.delegate?.tableData.first?.title ?? "Title")
+        // TODO: Ask if that's a good place assign player's delegate
         self.player?.delegate = self
+        setupMusicPlayerViewInitialState()
         // Do any additional setup after loading the view.
+    }
+    
+    private func setupMusicPlayerViewInitialState() {
+        let audioPlayerCurrentSong = self.player!.getCurrentSong()
+        updateMusicPlayerViewCurrentSongTitleLabel(title: audioPlayerCurrentSong.title)
+        updateMusicPlayerViewCurrentSongDurationLabel(duration: audioPlayerCurrentSong.duration)
     }
 
     /*
