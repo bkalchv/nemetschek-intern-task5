@@ -10,7 +10,8 @@ import AVFAudio
 
 protocol AudioPlayerDelegate: AnyObject {
     func setMusicPlayerViewCurrentSongTitleLabel(title: String)
-    func setMusicPlayerViewCurrentSongRemainingLabel(duration: String)
+    func setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: String)
+    func setSliderMaximumValue(maximumValue: Float)
     func setSliderProgress(value: Float)
 }
 
@@ -45,12 +46,16 @@ class AudioPlayer {
         }
         
         if timer == nil {
-            timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateSliderProgress), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
         }
     }
     
-    @objc private func updateSliderProgress() {
+    @objc private func updateProgress() {
         self.delegate?.setSliderProgress(value: Float(self.audioPlayer!.currentTime))
+        let remainingTime = self.audioPlayer!.duration - self.audioPlayer!.currentTime
+        let formatter = DateComponentsFormatter()
+        let remainingTimeAsString = formatter.string(from: remainingTime)
+        self.delegate?.setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString:remainingTimeAsString!)
     }
     
     public func play() {
@@ -77,7 +82,8 @@ class AudioPlayer {
         }
         
         self.delegate?.setMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
-        delegate?.setMusicPlayerViewCurrentSongRemainingLabel(duration: currentSong.duration)
+        self.delegate?.setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: currentSong.duration)
+        self.delegate?.setSliderMaximumValue(maximumValue: Float(getLoadedSongDuration()))
     }
     
     private func loadSongAtIndex(index: Int) {

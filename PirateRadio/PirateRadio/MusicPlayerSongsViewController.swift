@@ -30,12 +30,16 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         currentSongTitleLabel.text = title
     }
     
-    internal func setMusicPlayerViewCurrentSongRemainingLabel(duration: String) {
-        currentSongRemainingLabel.text = duration
+    internal func setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: String) {
+        currentSongRemainingLabel.text = remainingTimeAsString
     }
     
-    func setSliderProgress(value: Float) {
+    internal func setSliderProgress(value: Float) {
         slider.value = value
+    }
+    
+    internal func setSliderMaximumValue(maximumValue: Float) {
+        slider.maximumValue = maximumValue
     }
     
     override func viewDidLoad() {
@@ -50,9 +54,9 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     private func setupMusicPlayerViewInitialState() {
         let audioPlayerCurrentSong = self.player!.getCurrentSong()
         setMusicPlayerViewCurrentSongTitleLabel(title: audioPlayerCurrentSong.title)
-        setMusicPlayerViewCurrentSongRemainingLabel(duration: audioPlayerCurrentSong.duration)
+        setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: audioPlayerCurrentSong.duration)
         slider.value = 0.0
-        slider.maximumValue = Float(self.player!.getLoadedSongDuration())
+        setSliderMaximumValue(maximumValue: Float(player!.getLoadedSongDuration()))
     }
 
     /*
