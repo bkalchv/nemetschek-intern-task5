@@ -11,21 +11,27 @@ protocol MusicPlayerSongsViewControllerDelegate: AnyObject {
     var tableData: [Song] { get }
 }
 
-class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableViewControllerDelegate {
-    // TODO:
+class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableViewControllerDelegate, AudioPlayerDelegate {
+    @IBOutlet weak var currentSongTitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var prevButton: UIButton!
     internal var player: AudioPlayer? = nil
-    weak var delegate: MusicPlayerSongsViewControllerDelegate? = nil
+    weak var delegate: MusicPlayerSongsViewControllerDelegate!
     
-    internal func updatePlayerSongs() {
-        self.player = AudioPlayer(songs: self.delegate?.tableData ?? [])
+    internal func updateAudioPlayerSongs() {
+        self.player = AudioPlayer(songs: delegate.tableData)
+    }
+    
+    internal func updateMusicPlayerViewCurrentSongTitleLabel(title: String) {
+        currentSongTitleLabel.text = title
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updatePlayerSongs()
+        updateAudioPlayerSongs()
+        updateMusicPlayerViewCurrentSongTitleLabel(title: self.delegate?.tableData.first?.title ?? "Title")
+        self.player?.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -52,8 +58,10 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         if let player = player {
             switch player.isPlaying {
             case true:
+                // TODO: load play button
                 player.pause()
             case false:
+                // TODO: load pause button
                 player.play()
             }
         }

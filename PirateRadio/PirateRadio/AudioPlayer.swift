@@ -8,6 +8,10 @@
 import UIKit
 import AVFAudio
 
+protocol AudioPlayerDelegate: AnyObject {
+    func updateMusicPlayerViewCurrentSongTitleLabel(title: String)
+}
+
 class AudioPlayer {
     private var songs: [Song] = []
     private var currentSongIndex: Int = 0
@@ -22,6 +26,7 @@ class AudioPlayer {
             }
         }
     }
+    weak var delegate: AudioPlayerDelegate? = nil
         
     public init(songs: [Song]) {
         if !songs.isEmpty {
@@ -36,6 +41,7 @@ class AudioPlayer {
         } catch let error {
             print(error)
         }
+        delegate?.updateMusicPlayerViewCurrentSongTitleLabel(title: song.title)
         
 //        if timer == nil {
 //            timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
@@ -56,11 +62,16 @@ class AudioPlayer {
     }
     
     private func updateAudioPlayer() {
+        
+        let currentSong = songs[currentSongIndex]
+        
         do {
-            try audioPlayer = AVAudioPlayer(contentsOf: songs[currentSongIndex].localURL)
+            try audioPlayer = AVAudioPlayer(contentsOf: currentSong.localURL)
         } catch let error {
             print(error)
         }
+        
+        self.delegate?.updateMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
     }
 
     public func playNext() {
@@ -89,7 +100,6 @@ class AudioPlayer {
             self.play()
         }
     }
-    
     
 //    @objc private func updateProgress() {
 //
