@@ -61,7 +61,7 @@ class AudioPlayer {
         }
     }
     
-    private func updateAudioPlayer() {
+    private func updateAudioPlayerCurrentSong() {
         
         let currentSong = songs[currentSongIndex]
         
@@ -73,33 +73,50 @@ class AudioPlayer {
         
         self.delegate?.updateMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
     }
+    
+    private func loadSongAtIndex(index: Int) {
+        if index >= 0 && index < songs.count {
+            currentSongIndex = index
+            if self.isPlaying { self.pause() }
+            updateAudioPlayerCurrentSong()
+        }
+    }
+    
+    public func loadNextSong() {
+        if currentSongIndex + 1 < songs.count {
+            loadSongAtIndex(index: currentSongIndex + 1)
+        }
+    }
+    
+    public func loadPreviousSong() {
+        if currentSongIndex - 1 >= 0 {
+            loadSongAtIndex(index: currentSongIndex - 1)
+        }
+    }
 
     public func playNextSong() {
         if currentSongIndex + 1 < songs.count {
-            currentSongIndex += 1
-            if self.isPlaying { self.pause() }
-            updateAudioPlayer()
+            loadNextSong()
             self.play()
         }
     }
     
     public func playPreviousSong() {
         if currentSongIndex - 1 >= 0 {
-            currentSongIndex -= 1
-            if self.isPlaying { self.pause() }
-            updateAudioPlayer()
+            loadPreviousSong()
             self.play()
         }
     }
     
     public func playSongAtIndex(index: Int) {
         if index >= 0 && index < songs.count {
-            currentSongIndex = index
-            if self.isPlaying { self.pause() }
-            updateAudioPlayer()
+            loadSongAtIndex(index: index)
             self.play()
         }
     }
+    
+    
+    
     
 //    @objc private func updateProgress() {
 //

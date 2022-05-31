@@ -50,8 +50,7 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
             if player.isPlaying {
                 player.playPreviousSong()
             } else {
-                print("Not implemented yet!")
-                // player.loadPreviousSong()
+                player.loadPreviousSong()
             }
         }
     }
@@ -59,11 +58,9 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     @IBAction func onPlayPauseButtonPress(_ sender: Any) {
         if let player = player {
             if player.isPlaying {
-                // TODO: load play button
                 player.pause()
                 playPauseButton.setImage(UIImage(named: Constants.PLAY_BUTTON_IMAGE_FILENAME), for: .normal)
             } else {
-                // TODO: load pause button
                 player.play()
                 playPauseButton.setImage(UIImage(named: Constants.PAUSE_BUTTON_IMAGE_FILENAME), for: .normal)
             }
@@ -75,7 +72,7 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
             if player.isPlaying {
                 player.playNextSong()
             } else {
-                print("Not implemented yet!")
+                player.loadNextSong()
             }
         }
     }
