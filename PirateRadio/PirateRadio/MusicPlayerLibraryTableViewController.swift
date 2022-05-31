@@ -9,7 +9,7 @@ import UIKit
 
 class MusicPlayerLibraryTableViewController: UITableViewController {
     
-    private let menuItems: [MusicPlayerLibraryMenuItem] = [MusicPlayerLibraryMenuItem(name: "Playlists", iconImageFilename: Constants.MUSIC_PLAYER_LIBRARY_PLAYLISTS_ICON_FILENAME), MusicPlayerLibraryMenuItem(name: "Artists", iconImageFilename: "music_artists_black_24pt"), MusicPlayerLibraryMenuItem(name: "Songs", iconImageFilename: "music_songs_black_24pt")]
+    private let menuItems: [MusicPlayerLibraryMenuItem] = [MusicPlayerLibraryMenuItem(name: "Playlists", iconImageFilename: Constants.MUSIC_PLAYER_LIBRARY_PLAYLISTS_ICON_IMAGE_FILENAME), MusicPlayerLibraryMenuItem(name: "Artists", iconImageFilename: "music_artists_black_24pt"), MusicPlayerLibraryMenuItem(name: "Songs", iconImageFilename: "music_songs_black_24pt")]
     
     override func viewDidLoad() {
         super.viewDidLoad()

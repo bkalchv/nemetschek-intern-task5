@@ -574,7 +574,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5s5-cu-GxE">
                                         <rect key="frame" x="157" y="132.5" width="60" height="50"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="baseline_play_arrow_black_36pt"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="play_arrow_black_36pt"/>
                                         <connections>
                                             <action selector="onPlayPauseButtonPress:" destination="HYX-f0-fov" eventType="touchUpInside" id="RRr-mk-s5j"/>
                                         </connections>
@@ -864,11 +864,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="baseline_play_arrow_black_36pt" width="36" height="36"/>
         <image name="baseline_skip_next_black_36pt" width="36" height="36"/>
         <image name="baseline_skip_previous_black_36pt" width="36" height="36"/>
         <image name="outline_music_note_black_36pt" width="36" height="36"/>
         <image name="outline_video_library_black_36pt" width="36" height="36"/>
+        <image name="play_arrow_black_36pt" width="36" height="36"/>
         <image name="play_circle_outline_white_64pt" width="64" height="64"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

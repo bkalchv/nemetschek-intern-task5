@@ -56,13 +56,14 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     
     @IBAction func onPlayPauseButtonPress(_ sender: Any) {
         if let player = player {
-            switch player.isPlaying {
-            case true:
+            if player.isPlaying {
                 // TODO: load play button
                 player.pause()
-            case false:
+                playPauseButton.setImage(UIImage(named: Constants.PLAY_BUTTON_IMAGE_FILENAME), for: .normal)
+            } else {
                 // TODO: load pause button
                 player.play()
+                playPauseButton.setImage(UIImage(named: Constants.PAUSE_BUTTON_IMAGE_FILENAME), for: .normal)
             }
         }
     }

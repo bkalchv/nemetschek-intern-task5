@@ -84,7 +84,7 @@ class AudioPlayer {
     }
     
     public func playPrev() {
-        if currentSongIndex - 1 > 0 {
+        if currentSongIndex - 1 >= 0 {
             currentSongIndex -= 1
             if self.isPlaying { self.pause() }
             updateAudioPlayer()

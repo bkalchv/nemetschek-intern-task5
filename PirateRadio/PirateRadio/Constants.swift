@@ -126,11 +126,15 @@ struct Constants {
 
     static let MOCK_RESULT_VIDEO_LIST_RESULT_JSON_STRING = "{\"kind\":\"youtube#videoListResponse\",\"etag\":\"2eqRVooMeKEFKa6J9TWgcjV5_Xc\",\"items\":[{\"kind\":\"youtube#video\",\"etag\":\"1-VYrP9PPUgkuFpJFVX4ULJgGYA\",\"id\":\"ligYjFT33uY\",\"contentDetails\":{\"duration\":\"PT35M26S\",\"dimension\":\"2d\",\"definition\":\"hd\",\"caption\":\"false\",\"licensedContent\":true,\"regionRestriction\":{\"blocked\":[\"AE\",\"BH\",\"EG\",\"IQ\",\"IR\",\"JO\",\"KW\",\"LB\",\"OM\",\"QA\",\"SA\",\"SY\",\"YE\"]},\"contentRating\":{},\"projection\":\"rectangular\"}},{\"kind\":\"youtube#video\",\"etag\":\"cwBGSJIsn_lp1hyNBZln69xwHMo\",\"id\":\"i25i6vyjIpg\",\"contentDetails\":{\"duration\":\"PT19M29S\",\"dimension\":\"2d\",\"definition\":\"hd\",\"caption\":\"true\",\"licensedContent\":true,\"contentRating\":{},\"projection\":\"rectangular\"}},{\"kind\":\"youtube#video\",\"etag\":\"Oz2X0Jsi-epdI0A_D7-Z1ehccFI\",\"id\":\"0_-OCK752pE\",\"contentDetails\":{\"duration\":\"PT3M53S\",\"dimension\":\"2d\",\"definition\":\"hd\",\"caption\":\"false\",\"licensedContent\":true,\"contentRating\":{},\"projection\":\"rectangular\"}},{\"kind\":\"youtube#video\",\"etag\":\"RLw_1QYyJcgB_1adSP-mV5Vs9Pc\",\"id\":\"NNp0_FpguQA\",\"contentDetails\":{\"duration\":\"PT5M12S\",\"dimension\":\"2d\",\"definition\":\"hd\",\"caption\":\"false\",\"licensedContent\":true,\"contentRating\":{},\"projection\":\"rectangular\"}},{\"kind\":\"youtube#video\",\"etag\":\"NJr0meKmz-ZF7ceyQJvlvXA-h0k\",\"id\":\"vH5LYVs-edo\",\"contentDetails\":{\"duration\":\"PT4M16S\",\"dimension\":\"2d\",\"definition\":\"hd\",\"caption\":\"false\",\"licensedContent\":true,\"contentRating\":{},\"projection\":\"rectangular\"}}],\"pageInfo\":{\"totalResults\":5,\"resultsPerPage\":5}}"
     
-    static let MUSIC_PLAYER_LIBRARY_PLAYLISTS_ICON_FILENAME = "music_playlist_black_24pt"
+    static let MUSIC_PLAYER_LIBRARY_PLAYLISTS_ICON_IMAGE_FILENAME = "music_playlist_black_24pt"
     
-    static let MUSIC_PLAYER_LIBRARY_ARTISTS_ICON_FILENAME = "music_artists_black_24pt"
+    static let MUSIC_PLAYER_LIBRARY_ARTISTS_ICON_IMAGE_FILENAME = "music_artists_black_24pt"
     
-    static let MUSIC_PLAYER_LIBRARY_SONGS_ICON_FILENAME = "music_songs_black_24pt"
+    static let MUSIC_PLAYER_LIBRARY_SONGS_ICON_IMAGE_FILENAME = "music_songs_black_24pt"
     
     static let SONG_DEFAULT_ARTIST_VALUE = "Unknown"
+    
+    static let PAUSE_BUTTON_IMAGE_FILENAME = "pause_black_36pt"
+    
+    static let PLAY_BUTTON_IMAGE_FILENAME = "play_arrow_black_36pt"
 }
