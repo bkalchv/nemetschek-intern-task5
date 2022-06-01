@@ -16,7 +16,7 @@ extension String {
             "&gt;": ">",
             "&quot;": "\"",
             "&apos;": "'",
-            "&#N39;" : "'"
+            "&#39;" : "'"
         ]
         var str = self
         for (escaped, unescaped) in characters {
