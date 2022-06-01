@@ -376,9 +376,9 @@
                                 </variation>
                                 <connections>
                                     <outlet property="channelLabel" destination="dbe-X1-6G3" id="3w8-SI-OrZ"/>
-                                    <outlet property="durationLabel" destination="r9y-oK-ync" id="pxg-3r-tNA"/>
+                                    <outlet property="durationLabel" destination="r9y-oK-ync" id="1BY-GT-XDe"/>
+                                    <outlet property="offsetFromPublishTimeLabel" destination="nJ9-eD-Hdb" id="1fO-u2-iFi"/>
                                     <outlet property="playButton" destination="iek-hG-mSb" id="tbV-2S-3wT"/>
-                                    <outlet property="publishTimeLabel" destination="nJ9-eD-Hdb" id="Zwc-MN-7fw"/>
                                     <outlet property="thumbnailImage" destination="G5H-dl-DF7" id="6o2-v0-zho"/>
                                     <outlet property="titleLabel" destination="QFL-JO-352" id="0Tf-Vg-bIy"/>
                                 </connections>

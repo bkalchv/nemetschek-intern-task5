@@ -116,6 +116,26 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         return ""
     }
     
+    // MARK: date format: yy-mm-dd
+    private func dateFromPublishTimeDate(dateAsString: String) -> Date? {
+        let dateFormatter = ISO8601DateFormatter()
+        if let date = dateFormatter.date(from: dateAsString) {
+            return date
+        } else {
+            return nil
+        }
+    }
+        
+    private func offsetBetweenPublishTimeAndCurrentDate(dateAsString: String) -> String {
+        let now = Date()
+        
+        if let date = dateFromPublishTimeDate(dateAsString: dateAsString) {
+            return now.offset(from: date)
+        }
+        
+        return ""
+    }
+    
     private func formatDurationFromIso8601String(ISO8601Duration: String) -> String {
         var duration = ISO8601Duration
         
@@ -181,7 +201,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
             
             cell.videoId = cellVideoID
             cell.titleLabel.text = cellTitle
-            cell.publishTimeLabel.text = extractDateFromPublishTime(publishTime: cellPublishTime)
+            cell.offsetFromPublishTimeLabel.text = offsetBetweenPublishTimeAndCurrentDate(dateAsString: cellPublishTime)
             cell.channelLabel.text = cellChannel
             cell.delegate = self
             

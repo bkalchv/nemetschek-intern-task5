@@ -77,7 +77,6 @@ class Fetcher {
                 } else if let data = data,
                           let response = response as? HTTPURLResponse,
                           response.statusCode == 200 { // Successful response
-                    
                     if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
                         if let fetchedResponse = self?.videoListResponse(forJSONString: JSONString), !fetchedResponse.items.isEmpty {
                             let durations = fetchedResponse.items.map { $0.contentDetails.duration }
@@ -184,7 +183,6 @@ class Fetcher {
                           response.statusCode == 200 { // Successful response
                     
                     if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
-                        //print(JSONString)
                         self?.updateLastValidSearchListResponse(forJSONString: JSONString)
                         self?.delegate?.updateTableViewDataSource()
                         

@@ -15,11 +15,12 @@ class SearchResultCell: UITableViewCell {
 
     //@IBOutlet weak var videoIDLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var publishTimeLabel: UILabel!
+    @IBOutlet weak var offsetFromPublishTimeLabel: UILabel!
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var channelLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
+    
     weak var delegate: SearchResultCellDelegate? = nil
     var videoId: String = ""
     
