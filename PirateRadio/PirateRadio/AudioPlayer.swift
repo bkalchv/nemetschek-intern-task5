@@ -53,24 +53,29 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         } catch let error {
             print(error)
         }
-        
-        if timer == nil {
-            timer = Timer.scheduledTimer(timeInterval: 0.0001, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
+    }
+    
+    private func formatRemainingTime(remainingTime: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        var remainingTimeAsString = formatter.string(from: remainingTime)!
+        if remainingTime < 60 {
+            remainingTimeAsString = "0:\(remainingTimeAsString)"
         }
+        remainingTimeAsString = "-\(remainingTimeAsString)"
+        return remainingTimeAsString
     }
     
     @objc private func updateProgress() {
         self.delegate?.setSliderProgress(value: Float(self.audioPlayer!.currentTime))
         let remainingTime = self.audioPlayer!.duration - self.audioPlayer!.currentTime
-        let formatter = DateComponentsFormatter()
-        let remainingTimeAsString = formatter.string(from: remainingTime)
-        self.delegate?.setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString:remainingTimeAsString!)
+        let remainingTimeAsString = formatRemainingTime(remainingTime: remainingTime)
+        self.delegate?.setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString:remainingTimeAsString)
     }
     
     public func play() {
         
         if timer == nil {
-            timer = Timer.scheduledTimer(timeInterval: 0.0001, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
         }
         
         if let audioPlayer = audioPlayer {
