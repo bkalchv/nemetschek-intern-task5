@@ -48,7 +48,18 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         // TODO: Ask if that's a good place assign player's delegate
         self.player?.delegate = self
         setupMusicPlayerViewInitialState()
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePlayPauseButtonImage), name: .SongSelectedNotification, object: nil)
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func updatePlayPauseButtonImage() {
+        if let player = player {
+            if player.isPlaying {
+                playPauseButton.setImage(UIImage(named: Constants.PAUSE_BUTTON_IMAGE_FILENAME), for: .normal)
+            } else {
+                playPauseButton.setImage(UIImage(named: Constants.PLAY_BUTTON_IMAGE_FILENAME), for: .normal)
+            }
+        }
     }
     
     private func setupMusicPlayerViewInitialState() {
@@ -83,11 +94,10 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         if let player = player {
             if player.isPlaying {
                 player.pause()
-                playPauseButton.setImage(UIImage(named: Constants.PLAY_BUTTON_IMAGE_FILENAME), for: .normal)
             } else {
                 player.play()
-                playPauseButton.setImage(UIImage(named: Constants.PAUSE_BUTTON_IMAGE_FILENAME), for: .normal)
             }
+            updatePlayPauseButtonImage()
         }
     }
     

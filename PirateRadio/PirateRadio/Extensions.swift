@@ -19,6 +19,7 @@ extension Notification.Name {
     static let DurationsReceivedNotification = Notification.Name("DurationsReceivedNotification")
     static let PlayVideoNotification = Notification.Name("PlayVideoNotification")
     static let PirateModeRequirementsFulfilledNotification = Notification.Name("PirateModeRequirementsFulfilledNotification")
+    static let SongSelectedNotification = Notification.Name("SongSelectedNotification")
 }
 
 extension CMTime {

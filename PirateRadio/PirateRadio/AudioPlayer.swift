@@ -15,7 +15,7 @@ protocol AudioPlayerDelegate: AnyObject {
     func setSliderProgress(value: Float)
 }
 
-class AudioPlayer {
+class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     private var songs: [Song] = []
     private var currentSongIndex: Int = 0
     private var audioPlayer: AVAudioPlayer? = nil
@@ -32,10 +32,19 @@ class AudioPlayer {
     weak var delegate: AudioPlayerDelegate? = nil
         
     public init(songs: [Song]) {
+        super.init()
         if !songs.isEmpty {
             self.songs = songs
             setupAudioPlayer(song: songs.first!)
         }
+    }
+    
+    public func getCurrentSong() -> Song {
+        return songs[currentSongIndex]
+    }
+    
+    public func getLoadedSongDuration() -> TimeInterval {
+        return audioPlayer!.duration
     }
     
     private func setupAudioPlayer(song: Song) {
@@ -135,12 +144,9 @@ class AudioPlayer {
         }
     }
     
-    public func getCurrentSong() -> Song {
-        return songs[currentSongIndex]
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        playNextSong()
     }
     
-    public func getLoadedSongDuration() -> TimeInterval {
-        return audioPlayer!.duration
-    }
 }
 

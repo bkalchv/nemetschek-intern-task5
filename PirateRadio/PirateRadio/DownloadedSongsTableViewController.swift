@@ -78,6 +78,8 @@ class DownloadedSongsTableViewController: UITableViewController, MusicPlayerSong
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let player = delegate.player {
             player.playSongAtIndex(index: indexPath.row)
+            // TODO: Ask if that's a fine usage of notification
+            NotificationCenter.default.post(name: .SongSelectedNotification, object: nil)
         }
     }
     
