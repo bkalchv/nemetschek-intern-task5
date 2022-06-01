@@ -17,7 +17,9 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     @IBOutlet weak var pirateModeView: UIView!
     var videoId: String = ""
     static var appHasEnteredBackgroundMode: Bool = false
-    static var isPirateModeOn: Bool = false
+    static var isPirateModeOn: Bool {
+        get { return UserDefaults.standard.bool(forKey: "isPirateModeOn") }
+    }
     static var hasSwipedDownOnPirateModeView: Bool = false
     static var tapsOnPirateModeView: Int = 0
     static var hasTappedOnPirateModeViewThreeTimes: Bool {
@@ -49,7 +51,8 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     
     @objc func activatePirateMode() {
         
-        VideoPlayerViewController.isPirateModeOn = true
+        UserDefaults.standard.set(true, forKey: "isPirateModeOn")
+        
         // MARK: Disabling User Interaction!
         pirateModeView.isUserInteractionEnabled = false
         
@@ -113,6 +116,11 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     }
     
     private func setupPirateModeView() {
+                
+        if VideoPlayerViewController.isPirateModeOn {
+            return
+        }
+        
         let swipeGestureRecognizerDown = UISwipeGestureRecognizer(target: self, action: #selector(onPirateModeViewSwipeDown))
         
         swipeGestureRecognizerDown.direction = .down
