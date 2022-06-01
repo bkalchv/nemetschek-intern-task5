@@ -54,11 +54,8 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     
     @objc func updatePlayPauseButtonImage() {
         if let player = player {
-            if player.isPlaying {
-                playPauseButton.setImage(UIImage(named: Constants.PAUSE_BUTTON_IMAGE_FILENAME), for: .normal)
-            } else {
-                playPauseButton.setImage(UIImage(named: Constants.PLAY_BUTTON_IMAGE_FILENAME), for: .normal)
-            }
+            playPauseButton.setImage(UIImage(named: player.isPlaying ?
+                                             Constants.PAUSE_BUTTON_IMAGE_FILENAME : Constants.PLAY_BUTTON_IMAGE_FILENAME), for: .normal)
         }
     }
     

@@ -75,7 +75,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     public func play() {
         
         if timer == nil {
-            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
         }
         
         if let audioPlayer = audioPlayer {
