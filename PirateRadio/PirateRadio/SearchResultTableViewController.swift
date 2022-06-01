@@ -121,26 +121,31 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
         
         if duration.hasPrefix("PT") { duration.removeFirst(2) }
         
-        let hour, minute, second: Double
+        let hours, minutes, seconds: Double
         if let index = duration.firstIndex(of: "H") {
-            hour = Double(duration[..<index]) ?? 0
+            hours = Double(duration[..<index]) ?? 0
             duration.removeSubrange(...index)
-        } else { hour = 0 }
+        } else { hours = 0 }
         if let index = duration.firstIndex(of: "M") {
-            minute = Double(duration[..<index]) ?? 0
+            minutes = Double(duration[..<index]) ?? 0
             duration.removeSubrange(...index)
-        } else { minute = 0 }
+        } else { minutes = 0 }
         if let index = duration.firstIndex(of: "S") {
-            second = Double(duration[..<index]) ?? 0
-        } else { second = 0 }
-        return Formatter.positional.string(from: hour * 3600 + minute * 60 + second) ?? "0:00"
+            seconds = Double(duration[..<index]) ?? 0
+        } else { seconds = 0 }
+        
+        let durationFormattedString = Formatter.positional.string(from: hours * 3600 + minutes * 60 + seconds) ?? "0:00"
+        
+        if hours == 0 && minutes == 0 && seconds != 0 {
+            return "0:\(durationFormattedString)"
+        }
+        
+        return durationFormattedString
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastElement = tableData.count - 1
         if indexPath.row == lastElement {
-            // handle your logic here to get more items, add it to dataSource and reload tableview
-            print("Reached bottom")
             self.delegate?.didReachBottom()
         }
     }
