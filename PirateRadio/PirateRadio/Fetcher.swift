@@ -79,7 +79,6 @@ class Fetcher {
                           response.statusCode == 200 { // Successful response
                     
                     if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
-                        print(JSONString)
                         if let fetchedResponse = self?.videoListResponse(forJSONString: JSONString), !fetchedResponse.items.isEmpty {
                             let durations = fetchedResponse.items.map { $0.contentDetails.duration }
                             completion(durations)
