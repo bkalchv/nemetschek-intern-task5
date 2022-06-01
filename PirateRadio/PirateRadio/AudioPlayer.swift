@@ -11,8 +11,8 @@ import AVFAudio
 protocol AudioPlayerDelegate: AnyObject {
     func setMusicPlayerViewCurrentSongTitleLabel(title: String)
     func setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: String)
-    func setSliderMaximumValue(maximumValue: Float)
-    func setSliderProgress(value: Float)
+    func setMusicPlayerViewSliderMaximumValue(maximumValue: Float)
+    func setMusicPlayerViewSliderProgress(value: Float)
 }
 
 class AudioPlayer: NSObject, AVAudioPlayerDelegate {
@@ -66,7 +66,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     @objc private func updateProgress() {
-        self.delegate?.setSliderProgress(value: Float(self.audioPlayer!.currentTime))
+        self.delegate?.setMusicPlayerViewSliderProgress(value: Float(self.audioPlayer!.currentTime))
         let remainingTime = self.audioPlayer!.duration - self.audioPlayer!.currentTime
         let remainingTimeAsString = formatRemainingTime(remainingTime: remainingTime)
         self.delegate?.setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString:remainingTimeAsString)
@@ -104,8 +104,8 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         
         self.delegate?.setMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
         self.delegate?.setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: currentSong.duration)
-        self.delegate?.setSliderMaximumValue(maximumValue: Float(getLoadedSongDuration()))
-        self.delegate?.setSliderProgress(value: 0.0)
+        self.delegate?.setMusicPlayerViewSliderMaximumValue(maximumValue: Float(getLoadedSongDuration()))
+        self.delegate?.setMusicPlayerViewSliderProgress(value: 0.0)
     }
     
     private func loadSongAtIndex(index: Int) {

@@ -34,11 +34,11 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         currentSongRemainingLabel.text = remainingTimeAsString
     }
     
-    internal func setSliderProgress(value: Float) {
+    internal func setMusicPlayerViewSliderProgress(value: Float) {
         slider.value = value
     }
     
-    internal func setSliderMaximumValue(maximumValue: Float) {
+    internal func setMusicPlayerViewSliderMaximumValue(maximumValue: Float) {
         slider.maximumValue = maximumValue
     }
     
@@ -67,7 +67,7 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         setMusicPlayerViewCurrentSongTitleLabel(title: audioPlayerCurrentSong.title)
         setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: audioPlayerCurrentSong.duration)
         slider.value = 0.0
-        setSliderMaximumValue(maximumValue: Float(player!.getLoadedSongDuration()))
+        setMusicPlayerViewSliderMaximumValue(maximumValue: Float(player!.getLoadedSongDuration()))
     }
 
     /*
