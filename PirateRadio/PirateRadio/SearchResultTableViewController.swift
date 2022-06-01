@@ -166,7 +166,7 @@ class SearchResultTableViewController: UITableViewController, SearchBarViewContr
             let searchResultItem = tableData[indexPath.row]
             
             let cellVideoID = searchResultItem.id.videoId
-            let cellTitle = searchResultItem.snippet.title
+            let cellTitle =  searchResultItem.snippet.title.unescape()
             let cellPublishTime = searchResultItem.snippet.publishTime
             let cellChannel = searchResultItem.snippet.channelTitle
             

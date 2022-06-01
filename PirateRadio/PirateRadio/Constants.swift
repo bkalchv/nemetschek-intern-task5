@@ -43,6 +43,27 @@ struct Constants {
     static let CONTENT_TO_BLOCK_JSON = """
                                 [
                                     { "trigger": {
+                                      "url-filter": "offerimage.com*"
+                                    },
+                                    "action": {
+                                      "type": "block"
+                                    }
+                                  },
+                                    { "trigger": {
+                                      "url-filter": "agnescarved.website*"
+                                    },
+                                    "action": {
+                                      "type": "block"
+                                    }
+                                  },
+                                    { "trigger": {
+                                      "url-filter": "inklinkor.com*"
+                                    },
+                                    "action": {
+                                      "type": "block"
+                                    }
+                                  },
+                                    { "trigger": {
                                       "url-filter": "dozubatan.com*"
                                     },
                                     "action": {

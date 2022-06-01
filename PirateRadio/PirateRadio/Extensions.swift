@@ -8,6 +8,24 @@
 import AVFoundation
 import Foundation
 
+extension String {
+    func unescape() -> String {
+        let characters = [
+            "&amp;": "&",
+            "&lt;": "<",
+            "&gt;": ">",
+            "&quot;": "\"",
+            "&apos;": "'",
+            "&#N39;" : "'"
+        ]
+        var str = self
+        for (escaped, unescaped) in characters {
+            str = str.replacingOccurrences(of: escaped, with: unescaped, options: NSString.CompareOptions.literal, range: nil)
+        }
+        return str
+    }
+}
+
 extension URL {
     var isDirectory: Bool {
        (try? resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory == true
