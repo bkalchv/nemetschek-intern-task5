@@ -21,32 +21,19 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     internal var player: AudioPlayer? = nil
     weak var delegate: MusicPlayerSongsViewControllerDelegate!
     
-    internal func updateAudioPlayerSongs() {
-        // TODO: Ask if using the initiializer like that is appropriate
-        self.player = AudioPlayer(songs: delegate.tableData)
-    }
-    
-    internal func setMusicPlayerViewCurrentSongTitleLabel(title: String) {
-        currentSongTitleLabel.text = title
-    }
-    
-    internal func setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: String) {
-        currentSongRemainingLabel.text = remainingTimeAsString
-    }
-    
-    internal func setMusicPlayerViewSliderProgress(value: Float) {
-        slider.value = value
-    }
-    
-    internal func setMusicPlayerViewSliderMaximumValue(maximumValue: Float) {
-        slider.maximumValue = maximumValue
+    private func setupMusicPlayerViewInitialState() {
+        let audioPlayerCurrentSong = self.player!.getCurrentSong()
+        setMusicPlayerViewCurrentSongTitleLabel(title: audioPlayerCurrentSong.title)
+        setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: audioPlayerCurrentSong.duration)
+        slider.value = 0.0
+        setMusicPlayerViewSliderMaximumValue(maximumValue: Float(player!.getLoadedSongDuration()))
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateAudioPlayerSongs()
+        player = AudioPlayer(songs: self.delegate.tableData)
         // TODO: Ask if that's a good place assign player's delegate
-        self.player?.delegate = self
+        self.player!.delegate = self
         setupMusicPlayerViewInitialState()
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlayPauseButtonImage), name: .SongSelectedNotification, object: nil)
         // Do any additional setup after loading the view.
@@ -59,14 +46,6 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         }
     }
     
-    private func setupMusicPlayerViewInitialState() {
-        let audioPlayerCurrentSong = self.player!.getCurrentSong()
-        setMusicPlayerViewCurrentSongTitleLabel(title: audioPlayerCurrentSong.title)
-        setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: audioPlayerCurrentSong.duration)
-        slider.value = 0.0
-        setMusicPlayerViewSliderMaximumValue(maximumValue: Float(player!.getLoadedSongDuration()))
-    }
-
     /*
     // MARK: - Navigation
 
@@ -118,5 +97,34 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         }
         
     }
+    
+    // MARK: DownloadedSongsTableVCDelegate's methods
+    
+    internal func updateAudioPlayerSongs(newSongs: [Song]) {
+        guard let player = player else { return }
+        player.updateSongs(songs: newSongs)
+        player
+            .setupInitialState()
+        setupMusicPlayerViewInitialState()
+    }
+    
+    // MARK: AudioPlayerDelegate's Methods
+    
+    internal func setMusicPlayerViewCurrentSongTitleLabel(title: String) {
+        currentSongTitleLabel.text = title
+    }
+    
+    internal func setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: String) {
+        currentSongRemainingLabel.text = remainingTimeAsString
+    }
+    
+    internal func setMusicPlayerViewSliderProgress(value: Float) {
+        slider.value = value
+    }
+    
+    internal func setMusicPlayerViewSliderMaximumValue(maximumValue: Float) {
+        slider.maximumValue = maximumValue
+    }
+    
     
 }

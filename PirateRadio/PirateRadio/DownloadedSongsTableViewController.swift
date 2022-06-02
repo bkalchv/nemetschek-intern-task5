@@ -10,7 +10,7 @@ import AVFAudio
 
 protocol DownloadedSongsTableViewControllerDelegate: AnyObject {
     var player: AudioPlayer? { get }
-    func updateAudioPlayerSongs()
+    func updateAudioPlayerSongs(newSongs: [Song])
 }
 
 class DownloadedSongsTableViewController: UITableViewController, MusicPlayerSongsViewControllerDelegate {
@@ -25,7 +25,6 @@ class DownloadedSongsTableViewController: UITableViewController, MusicPlayerSong
     override func viewDidLoad() {
         super.viewDidLoad()
         updateTableData()
-        self.delegate.updateAudioPlayerSongs()
                 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,7 +36,8 @@ class DownloadedSongsTableViewController: UITableViewController, MusicPlayerSong
     override func viewWillAppear(_ animated: Bool) {
         if tableData.count != DownloadedMP3sFileReader.downloadedSongsSortedByDateOfCreation().count {
             updateTableData()
-            self.delegate.updateAudioPlayerSongs()
+            // TODO: Notify AudioPlayer that tableData has been updated, instead of delegation?
+            self.delegate.updateAudioPlayerSongs(newSongs: tableData)
             self.tableView.reloadData()
         }
     }

@@ -37,6 +37,20 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
             self.songs = songs
             setupAudioPlayer(song: songs.first!)
         }
+        currentSongIndex = 0
+    }
+    
+    public func setupInitialState() {
+        if !songs.isEmpty {
+            setupAudioPlayer(song: songs.first!)
+        }
+        currentSongIndex = 0
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    public func updateSongs(songs: [Song]) {
+        self.songs = songs
     }
     
     public func getCurrentSong() -> Song {
@@ -92,6 +106,14 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         }
     }
     
+    private func updateAudioPlayersView() {
+        let currentSong = songs[currentSongIndex]
+        self.delegate?.setMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
+        self.delegate?.setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: currentSong.duration)
+        self.delegate?.setMusicPlayerViewSliderMaximumValue(maximumValue: Float(getLoadedSongDuration()))
+        self.delegate?.setMusicPlayerViewSliderProgress(value: 0.0)
+    }
+    
     private func updateAudioPlayerCurrentSong() {
         
         let currentSong = songs[currentSongIndex]
@@ -101,11 +123,6 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         } catch let error {
             print(error)
         }
-        
-        self.delegate?.setMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
-        self.delegate?.setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: currentSong.duration)
-        self.delegate?.setMusicPlayerViewSliderMaximumValue(maximumValue: Float(getLoadedSongDuration()))
-        self.delegate?.setMusicPlayerViewSliderProgress(value: 0.0)
     }
     
     private func loadSongAtIndex(index: Int) {
@@ -113,6 +130,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
             currentSongIndex = index
             if self.isPlaying { self.pause() }
             updateAudioPlayerCurrentSong()
+            updateAudioPlayersView()
         }
     }
     
