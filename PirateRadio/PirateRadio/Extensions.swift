@@ -41,11 +41,11 @@ extension Date {
     func offset(from date: Date) -> String {
         if years(from: date)   > 0 { return "\(years(from: date)) years ago"   }
         if months(from: date)  > 0 { return "\(months(from: date)) months ago"  }
-        if weeks(from: date)   > 0 { return "\(weeks(from: date))weeks ago"   }
-        if days(from: date)    > 0 { return "\(days(from: date))days ago"    }
-        if hours(from: date)   > 0 { return "\(hours(from: date))hours ago"   }
-        if minutes(from: date) > 0 { return "\(minutes(from: date))months ago" }
-        if seconds(from: date) > 0 { return "\(seconds(from: date))seconds ago" }
+        if weeks(from: date)   > 0 { return "\(weeks(from: date)) weeks ago"   }
+        if days(from: date)    > 0 { return "\(days(from: date)) days ago"    }
+        if hours(from: date)   > 0 { return "\(hours(from: date)) hours ago"   }
+        if minutes(from: date) > 0 { return "\(minutes(from: date)) months ago" }
+        if seconds(from: date) > 0 { return "\(seconds(from: date)) seconds ago" }
         return ""
     }
 }
@@ -81,6 +81,7 @@ extension Notification.Name {
     static let PlayVideoNotification = Notification.Name("PlayVideoNotification")
     static let PirateModeRequirementsFulfilledNotification = Notification.Name("PirateModeRequirementsFulfilledNotification")
     static let SongSelectedNotification = Notification.Name("SongSelectedNotification")
+    static let DownloadedSongsVCTableDataUpdated = Notification.Name("DownloadedSongsVCTableDataUpdated")
 }
 
 extension CMTime {

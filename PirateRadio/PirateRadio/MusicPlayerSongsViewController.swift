@@ -99,16 +99,16 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     }
     
     // MARK: DownloadedSongsTableVCDelegate's methods
+    // commented because of // TODO: Notify AudioPlayer that tableData has been updated, instead of delegation?
+//    internal func updateAudioPlayerSongs(newSongs: [Song]) {
+//        guard let player = player else { return }
+//        player.updateSongs(songs: newSongs)
+//        player
+//            .setupInitialState()
+//        setupMusicPlayerViewInitialState()
+//    }
     
-    internal func updateAudioPlayerSongs(newSongs: [Song]) {
-        guard let player = player else { return }
-        player.updateSongs(songs: newSongs)
-        player
-            .setupInitialState()
-        setupMusicPlayerViewInitialState()
-    }
-    
-    // MARK: AudioPlayerDelegate's Methods
+    // MARK: AudioPlayerDelegate's methods
     
     internal func setMusicPlayerViewCurrentSongTitleLabel(title: String) {
         currentSongTitleLabel.text = title

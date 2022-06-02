@@ -38,6 +38,17 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
             setupAudioPlayer(song: songs.first!)
         }
         currentSongIndex = 0
+        timer = nil
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onDownloadedSongsVCTableDataUpdatedNotificationReceived(_:)), name: .DownloadedSongsVCTableDataUpdated, object: nil)
+    }
+    
+    @objc func onDownloadedSongsVCTableDataUpdatedNotificationReceived(_ notification: Notification) {
+        if let tableData = notification.userInfo?["tableData"] as? [Song] {
+            updateSongs(songs: tableData)
+            setupInitialState()
+            updateAudioPlayersView()
+        }
     }
     
     public func setupInitialState() {
