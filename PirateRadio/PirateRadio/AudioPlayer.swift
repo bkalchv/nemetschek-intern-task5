@@ -73,7 +73,6 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     public func play() {
-        
         if timer == nil {
             timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
         }
@@ -103,7 +102,9 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         if let currentIndex = self.songsDelegate?.songs.firstIndex(where: {$0 == currentSong}),
            let nextIndex = self.songsDelegate?.songs.index(after: currentIndex) {
             //TODO: handle gracefully
+            guard nextIndex < self.songsDelegate!.songs.endIndex else { return }
             self.currentSong = self.songsDelegate!.songs[nextIndex]
+            load(song: currentSong)
             self.updateAudioPlayersView()
         }
     }
@@ -112,19 +113,21 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         if let currentIndex = self.songsDelegate?.songs.firstIndex(where: {$0 == currentSong}),
            //TODO: handle gracefully
            let previousIndex = self.songsDelegate?.songs.index(before: currentIndex) {
+            guard previousIndex > self.songsDelegate!.songs.index(before: self.songsDelegate!.songs.startIndex) else { return }
             self.currentSong = self.songsDelegate!.songs[previousIndex]
+            load(song: currentSong)
             self.updateAudioPlayersView()
         }
     }
 
     public func playNextSong() {
         loadNextSong()
-        self.play()
+        if self.isPlaying { self.play() }
     }
     
     public func playPreviousSong() {
         loadPreviousSong()
-        self.play()
+        if self.isPlaying { self.play() }
     }
         
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
