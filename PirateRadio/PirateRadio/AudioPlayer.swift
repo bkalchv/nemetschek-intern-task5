@@ -19,15 +19,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     private var currentSong: Song!
     private var audioPlayer: AVAudioPlayer? = nil
     private var timer: Timer? = nil
-    public var isPlaying: Bool {
-        get {
-            if let audioPlayer = audioPlayer {
-                return audioPlayer.isPlaying
-            } else {
-                return false
-            }
-        }
-    }
+    public var isPlaying: Bool = false
     weak var delegate: AudioPlayerDelegate? = nil
     weak var songsDelegate: SongsDataSourceDelegate? = nil
         
@@ -36,6 +28,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         songsDelegate = delegate
         guard let firstSong = songsDelegate!.songs.first else { return }
         load(song: firstSong)
+        
     }
     
     public func load(song: Song) {
@@ -81,6 +74,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
             audioPlayer.prepareToPlay()
             audioPlayer.play()
         }
+        isPlaying = true
     }
     
     public func pause() {
@@ -89,6 +83,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         if let audioPlayer = audioPlayer {
             audioPlayer.pause()
         }
+        isPlaying = false
     }
     
     private func updateAudioPlayersView() {
