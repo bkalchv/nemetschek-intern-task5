@@ -55,6 +55,9 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         if remainingTime < 60 {
             remainingTimeAsString = "0:\(remainingTimeAsString)"
         }
+        if remainingTime < 10 {
+            remainingTimeAsString = "0:0\(remainingTimeAsString)"
+        }
         remainingTimeAsString = "-\(remainingTimeAsString)"
         return remainingTimeAsString
     }
