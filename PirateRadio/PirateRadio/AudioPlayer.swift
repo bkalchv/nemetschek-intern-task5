@@ -43,6 +43,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         } catch let error {
             print(error)
         }
+        audioPlayer!.delegate = self
     }
         
     public func getLoadedSongDuration() -> TimeInterval {
