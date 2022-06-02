@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Song {
+class Song: Equatable {
     var title: String = ""
     var artist: String = "Unknown"
     var duration: String = ""

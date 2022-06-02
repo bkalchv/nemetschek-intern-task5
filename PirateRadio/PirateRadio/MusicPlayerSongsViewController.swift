@@ -91,7 +91,9 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
         }
         
     }
-        
+    
+    // MARK: DownloadedSongsTableVCDelegate's methods
+    
     func play(song: Song) {
         if let player = player {
             player.load(song: song)
@@ -99,15 +101,7 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
             updatePlayPauseButtonImage()
         }
     }
-    // MARK: DownloadedSongsTableVCDelegate's methods
-    // commented because of // TODO: Notify AudioPlayer that tableData has been updated, instead of delegation?
-//    internal func updateAudioPlayerSongs(newSongs: [Song]) {
-//        guard let player = player else { return }
-//        player.updateSongs(songs: newSongs)
-//        player
-//            .setupInitialState()
-//        setupMusicPlayerViewInitialState()
-//    }
+    
     
     // MARK: AudioPlayerDelegate's methods
     

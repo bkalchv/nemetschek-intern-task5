@@ -34,6 +34,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     public func load(song: Song) {
         self.currentSong = song
         self.createAVAudioPlayer()
+        self.updateAudioPlayersView()
     }
     
     private func createAVAudioPlayer() {
@@ -100,7 +101,6 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
             guard nextIndex < self.songsDelegate!.songs.endIndex else { return }
             self.currentSong = self.songsDelegate!.songs[nextIndex]
             load(song: currentSong)
-            self.updateAudioPlayersView()
         }
     }
     
@@ -111,7 +111,6 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
             guard previousIndex > self.songsDelegate!.songs.index(before: self.songsDelegate!.songs.startIndex) else { return }
             self.currentSong = self.songsDelegate!.songs[previousIndex]
             load(song: currentSong)
-            self.updateAudioPlayersView()
         }
     }
 
