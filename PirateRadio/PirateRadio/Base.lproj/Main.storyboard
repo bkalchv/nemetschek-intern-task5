@@ -557,22 +557,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKD-lQ-J6R">
-                                <rect key="frame" x="20" y="44" width="374" height="541"/>
+                                <rect key="frame" x="20" y="44" width="374" height="516"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="NKD-lQ-J6R" secondAttribute="height" multiplier="374:541" id="A9J-fp-2Ky"/>
+                                    <constraint firstAttribute="width" secondItem="NKD-lQ-J6R" secondAttribute="height" multiplier="392:541" id="A9J-fp-2Ky"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="bpb-ca-SCB" kind="embed" identifier="downloadedSongsSegue" id="HCa-hf-FmD"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXX-Pv-O62">
-                                <rect key="frame" x="20" y="640" width="374" height="190"/>
+                                <rect key="frame" x="20" y="568" width="374" height="286"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="yNP-Za-h3t">
-                                        <rect key="frame" x="6" y="72.5" width="304" height="31"/>
+                                        <rect key="frame" x="6" y="128" width="304" height="31"/>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5s5-cu-GxE">
-                                        <rect key="frame" x="157" y="132.5" width="60" height="50"/>
+                                        <rect key="frame" x="157" y="211" width="60" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="play_arrow_black_36pt"/>
                                         <connections>
@@ -580,7 +580,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGV-Rq-LB5">
-                                        <rect key="frame" x="8" y="132.5" width="99" height="50"/>
+                                        <rect key="frame" x="8" y="211" width="99" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="baseline_skip_previous_black_36pt"/>
                                         <connections>
@@ -588,7 +588,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4P-Ph-rc5">
-                                        <rect key="frame" x="267" y="132.5" width="99" height="50"/>
+                                        <rect key="frame" x="267" y="211" width="99" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="baseline_skip_next_black_36pt"/>
                                         <connections>
@@ -596,7 +596,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFk-Kb-6at">
-                                        <rect key="frame" x="316" y="78" width="46" height="21"/>
+                                        <rect key="frame" x="316" y="116" width="46" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -610,32 +610,31 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="dXX-Pv-O62" secondAttribute="height" multiplier="374:125" constant="-194.48000000000002" id="3im-4b-xx0"/>
+                                    <constraint firstItem="yNP-Za-h3t" firstAttribute="top" secondItem="tFk-Kb-6at" secondAttribute="bottom" constant="-9" id="AP6-EE-JN9"/>
                                     <constraint firstItem="yNP-Za-h3t" firstAttribute="leading" secondItem="dXX-Pv-O62" secondAttribute="leading" constant="8" id="DvH-ch-sRf"/>
                                     <constraint firstItem="XWn-ag-18b" firstAttribute="top" secondItem="dXX-Pv-O62" secondAttribute="top" constant="27" id="IHr-yK-nyP"/>
-                                    <constraint firstItem="5s5-cu-GxE" firstAttribute="centerY" secondItem="dXX-Pv-O62" secondAttribute="centerY" constant="62.5" id="IJt-UU-RAU"/>
-                                    <constraint firstItem="5s5-cu-GxE" firstAttribute="top" secondItem="yNP-Za-h3t" secondAttribute="bottom" constant="30" id="JIm-l3-oPt"/>
                                     <constraint firstItem="B4P-Ph-rc5" firstAttribute="leading" secondItem="5s5-cu-GxE" secondAttribute="trailing" constant="50" id="KEd-q7-Gmt"/>
                                     <constraint firstItem="XWn-ag-18b" firstAttribute="leading" secondItem="dXX-Pv-O62" secondAttribute="leading" constant="8" id="STC-0F-Hfl"/>
+                                    <constraint firstItem="5s5-cu-GxE" firstAttribute="centerY" secondItem="B4P-Ph-rc5" secondAttribute="centerY" id="UGy-zh-f7b"/>
                                     <constraint firstItem="5s5-cu-GxE" firstAttribute="leading" secondItem="lGV-Rq-LB5" secondAttribute="trailing" constant="50" id="X6O-gp-NbT"/>
-                                    <constraint firstItem="tFk-Kb-6at" firstAttribute="leading" secondItem="yNP-Za-h3t" secondAttribute="trailing" constant="8" symbolic="YES" id="bA9-2N-vfN"/>
                                     <constraint firstItem="lGV-Rq-LB5" firstAttribute="leading" secondItem="dXX-Pv-O62" secondAttribute="leading" constant="8" id="eMa-pl-Ji9"/>
                                     <constraint firstAttribute="trailing" secondItem="tFk-Kb-6at" secondAttribute="trailing" constant="12" id="erb-rt-y4r"/>
-                                    <constraint firstItem="tFk-Kb-6at" firstAttribute="top" secondItem="XWn-ag-18b" secondAttribute="bottom" constant="30" id="eyj-4X-RNz"/>
+                                    <constraint firstItem="lGV-Rq-LB5" firstAttribute="centerY" secondItem="5s5-cu-GxE" secondAttribute="centerY" id="glK-Fv-bwd"/>
                                     <constraint firstAttribute="trailing" secondItem="XWn-ag-18b" secondAttribute="trailing" constant="10" id="gop-4D-a5B"/>
-                                    <constraint firstItem="lGV-Rq-LB5" firstAttribute="centerY" secondItem="dXX-Pv-O62" secondAttribute="centerY" constant="62.5" id="nLD-uc-yec"/>
-                                    <constraint firstItem="B4P-Ph-rc5" firstAttribute="centerY" secondItem="dXX-Pv-O62" secondAttribute="centerY" constant="62.5" id="nm8-Zk-25M"/>
+                                    <constraint firstAttribute="bottom" secondItem="5s5-cu-GxE" secondAttribute="bottom" constant="25" id="h1e-Gb-dxm"/>
                                     <constraint firstItem="tFk-Kb-6at" firstAttribute="leading" secondItem="yNP-Za-h3t" secondAttribute="trailing" constant="8" symbolic="YES" id="oCG-md-e7v"/>
                                     <constraint firstAttribute="trailing" secondItem="B4P-Ph-rc5" secondAttribute="trailing" constant="8" id="oQV-qg-UZs"/>
                                     <constraint firstItem="5s5-cu-GxE" firstAttribute="centerX" secondItem="dXX-Pv-O62" secondAttribute="centerX" id="pmP-Vi-2mL"/>
+                                    <constraint firstItem="yNP-Za-h3t" firstAttribute="centerY" secondItem="dXX-Pv-O62" secondAttribute="centerY" id="zWv-5X-UfT"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wat-S6-EL5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wat-S6-EL5" firstAttribute="bottom" secondItem="dXX-Pv-O62" secondAttribute="bottom" constant="32" id="2md-PB-fKr"/>
+                            <constraint firstItem="wat-S6-EL5" firstAttribute="bottom" secondItem="dXX-Pv-O62" secondAttribute="bottom" constant="8" id="2md-PB-fKr"/>
                             <constraint firstItem="NKD-lQ-J6R" firstAttribute="leading" secondItem="wat-S6-EL5" secondAttribute="leading" constant="20" id="3h4-qI-sre"/>
+                            <constraint firstItem="dXX-Pv-O62" firstAttribute="top" secondItem="NKD-lQ-J6R" secondAttribute="bottom" constant="8" id="3kx-Nn-wN7"/>
                             <constraint firstItem="dXX-Pv-O62" firstAttribute="leading" secondItem="wat-S6-EL5" secondAttribute="leading" constant="20" id="9Hg-iL-lBu"/>
                             <constraint firstItem="5s5-cu-GxE" firstAttribute="centerX" secondItem="wat-S6-EL5" secondAttribute="centerX" id="CPH-an-HQK"/>
                             <constraint firstItem="wat-S6-EL5" firstAttribute="trailing" secondItem="NKD-lQ-J6R" secondAttribute="trailing" constant="20" id="LB8-zx-R5S"/>
@@ -667,7 +666,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="flZ-9L-gwU" kind="relationship" relationship="rootViewController" id="1q3-W6-DQB"/>
+                        <segue destination="flZ-9L-gwU" kind="relationship" relationship="rootViewController" id="Pxu-ov-UQp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EE6-dS-gPv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -806,7 +805,7 @@
             <objects>
                 <tableViewController id="bpb-ca-SCB" customClass="DownloadedSongsTableViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="57z-q5-Kc1">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="541"/>
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="516"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>

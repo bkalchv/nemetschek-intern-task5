@@ -224,6 +224,8 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     
     func downloadDidFinish(_ download: WKDownload) {
         self.view.makeToast("MP3 downloaded successfully!")
+        
+        NotificationCenter.default.post(name: .DidFinishDownload, object: nil)
     }
     
     private func createYoutubeToMp3DownloadsDirectoryInCacheIfNonExistent() {

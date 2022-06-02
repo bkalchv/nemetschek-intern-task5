@@ -16,8 +16,7 @@ protocol AudioPlayerDelegate: AnyObject {
 }
 
 class AudioPlayer: NSObject, AVAudioPlayerDelegate {
-    private var songs: [Song] = []
-    private var currentSongIndex: Int = 0
+    private var currentSong: Song!
     private var audioPlayer: AVAudioPlayer? = nil
     private var timer: Timer? = nil
     public var isPlaying: Bool {
@@ -30,54 +29,30 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         }
     }
     weak var delegate: AudioPlayerDelegate? = nil
+    weak var songsDelegate: SongsDataSourceDelegate? = nil
         
-    public init(songs: [Song]) {
+    public init(withDelegate delegate: SongsDataSourceDelegate) {
         super.init()
-        if !songs.isEmpty {
-            self.songs = songs
-            setupAudioPlayer(song: songs.first!)
-        }
-        currentSongIndex = 0
-        timer = nil
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(onDownloadedSongsVCTableDataUpdatedNotificationReceived(_:)), name: .DownloadedSongsVCTableDataUpdated, object: nil)
+        songsDelegate = delegate
+        guard let firstSong = songsDelegate!.songs.first else { return }
+        load(song: firstSong)
     }
     
-    @objc func onDownloadedSongsVCTableDataUpdatedNotificationReceived(_ notification: Notification) {
-        if let tableData = notification.userInfo?["tableData"] as? [Song] {
-            updateSongs(songs: tableData)
-            setupInitialState()
-            updateAudioPlayersView()
-        }
+    public func load(song: Song) {
+        self.currentSong = song
+        self.createAVAudioPlayer()
     }
     
-    public func setupInitialState() {
-        if !songs.isEmpty {
-            setupAudioPlayer(song: songs.first!)
-        }
-        currentSongIndex = 0
-        timer?.invalidate()
-        timer = nil
-    }
-    
-    public func updateSongs(songs: [Song]) {
-        self.songs = songs
-    }
-    
-    public func getCurrentSong() -> Song {
-        return songs[currentSongIndex]
-    }
-    
-    public func getLoadedSongDuration() -> TimeInterval {
-        return audioPlayer!.duration
-    }
-    
-    private func setupAudioPlayer(song: Song) {
+    private func createAVAudioPlayer() {
         do {
-            try audioPlayer = AVAudioPlayer(contentsOf: song.localURL)
+            try audioPlayer = AVAudioPlayer(contentsOf: self.currentSong.localURL)
         } catch let error {
             print(error)
         }
+    }
+        
+    public func getLoadedSongDuration() -> TimeInterval {
+        return audioPlayer?.duration ?? TimeInterval.zero
     }
     
     private func formatRemainingTime(remainingTime: TimeInterval) -> String {
@@ -118,66 +93,40 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     private func updateAudioPlayersView() {
-        let currentSong = songs[currentSongIndex]
         self.delegate?.setMusicPlayerViewCurrentSongTitleLabel(title: currentSong.title)
         self.delegate?.setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: currentSong.duration)
         self.delegate?.setMusicPlayerViewSliderMaximumValue(maximumValue: Float(getLoadedSongDuration()))
         self.delegate?.setMusicPlayerViewSliderProgress(value: 0.0)
     }
-    
-    private func updateAudioPlayerCurrentSong() {
-        
-        let currentSong = songs[currentSongIndex]
-        
-        do {
-            try audioPlayer = AVAudioPlayer(contentsOf: currentSong.localURL)
-        } catch let error {
-            print(error)
+            
+    private func loadNextSong() {
+        if let currentIndex = self.songsDelegate?.songs.firstIndex(where: {$0 == currentSong}),
+           let nextIndex = self.songsDelegate?.songs.index(after: currentIndex) {
+            //TODO: handle gracefully
+            self.currentSong = self.songsDelegate!.songs[nextIndex]
+            self.updateAudioPlayersView()
         }
     }
     
-    private func loadSongAtIndex(index: Int) {
-        if index >= 0 && index < songs.count {
-            currentSongIndex = index
-            if self.isPlaying { self.pause() }
-            updateAudioPlayerCurrentSong()
-            updateAudioPlayersView()
-        }
-    }
-    
-    public func loadNextSong() {
-        if currentSongIndex + 1 < songs.count {
-            loadSongAtIndex(index: currentSongIndex + 1)
-        }
-    }
-    
-    public func loadPreviousSong() {
-        if currentSongIndex - 1 >= 0 {
-            loadSongAtIndex(index: currentSongIndex - 1)
+    private func loadPreviousSong() {
+        if let currentIndex = self.songsDelegate?.songs.firstIndex(where: {$0 == currentSong}),
+           //TODO: handle gracefully
+           let previousIndex = self.songsDelegate?.songs.index(before: currentIndex) {
+            self.currentSong = self.songsDelegate!.songs[previousIndex]
+            self.updateAudioPlayersView()
         }
     }
 
     public func playNextSong() {
-        if currentSongIndex + 1 < songs.count {
-            loadNextSong()
-            self.play()
-        }
+        loadNextSong()
+        self.play()
     }
     
     public func playPreviousSong() {
-        if currentSongIndex - 1 >= 0 {
-            loadPreviousSong()
-            self.play()
-        }
+        loadPreviousSong()
+        self.play()
     }
-    
-    public func playSongAtIndex(index: Int) {
-        if index >= 0 && index < songs.count {
-            loadSongAtIndex(index: index)
-            self.play()
-        }
-    }
-    
+        
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         playNextSong()
     }

@@ -25,4 +25,11 @@ class Song {
         self.duration = duration
         self.localURL = localURL
     }
+    
+    static func ==(lhs: Song, rhs: Song) -> Bool {
+        return  lhs.title == rhs.title &&
+                lhs.artist == rhs.artist &&
+                lhs.duration == rhs.duration &&
+                lhs.localURL == rhs.localURL
+    }
 }

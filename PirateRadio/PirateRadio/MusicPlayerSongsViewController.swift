@@ -7,11 +7,12 @@
 
 import UIKit
 
-protocol MusicPlayerSongsViewControllerDelegate: AnyObject {
-    var tableData: [Song] { get }
+protocol SongsDataSourceDelegate: AnyObject {
+    var songs: [Song] { get }
 }
 
-class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableViewControllerDelegate, AudioPlayerDelegate {
+class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, AudioPlayerDelegate {
+    
     @IBOutlet weak var currentSongTitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var currentSongRemainingLabel: UILabel!
@@ -19,10 +20,10 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var prevButton: UIButton!
     internal var player: AudioPlayer? = nil
-    weak var delegate: MusicPlayerSongsViewControllerDelegate!
+    weak var songsDataSourceDelegate: SongsDataSourceDelegate!
     
     private func setupMusicPlayerViewInitialState() {
-        let audioPlayerCurrentSong = self.player!.getCurrentSong()
+        guard let audioPlayerCurrentSong = songsDataSourceDelegate.songs.first else { return }
         setMusicPlayerViewCurrentSongTitleLabel(title: audioPlayerCurrentSong.title)
         setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString: audioPlayerCurrentSong.duration)
         slider.value = 0.0
@@ -31,8 +32,7 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        player = AudioPlayer(songs: self.delegate.tableData)
-        // TODO: Ask if that's a good place assign player's delegate
+        player = AudioPlayer(withDelegate: self.songsDataSourceDelegate)
         self.player!.delegate = self
         setupMusicPlayerViewInitialState()
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlayPauseButtonImage), name: .SongSelectedNotification, object: nil)
@@ -58,11 +58,7 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
     
     @IBAction func onPrevButtonPress(_ sender: Any) {
         if let player = player {
-            if player.isPlaying {
-                player.playPreviousSong()
-            } else {
-                player.loadPreviousSong()
-            }
+            player.playPreviousSong()
         }
     }
     
@@ -70,20 +66,18 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         if let player = player {
             if player.isPlaying {
                 player.pause()
-            } else {
+            }
+            else {
                 player.play()
             }
-            updatePlayPauseButtonImage()
+            let playPauseButtonImage = UIImage(named: player.isPlaying ? Constants.PAUSE_BUTTON_IMAGE_FILENAME : Constants.PLAY_BUTTON_IMAGE_FILENAME)
+            playPauseButton.setImage(playPauseButtonImage, for: .normal)
         }
     }
     
     @IBAction func onNextButtonPress(_ sender: Any) {
         if let player = player {
-            if player.isPlaying {
-                player.playNextSong()
-            } else {
-                player.loadNextSong()
-            }
+            player.playNextSong()
         }
     }
     
@@ -92,12 +86,19 @@ class MusicPlayerSongsViewController: UIViewController, DownloadedSongsTableView
         // Pass the selected object to the new view controller.
         
         if let embeddedDownloadedSongsTableVC = segue.destination as? DownloadedSongsTableViewController {
-            embeddedDownloadedSongsTableVC.delegate = self
-            self.delegate = embeddedDownloadedSongsTableVC
+            embeddedDownloadedSongsTableVC.songPlayerDelegate = self
+            self.songsDataSourceDelegate = embeddedDownloadedSongsTableVC
         }
         
     }
-    
+        
+    func play(song: Song) {
+        if let player = player {
+            player.load(song: song)
+            player.play()
+            updatePlayPauseButtonImage()
+        }
+    }
     // MARK: DownloadedSongsTableVCDelegate's methods
     // commented because of // TODO: Notify AudioPlayer that tableData has been updated, instead of delegation?
 //    internal func updateAudioPlayerSongs(newSongs: [Song]) {
