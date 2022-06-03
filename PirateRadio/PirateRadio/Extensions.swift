@@ -82,7 +82,7 @@ extension Notification.Name {
     static let PirateModeRequirementsFulfilledNotification = Notification.Name("PirateModeRequirementsFulfilledNotification")
     static let SongSelectedNotification = Notification.Name("SongSelectedNotification")
     static let DownloadedSongsVCTableDataUpdated = Notification.Name("DownloadedSongsVCTableDataUpdated")
-    static let DidFinishDownload = Notification.Name("DidFinishDownload")
+    static let DidFinishDownloadingMP3File = Notification.Name("DidFinishDownloadingMP3File")
 }
 
 extension CMTime {

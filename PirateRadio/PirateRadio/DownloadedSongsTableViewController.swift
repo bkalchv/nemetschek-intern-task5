@@ -24,7 +24,7 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         updateTableData()
-        NotificationCenter.default.addObserver(self, selector: #selector(didFinishDownload(notification:)), name: .DidFinishDownload, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didFinishDownload(notification:)), name: .DidFinishDownloadingMP3File, object: nil)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
