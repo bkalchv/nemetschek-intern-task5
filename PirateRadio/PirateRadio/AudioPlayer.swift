@@ -53,11 +53,10 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     private func formatRemainingTime(remainingTime: TimeInterval) -> String {
         let formatter = DateComponentsFormatter()
         var remainingTimeAsString = formatter.string(from: remainingTime)!
-        if remainingTime < 60 {
-            remainingTimeAsString = "0:\(remainingTimeAsString)"
-        }
         if remainingTime < 10 {
             remainingTimeAsString = "0:0\(remainingTimeAsString)"
+        } else if remainingTime < 60 {
+            remainingTimeAsString = "0:\(remainingTimeAsString)"
         }
         remainingTimeAsString = "-\(remainingTimeAsString)"
         return remainingTimeAsString
@@ -68,6 +67,11 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         let remainingTime = self.audioPlayer!.duration - self.audioPlayer!.currentTime
         let remainingTimeAsString = formatRemainingTime(remainingTime: remainingTime)
         self.delegate?.setMusicPlayerViewCurrentSongRemainingLabel(remainingTimeAsString:remainingTimeAsString)
+    }
+    
+    public func pauseSendingPlaybackUpdates() {
+        timer?.invalidate()
+        timer = nil
     }
     
     public func play() {
@@ -83,8 +87,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     public func pause() {
-        timer?.invalidate()
-        timer = nil
+        pauseSendingPlaybackUpdates()
         if let audioPlayer = audioPlayer {
             audioPlayer.pause()
         }
@@ -126,6 +129,12 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     public func playPreviousSong() {
         loadPreviousSong()
         if self.isPlaying { self.play() }
+    }
+    
+    public func play(atTime time: TimeInterval) {
+        audioPlayer?.currentTime = time
+        updateProgress()
+        if self.isPlaying { play() }
     }
         
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {

@@ -22,6 +22,7 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
     internal var player: AudioPlayer? = nil
     weak var songsDataSourceDelegate: SongsDataSourceDelegate!
     
+    
     private func setupMusicPlayerViewInitialState() {
         guard let audioPlayerCurrentSong = songsDataSourceDelegate.songs.first else { return }
         setMusicPlayerViewCurrentSongTitleLabel(title: audioPlayerCurrentSong.title)
@@ -35,11 +36,23 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
         player = AudioPlayer(withDelegate: self.songsDataSourceDelegate)
         self.player!.delegate = self
         setupMusicPlayerViewInitialState()
-        NotificationCenter.default.addObserver(self, selector: #selector(updatePlayPauseButtonImage), name: .SongSelectedNotification, object: nil)
+        slider.addTarget(self, action: #selector(sliderDidStartSliding), for: .touchDown)
+        slider.addTarget(self, action: #selector(sliderDidEndSliding), for: .touchUpInside)
         // Do any additional setup after loading the view.
     }
     
-    @objc func updatePlayPauseButtonImage() {
+    @objc func sliderDidStartSliding() {
+        if let player = player, player.isPlaying {
+            player.pauseSendingPlaybackUpdates()
+        }
+    }
+    
+    @objc func sliderDidEndSliding() {
+        let currentSliderValue = slider.value
+        player?.play(atTime: Double(currentSliderValue))
+    }
+    
+    func updatePlayPauseButtonImage() {
         if let player = player {
             playPauseButton.setImage(UIImage(named: player.isPlaying ?
                                              Constants.PAUSE_BUTTON_IMAGE_FILENAME : Constants.PLAY_BUTTON_IMAGE_FILENAME), for: .normal)
