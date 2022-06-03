@@ -1,27 +1,22 @@
 PODS:
-  - GoogleAPIClientForREST/Core (1.2.1):
-    - GTMSessionFetcher (>= 1.1.7)
-  - GoogleAPIClientForREST/YouTube (1.2.1):
-    - GoogleAPIClientForREST/Core
-    - GTMSessionFetcher (>= 1.1.7)
-  - GTMSessionFetcher (1.7.1):
-    - GTMSessionFetcher/Full (= 1.7.1)
-  - GTMSessionFetcher/Core (1.7.1)
-  - GTMSessionFetcher/Full (1.7.1):
-    - GTMSessionFetcher/Core (= 1.7.1)
+  - Realm (10.27.0):
+    - Realm/Headers (= 10.27.0)
+  - Realm/Headers (10.27.0)
+  - RealmSwift (10.27.0):
+    - Realm (= 10.27.0)
 
 DEPENDENCIES:
-  - GoogleAPIClientForREST/YouTube (~> 1.2.1)
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
-    - GoogleAPIClientForREST
-    - GTMSessionFetcher
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
-  GoogleAPIClientForREST: a8b95a252014ce2e618df6b75dc72eca2c00b4af
-  GTMSessionFetcher: 4577a4cc914a5a07c40a8a0ad0acc22080418c2d
+  Realm: 9ca328bd7e700cc19703799785e37f77d1a130f2
+  RealmSwift: 271de77b09a73c5e46ee3252283878153bd5d288
 
-PODFILE CHECKSUM: da4ce349c72ba9b39f76657732cbf89981792ee5
+PODFILE CHECKSUM: 5bf7f749a0e74cb77266f5fa91197b258dbb4b2c
 
 COCOAPODS: 1.11.3

@@ -6,6 +6,5 @@ target 'PirateRadio' do
   use_frameworks!
 
   # Pods for PirateRadio
-  pod 'GoogleAPIClientForREST/YouTube', '~> 1.2.1'
 
 end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		423AAC3D2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423AAC3C2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift */; };
 		423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423AAC3E2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift */; };
+		4247AD168505884B248AE705 /* Pods_PirateRadio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127BC5939809A98CC980C8FC /* Pods_PirateRadio.framework */; };
 		424B6A7528046029009A043E /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */; };
 		425C9CDF2836805100D996F6 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 425C9CDE2836805100D996F6 /* Toast */; };
 		427E6FE42844E7490049C4FF /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E6FE32844E7490049C4FF /* AudioPlayer.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		127BC5939809A98CC980C8FC /* Pods_PirateRadio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PirateRadio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		423AAC3C2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeToMp3APIResponseItem.swift; sourceTree = "<group>"; };
 		423AAC3E2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeToMp3ResponseUploadedAt.swift; sourceTree = "<group>"; };
 		427E6FE32844E7490049C4FF /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
@@ -86,6 +88,8 @@
 		42C86E0E283BA7A40075C72A /* YouTubeVideoContentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentDetails.swift; sourceTree = "<group>"; };
 		42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentRating.swift; sourceTree = "<group>"; };
 		42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerSongsViewController.swift; sourceTree = "<group>"; };
+		5536966CC12FBC76B8C3361E /* Pods-PirateRadio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PirateRadio.release.xcconfig"; path = "Target Support Files/Pods-PirateRadio/Pods-PirateRadio.release.xcconfig"; sourceTree = "<group>"; };
+		DFF6F7BB8DF5E2E0BEAC4D7A /* Pods-PirateRadio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PirateRadio.debug.xcconfig"; path = "Target Support Files/Pods-PirateRadio/Pods-PirateRadio.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 			files = (
 				425C9CDF2836805100D996F6 /* Toast in Frameworks */,
 				424B6A7528046029009A043E /* YouTubeiOSPlayerHelper in Frameworks */,
+				4247AD168505884B248AE705 /* Pods_PirateRadio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +109,7 @@
 		04FD044A7D778F1340A8512B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				127BC5939809A98CC980C8FC /* Pods_PirateRadio.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -114,6 +120,7 @@
 				428B7D1B28044D22003DBBB9 /* PirateRadio */,
 				428B7D1A28044D22003DBBB9 /* Products */,
 				04FD044A7D778F1340A8512B /* Frameworks */,
+				C333608828E94FE9A9C6CD3F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,6 +208,16 @@
 			path = YouTubeVideoListResponse;
 			sourceTree = "<group>";
 		};
+		C333608828E94FE9A9C6CD3F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DFF6F7BB8DF5E2E0BEAC4D7A /* Pods-PirateRadio.debug.xcconfig */,
+				5536966CC12FBC76B8C3361E /* Pods-PirateRadio.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,9 +225,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 428B7D2D28044D23003DBBB9 /* Build configuration list for PBXNativeTarget "PirateRadio" */;
 			buildPhases = (
+				E43E93981E905506444A91A0 /* [CP] Check Pods Manifest.lock */,
 				428B7D1528044D22003DBBB9 /* Sources */,
 				428B7D1628044D22003DBBB9 /* Frameworks */,
 				428B7D1728044D22003DBBB9 /* Resources */,
+				A0924DE51BDF882C8D9467E2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,7 +269,7 @@
 			);
 			mainGroup = 428B7D1028044D22003DBBB9;
 			packageReferences = (
-				424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
+				424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper.git" */,
 				425C9CDD2836805100D996F6 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 428B7D1A28044D22003DBBB9 /* Products */;
@@ -274,6 +293,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A0924DE51BDF882C8D9467E2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PirateRadio/Pods-PirateRadio-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PirateRadio/Pods-PirateRadio-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PirateRadio/Pods-PirateRadio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E43E93981E905506444A91A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PirateRadio-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		428B7D1528044D22003DBBB9 /* Sources */ = {
@@ -456,6 +517,7 @@
 		};
 		428B7D2E28044D23003DBBB9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFF6F7BB8DF5E2E0BEAC4D7A /* Pods-PirateRadio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -484,6 +546,7 @@
 		};
 		428B7D2F28044D23003DBBB9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5536966CC12FBC76B8C3361E /* Pods-PirateRadio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -534,7 +597,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
+		424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper.git";
 			requirement = {
@@ -555,7 +618,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
+			package = 424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper.git" */;
 			productName = YouTubeiOSPlayerHelper;
 		};
 		425C9CDE2836805100D996F6 /* Toast */ = {

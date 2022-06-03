@@ -1,6 +1,0 @@
-framework module Pods_PirateRadio {
-  umbrella header "Pods-PirateRadio-umbrella.h"
-
-  export *
-  module * { export * }
-}
