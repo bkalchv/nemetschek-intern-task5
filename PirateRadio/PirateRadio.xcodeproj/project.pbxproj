@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4201CE7C284A38D40091B484 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 4201CE7B284A38D40091B484 /* Realm */; };
+		4201CE7E284A38D40091B484 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4201CE7D284A38D40091B484 /* RealmSwift */; };
+		4201CE80284A41C10091B484 /* PlaylistRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201CE7F284A41C10091B484 /* PlaylistRealm.swift */; };
 		423AAC3D2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423AAC3C2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift */; };
 		423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423AAC3E2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift */; };
-		4247AD168505884B248AE705 /* Pods_PirateRadio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127BC5939809A98CC980C8FC /* Pods_PirateRadio.framework */; };
 		424B6A7528046029009A043E /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */; };
 		425C9CDF2836805100D996F6 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 425C9CDE2836805100D996F6 /* Toast */; };
 		427E6FE42844E7490049C4FF /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E6FE32844E7490049C4FF /* AudioPlayer.swift */; };
@@ -46,10 +48,12 @@
 		42C86E0F283BA7A40075C72A /* YouTubeVideoContentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E0E283BA7A40075C72A /* YouTubeVideoContentDetails.swift */; };
 		42C86E11283BA8BB0075C72A /* YouTubeVideoContentRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */; };
 		42CE7AFC283FBBFE00378A1A /* MusicPlayerSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */; };
+		42EE883F284DEF020078E389 /* SongRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE883E284DEF020078E389 /* SongRealm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		127BC5939809A98CC980C8FC /* Pods_PirateRadio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PirateRadio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4201CE7F284A41C10091B484 /* PlaylistRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistRealm.swift; sourceTree = "<group>"; };
 		423AAC3C2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeToMp3APIResponseItem.swift; sourceTree = "<group>"; };
 		423AAC3E2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeToMp3ResponseUploadedAt.swift; sourceTree = "<group>"; };
 		427E6FE32844E7490049C4FF /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 		42C86E0E283BA7A40075C72A /* YouTubeVideoContentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentDetails.swift; sourceTree = "<group>"; };
 		42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentRating.swift; sourceTree = "<group>"; };
 		42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerSongsViewController.swift; sourceTree = "<group>"; };
+		42EE883E284DEF020078E389 /* SongRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRealm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +102,8 @@
 			files = (
 				425C9CDF2836805100D996F6 /* Toast in Frameworks */,
 				424B6A7528046029009A043E /* YouTubeiOSPlayerHelper in Frameworks */,
-				4247AD168505884B248AE705 /* Pods_PirateRadio.framework in Frameworks */,
+				4201CE7C284A38D40091B484 /* Realm in Frameworks */,
+				4201CE7E284A38D40091B484 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +178,8 @@
 			children = (
 				429EA85C2840C16F00C79684 /* DownloadedMP3sFileReader.swift */,
 				429EA8552840BBFC00C79684 /* Song.swift */,
+				42EE883E284DEF020078E389 /* SongRealm.swift */,
+				4201CE7F284A41C10091B484 /* PlaylistRealm.swift */,
 				429EA8622841162C00C79684 /* MusicPlayerLibraryMenuItem.swift */,
 			);
 			path = MusicPlayerModels;
@@ -212,11 +220,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 428B7D2D28044D23003DBBB9 /* Build configuration list for PBXNativeTarget "PirateRadio" */;
 			buildPhases = (
-				E43E93981E905506444A91A0 /* [CP] Check Pods Manifest.lock */,
 				428B7D1528044D22003DBBB9 /* Sources */,
 				428B7D1628044D22003DBBB9 /* Frameworks */,
 				428B7D1728044D22003DBBB9 /* Resources */,
-				A0924DE51BDF882C8D9467E2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -226,6 +232,8 @@
 			packageProductDependencies = (
 				424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */,
 				425C9CDE2836805100D996F6 /* Toast */,
+				4201CE7B284A38D40091B484 /* Realm */,
+				4201CE7D284A38D40091B484 /* RealmSwift */,
 			);
 			productName = PirateRadio;
 			productReference = 428B7D1928044D22003DBBB9 /* PirateRadio.app */;
@@ -258,6 +266,7 @@
 			packageReferences = (
 				424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 				425C9CDD2836805100D996F6 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				4201CE7A284A38D40091B484 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 428B7D1A28044D22003DBBB9 /* Products */;
 			projectDirPath = "";
@@ -281,54 +290,13 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		A0924DE51BDF882C8D9467E2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PirateRadio/Pods-PirateRadio-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PirateRadio/Pods-PirateRadio-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PirateRadio/Pods-PirateRadio-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E43E93981E905506444A91A0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PirateRadio-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		428B7D1528044D22003DBBB9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				429EA8612841091C00C79684 /* MusicPlayerLibraryCell.swift in Sources */,
+				4201CE80284A41C10091B484 /* PlaylistRealm.swift in Sources */,
 				429533CF282C10840007EA6C /* SearchBarViewController.swift in Sources */,
 				427E6FE42844E7490049C4FF /* AudioPlayer.swift in Sources */,
 				429533BD282BEAB60007EA6C /* YouTubeSearchResultSnippet.swift in Sources */,
@@ -355,6 +323,7 @@
 				429533CD282C02600007EA6C /* SearchResultTableViewController.swift in Sources */,
 				429533B9282BE9DD0007EA6C /* YouTubeSearchResultItem.swift in Sources */,
 				42C86E0F283BA7A40075C72A /* YouTubeVideoContentDetails.swift in Sources */,
+				42EE883F284DEF020078E389 /* SongRealm.swift in Sources */,
 				429533C9282BFF680007EA6C /* Constants.swift in Sources */,
 				42C86E0A283BA60E0075C72A /* YouTubeListResponseItem.swift in Sources */,
 				423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */,
@@ -582,6 +551,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4201CE7A284A38D40091B484 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.0;
+			};
+		};
 		424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper.git";
@@ -601,6 +578,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4201CE7B284A38D40091B484 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4201CE7A284A38D40091B484 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		4201CE7D284A38D40091B484 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4201CE7A284A38D40091B484 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 424B6A7328046029009A043E /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;

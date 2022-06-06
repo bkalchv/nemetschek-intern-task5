@@ -38,8 +38,9 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     private func createAVAudioPlayer() {
+        guard let localURL = self.currentSong.localURL else { return }
         do {
-            try audioPlayer = AVAudioPlayer(contentsOf: self.currentSong.localURL)
+            try audioPlayer = AVAudioPlayer(contentsOf: localURL)
         } catch let error {
             print(error)
         }

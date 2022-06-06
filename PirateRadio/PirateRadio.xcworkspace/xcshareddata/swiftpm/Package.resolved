@@ -1,25 +1,41 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Toast",
-        "repositoryURL": "https://github.com/scalessec/Toast-Swift",
-        "state": {
-          "branch": "master",
-          "revision": "0c9493eeacb102cc614da385cfaaf475379f4ab4",
-          "version": null
-        }
-      },
-      {
-        "package": "YouTubeiOSPlayerHelper",
-        "repositoryURL": "https://github.com/youtube/youtube-ios-player-helper.git",
-        "state": {
-          "branch": null,
-          "revision": "f57129cd4380ec0a74dd3a59da3270a1d653d59b",
-          "version": "1.0.4"
-        }
+  "pins" : [
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core",
+      "state" : {
+        "revision" : "9e2f3cb730a546ff33e95c563a85e3cf61f17d17",
+        "version" : "12.0.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift.git",
+      "state" : {
+        "revision" : "0762a9eb77929fdfbefa476ae62afed2b3e41bae",
+        "version" : "10.27.0"
+      }
+    },
+    {
+      "identity" : "toast-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scalessec/Toast-Swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "0c9493eeacb102cc614da385cfaaf475379f4ab4"
+      }
+    },
+    {
+      "identity" : "youtube-ios-player-helper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/youtube/youtube-ios-player-helper.git",
+      "state" : {
+        "revision" : "f57129cd4380ec0a74dd3a59da3270a1d653d59b",
+        "version" : "1.0.4"
+      }
+    }
+  ],
+  "version" : 2
 }

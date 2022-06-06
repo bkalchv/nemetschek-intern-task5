@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class Song: Equatable {
     var title: String = ""
