@@ -44,6 +44,13 @@
 		42BBDC622850854C0087B96E /* RealmWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC612850854C0087B96E /* RealmWrapper.swift */; };
 		42BBDC642850C9370087B96E /* LASTFM_API_KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC632850C9370087B96E /* LASTFM_API_KEY.swift */; };
 		42BBDC662850CA8E0087B96E /* YOUTUBE_API_KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC652850CA8E0087B96E /* YOUTUBE_API_KEY.swift */; };
+		42BBDC682850D0BA0087B96E /* LastFMFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC672850D0BA0087B96E /* LastFMFetcher.swift */; };
+		42BBDC6B2850DBD40087B96E /* LastFMTrackSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC6A2850DBD40087B96E /* LastFMTrackSearchResponse.swift */; };
+		42BBDC6D2850DCFC0087B96E /* LastFMTrackSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC6C2850DCFC0087B96E /* LastFMTrackSearchResults.swift */; };
+		42BBDC6F2850DEFF0087B96E /* LastFMTrackSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC6E2850DEFF0087B96E /* LastFMTrackSearchQuery.swift */; };
+		42BBDC712850DF2B0087B96E /* LastFMTrackSearchTrackmatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC702850DF2B0087B96E /* LastFMTrackSearchTrackmatches.swift */; };
+		42BBDC732850E0FD0087B96E /* LastFMTrackmatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC722850E0FD0087B96E /* LastFMTrackmatch.swift */; };
+		42BBDC752850E16C0087B96E /* LastFMTrackmatchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC742850E16C0087B96E /* LastFMTrackmatchImage.swift */; };
 		42C86E08283BA5B70075C72A /* YouTubeVideoListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E07283BA5B70075C72A /* YouTubeVideoListResponse.swift */; };
 		42C86E0A283BA60E0075C72A /* YouTubeListResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E09283BA60E0075C72A /* YouTubeListResponseItem.swift */; };
 		42C86E0D283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E0C283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift */; };
@@ -89,6 +96,13 @@
 		42BBDC612850854C0087B96E /* RealmWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWrapper.swift; sourceTree = "<group>"; };
 		42BBDC632850C9370087B96E /* LASTFM_API_KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LASTFM_API_KEY.swift; sourceTree = "<group>"; };
 		42BBDC652850CA8E0087B96E /* YOUTUBE_API_KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOUTUBE_API_KEY.swift; sourceTree = "<group>"; };
+		42BBDC672850D0BA0087B96E /* LastFMFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMFetcher.swift; sourceTree = "<group>"; };
+		42BBDC6A2850DBD40087B96E /* LastFMTrackSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMTrackSearchResponse.swift; sourceTree = "<group>"; };
+		42BBDC6C2850DCFC0087B96E /* LastFMTrackSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMTrackSearchResults.swift; sourceTree = "<group>"; };
+		42BBDC6E2850DEFF0087B96E /* LastFMTrackSearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMTrackSearchQuery.swift; sourceTree = "<group>"; };
+		42BBDC702850DF2B0087B96E /* LastFMTrackSearchTrackmatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMTrackSearchTrackmatches.swift; sourceTree = "<group>"; };
+		42BBDC722850E0FD0087B96E /* LastFMTrackmatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMTrackmatch.swift; sourceTree = "<group>"; };
+		42BBDC742850E16C0087B96E /* LastFMTrackmatchImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMTrackmatchImage.swift; sourceTree = "<group>"; };
 		42C86E07283BA5B70075C72A /* YouTubeVideoListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoListResponse.swift; sourceTree = "<group>"; };
 		42C86E09283BA60E0075C72A /* YouTubeListResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeListResponseItem.swift; sourceTree = "<group>"; };
 		42C86E0C283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoListResponsePageInfo.swift; sourceTree = "<group>"; };
@@ -153,8 +167,9 @@
 				429EA85A2840BEC300C79684 /* DownloadedSongsTableViewController.swift */,
 				427E6FE32844E7490049C4FF /* AudioPlayer.swift */,
 				429EA8582840BE8800C79684 /* SongTableViewCell.swift */,
-				42BBDC612850854C0087B96E /* RealmWrapper.swift */,
 				42AC3DD0282E728F003F1695 /* Fetcher.swift */,
+				42BBDC672850D0BA0087B96E /* LastFMFetcher.swift */,
+				42BBDC612850854C0087B96E /* RealmWrapper.swift */,
 				428B7D2228044D22003DBBB9 /* Main.storyboard */,
 				428B7D2528044D23003DBBB9 /* Assets.xcassets */,
 				428B7D2728044D23003DBBB9 /* LaunchScreen.storyboard */,
@@ -170,6 +185,7 @@
 		429533B7282BE9BC0007EA6C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				42BBDC692850DB4B0087B96E /* LastFMTrackSearchResponse */,
 				42C86E06283BA58C0075C72A /* YouTubeSearchResponse */,
 				42C86E0B283BA6BB0075C72A /* YouTubeVideoListResponse */,
 				429EA8572840BC0800C79684 /* MusicPlayerModels */,
@@ -186,6 +202,19 @@
 				429EA8622841162C00C79684 /* MusicPlayerLibraryMenuItem.swift */,
 			);
 			path = MusicPlayerModels;
+			sourceTree = "<group>";
+		};
+		42BBDC692850DB4B0087B96E /* LastFMTrackSearchResponse */ = {
+			isa = PBXGroup;
+			children = (
+				42BBDC6A2850DBD40087B96E /* LastFMTrackSearchResponse.swift */,
+				42BBDC6C2850DCFC0087B96E /* LastFMTrackSearchResults.swift */,
+				42BBDC6E2850DEFF0087B96E /* LastFMTrackSearchQuery.swift */,
+				42BBDC702850DF2B0087B96E /* LastFMTrackSearchTrackmatches.swift */,
+				42BBDC722850E0FD0087B96E /* LastFMTrackmatch.swift */,
+				42BBDC742850E16C0087B96E /* LastFMTrackmatchImage.swift */,
+			);
+			path = LastFMTrackSearchResponse;
 			sourceTree = "<group>";
 		};
 		42C86E06283BA58C0075C72A /* YouTubeSearchResponse */ = {
@@ -307,7 +336,10 @@
 				429EA8632841162C00C79684 /* MusicPlayerLibraryMenuItem.swift in Sources */,
 				42BBDC642850C9370087B96E /* LASTFM_API_KEY.swift in Sources */,
 				429E739B282D0A2F0073899E /* SearchResultCell.swift in Sources */,
+				42BBDC682850D0BA0087B96E /* LastFMFetcher.swift in Sources */,
 				429533C3282BF1FA0007EA6C /* YouTubeSearchListResponse.swift in Sources */,
+				42BBDC6B2850DBD40087B96E /* LastFMTrackSearchResponse.swift in Sources */,
+				42BBDC712850DF2B0087B96E /* LastFMTrackSearchTrackmatches.swift in Sources */,
 				428B7D2128044D22003DBBB9 /* VideoPlayerViewController.swift in Sources */,
 				429533C5282BF2540007EA6C /* YouTubeSearchListResponsePageInfo.swift in Sources */,
 				423AAC3D2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift in Sources */,
@@ -318,6 +350,7 @@
 				42C86E08283BA5B70075C72A /* YouTubeVideoListResponse.swift in Sources */,
 				429533BB282BEA5F0007EA6C /* YouTubeSearchResultID.swift in Sources */,
 				428B7D1F28044D22003DBBB9 /* SceneDelegate.swift in Sources */,
+				42BBDC6F2850DEFF0087B96E /* LastFMTrackSearchQuery.swift in Sources */,
 				429E739D282D32600073899E /* Extensions.swift in Sources */,
 				429EA85D2840C16F00C79684 /* DownloadedMP3sFileReader.swift in Sources */,
 				429EA8592840BE8800C79684 /* SongTableViewCell.swift in Sources */,
@@ -326,14 +359,17 @@
 				429533CD282C02600007EA6C /* SearchResultTableViewController.swift in Sources */,
 				429533B9282BE9DD0007EA6C /* YouTubeSearchResultItem.swift in Sources */,
 				42BBDC622850854C0087B96E /* RealmWrapper.swift in Sources */,
+				42BBDC732850E0FD0087B96E /* LastFMTrackmatch.swift in Sources */,
 				42C86E0F283BA7A40075C72A /* YouTubeVideoContentDetails.swift in Sources */,
 				429533C9282BFF680007EA6C /* Constants.swift in Sources */,
 				42C86E0A283BA60E0075C72A /* YouTubeListResponseItem.swift in Sources */,
 				423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */,
+				42BBDC6D2850DCFC0087B96E /* LastFMTrackSearchResults.swift in Sources */,
 				42AC3DD1282E728F003F1695 /* Fetcher.swift in Sources */,
 				429EA8562840BBFC00C79684 /* Song.swift in Sources */,
 				42BBDC662850CA8E0087B96E /* YOUTUBE_API_KEY.swift in Sources */,
 				42CE7AFC283FBBFE00378A1A /* MusicPlayerSongsViewController.swift in Sources */,
+				42BBDC752850E16C0087B96E /* LastFMTrackmatchImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
