@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFAudio
+import RealmSwift
 
 protocol SongPlayerDelegate: AnyObject {
     func play(song: Song)
@@ -21,9 +22,15 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
         songs = DownloadedMP3sFileReader.downloadedSongsSortedByDateOfCreation()
     }
     
+    private func updateTableDataFromDataBase() {
+        if let downloadedSongs = RealmWrapper.allDownloadedSongs() {
+            songs = Array(downloadedSongs)
+        }        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateTableData()
+        updateTableDataFromDataBase()
         NotificationCenter.default.addObserver(self, selector: #selector(didFinishDownload(notification:)), name: .DidFinishDownloadingMP3File, object: nil)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,7 +40,7 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
     }
     
     @objc func didFinishDownload(notification: Notification) {
-        updateTableData()
+        updateTableDataFromDataBase()
         self.tableView.reloadData()
     }
     // MARK: - Table view data source

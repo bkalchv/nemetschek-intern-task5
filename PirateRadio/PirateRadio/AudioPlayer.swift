@@ -37,8 +37,19 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         self.updateAudioPlayersView()
     }
     
+    private func constructSongLocalURL(filename: String) -> URL? {
+        let songLocalURL = Constants.YOUTUBE_TO_MP3_DOWNLOADS_DIRECTORY_URL.appendingPathComponent(filename)
+        
+        if FileManager.default.fileExists(atPath: songLocalURL.path) {
+            return songLocalURL
+        }
+        
+        return nil
+    }
+    
     private func createAVAudioPlayer() {
-        guard let localURL = self.currentSong.localURL else { return }
+        let filename = currentSong.filename
+        guard let localURL = constructSongLocalURL(filename: filename) else { return }
         do {
             try audioPlayer = AVAudioPlayer(contentsOf: localURL)
         } catch let error {

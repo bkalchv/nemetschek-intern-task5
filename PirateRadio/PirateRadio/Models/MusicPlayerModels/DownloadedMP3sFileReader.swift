@@ -70,7 +70,6 @@ class DownloadedMP3sFileReader {
             return filename
         }
     }
-
     
     static public func downloadedSongsSortedByDateOfCreation() -> [Song] {
         guard let downloadedMP3FilesURLs = downloadedMP3FilesURLsSortedByDescendingDateOfCreation() else { return [] }
@@ -82,7 +81,7 @@ class DownloadedMP3sFileReader {
             let audioAsset = AVAsset(url: fileURL)
             let duration = audioAsset.duration.positionalTime
             
-            return Song(title: title, artist: artist, duration: duration, localURL: fileURL)
+            return Song.create(title: title, artist: artist, duration: duration, filename: filename)
         }
     }
 }

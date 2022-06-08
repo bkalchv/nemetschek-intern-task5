@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4201CE7C284A38D40091B484 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 4201CE7B284A38D40091B484 /* Realm */; };
 		4201CE7E284A38D40091B484 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4201CE7D284A38D40091B484 /* RealmSwift */; };
-		4201CE80284A41C10091B484 /* PlaylistRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201CE7F284A41C10091B484 /* PlaylistRealm.swift */; };
+		4201CE80284A41C10091B484 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4201CE7F284A41C10091B484 /* Playlist.swift */; };
 		423AAC3D2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423AAC3C2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift */; };
 		423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423AAC3E2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift */; };
 		424B6A7528046029009A043E /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 424B6A7428046029009A043E /* YouTubeiOSPlayerHelper */; };
@@ -42,18 +42,18 @@
 		429EA8632841162C00C79684 /* MusicPlayerLibraryMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EA8622841162C00C79684 /* MusicPlayerLibraryMenuItem.swift */; };
 		42AC3DCF282E715F003F1695 /* API_KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DCE282E715F003F1695 /* API_KEY.swift */; };
 		42AC3DD1282E728F003F1695 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DD0282E728F003F1695 /* Fetcher.swift */; };
+		42BBDC622850854C0087B96E /* RealmWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC612850854C0087B96E /* RealmWrapper.swift */; };
 		42C86E08283BA5B70075C72A /* YouTubeVideoListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E07283BA5B70075C72A /* YouTubeVideoListResponse.swift */; };
 		42C86E0A283BA60E0075C72A /* YouTubeListResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E09283BA60E0075C72A /* YouTubeListResponseItem.swift */; };
 		42C86E0D283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E0C283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift */; };
 		42C86E0F283BA7A40075C72A /* YouTubeVideoContentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E0E283BA7A40075C72A /* YouTubeVideoContentDetails.swift */; };
 		42C86E11283BA8BB0075C72A /* YouTubeVideoContentRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */; };
 		42CE7AFC283FBBFE00378A1A /* MusicPlayerSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */; };
-		42EE883F284DEF020078E389 /* SongRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE883E284DEF020078E389 /* SongRealm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		127BC5939809A98CC980C8FC /* Pods_PirateRadio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PirateRadio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4201CE7F284A41C10091B484 /* PlaylistRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistRealm.swift; sourceTree = "<group>"; };
+		4201CE7F284A41C10091B484 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		423AAC3C2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeToMp3APIResponseItem.swift; sourceTree = "<group>"; };
 		423AAC3E2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeToMp3ResponseUploadedAt.swift; sourceTree = "<group>"; };
 		427E6FE32844E7490049C4FF /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
@@ -86,13 +86,13 @@
 		429EA8622841162C00C79684 /* MusicPlayerLibraryMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerLibraryMenuItem.swift; sourceTree = "<group>"; };
 		42AC3DCE282E715F003F1695 /* API_KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_KEY.swift; sourceTree = "<group>"; };
 		42AC3DD0282E728F003F1695 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		42BBDC612850854C0087B96E /* RealmWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWrapper.swift; sourceTree = "<group>"; };
 		42C86E07283BA5B70075C72A /* YouTubeVideoListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoListResponse.swift; sourceTree = "<group>"; };
 		42C86E09283BA60E0075C72A /* YouTubeListResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeListResponseItem.swift; sourceTree = "<group>"; };
 		42C86E0C283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoListResponsePageInfo.swift; sourceTree = "<group>"; };
 		42C86E0E283BA7A40075C72A /* YouTubeVideoContentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentDetails.swift; sourceTree = "<group>"; };
 		42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentRating.swift; sourceTree = "<group>"; };
 		42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerSongsViewController.swift; sourceTree = "<group>"; };
-		42EE883E284DEF020078E389 /* SongRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRealm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +151,7 @@
 				429EA85A2840BEC300C79684 /* DownloadedSongsTableViewController.swift */,
 				427E6FE32844E7490049C4FF /* AudioPlayer.swift */,
 				429EA8582840BE8800C79684 /* SongTableViewCell.swift */,
+				42BBDC612850854C0087B96E /* RealmWrapper.swift */,
 				42AC3DD0282E728F003F1695 /* Fetcher.swift */,
 				428B7D2228044D22003DBBB9 /* Main.storyboard */,
 				428B7D2528044D23003DBBB9 /* Assets.xcassets */,
@@ -178,8 +179,7 @@
 			children = (
 				429EA85C2840C16F00C79684 /* DownloadedMP3sFileReader.swift */,
 				429EA8552840BBFC00C79684 /* Song.swift */,
-				42EE883E284DEF020078E389 /* SongRealm.swift */,
-				4201CE7F284A41C10091B484 /* PlaylistRealm.swift */,
+				4201CE7F284A41C10091B484 /* Playlist.swift */,
 				429EA8622841162C00C79684 /* MusicPlayerLibraryMenuItem.swift */,
 			);
 			path = MusicPlayerModels;
@@ -296,7 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				429EA8612841091C00C79684 /* MusicPlayerLibraryCell.swift in Sources */,
-				4201CE80284A41C10091B484 /* PlaylistRealm.swift in Sources */,
+				4201CE80284A41C10091B484 /* Playlist.swift in Sources */,
 				429533CF282C10840007EA6C /* SearchBarViewController.swift in Sources */,
 				427E6FE42844E7490049C4FF /* AudioPlayer.swift in Sources */,
 				429533BD282BEAB60007EA6C /* YouTubeSearchResultSnippet.swift in Sources */,
@@ -322,8 +322,8 @@
 				42C86E0D283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift in Sources */,
 				429533CD282C02600007EA6C /* SearchResultTableViewController.swift in Sources */,
 				429533B9282BE9DD0007EA6C /* YouTubeSearchResultItem.swift in Sources */,
+				42BBDC622850854C0087B96E /* RealmWrapper.swift in Sources */,
 				42C86E0F283BA7A40075C72A /* YouTubeVideoContentDetails.swift in Sources */,
-				42EE883F284DEF020078E389 /* SongRealm.swift in Sources */,
 				429533C9282BFF680007EA6C /* Constants.swift in Sources */,
 				42C86E0A283BA60E0075C72A /* YouTubeListResponseItem.swift in Sources */,
 				423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */,
