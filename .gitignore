@@ -88,3 +88,7 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# App's API_KEYS
+PirateRadio/PirateRadio/YOUTUBE_API_KEY.swift
+PirateRadio/PirateRadio/LASTFM_API_KEY.swift
