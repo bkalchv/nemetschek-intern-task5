@@ -40,7 +40,7 @@
 		429EA85F284108D000C79684 /* MusicPlayerLibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EA85E284108D000C79684 /* MusicPlayerLibraryTableViewController.swift */; };
 		429EA8612841091C00C79684 /* MusicPlayerLibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EA8602841091C00C79684 /* MusicPlayerLibraryCell.swift */; };
 		429EA8632841162C00C79684 /* MusicPlayerLibraryMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EA8622841162C00C79684 /* MusicPlayerLibraryMenuItem.swift */; };
-		42AC3DCF282E715F003F1695 /* API_KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DCE282E715F003F1695 /* API_KEY.swift */; };
+		42AC3DCF282E715F003F1695 /* YOUTUBE_API_KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DCE282E715F003F1695 /* YOUTUBE_API_KEY.swift */; };
 		42AC3DD1282E728F003F1695 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DD0282E728F003F1695 /* Fetcher.swift */; };
 		42BBDC622850854C0087B96E /* RealmWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC612850854C0087B96E /* RealmWrapper.swift */; };
 		42C86E08283BA5B70075C72A /* YouTubeVideoListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E07283BA5B70075C72A /* YouTubeVideoListResponse.swift */; };
@@ -84,7 +84,7 @@
 		429EA85E284108D000C79684 /* MusicPlayerLibraryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerLibraryTableViewController.swift; sourceTree = "<group>"; };
 		429EA8602841091C00C79684 /* MusicPlayerLibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerLibraryCell.swift; sourceTree = "<group>"; };
 		429EA8622841162C00C79684 /* MusicPlayerLibraryMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerLibraryMenuItem.swift; sourceTree = "<group>"; };
-		42AC3DCE282E715F003F1695 /* API_KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_KEY.swift; sourceTree = "<group>"; };
+		42AC3DCE282E715F003F1695 /* YOUTUBE_API_KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOUTUBE_API_KEY.swift; sourceTree = "<group>"; };
 		42AC3DD0282E728F003F1695 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		42BBDC612850854C0087B96E /* RealmWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWrapper.swift; sourceTree = "<group>"; };
 		42C86E07283BA5B70075C72A /* YouTubeVideoListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoListResponse.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 				428B7D2528044D23003DBBB9 /* Assets.xcassets */,
 				428B7D2728044D23003DBBB9 /* LaunchScreen.storyboard */,
 				428B7D2A28044D23003DBBB9 /* Info.plist */,
-				42AC3DCE282E715F003F1695 /* API_KEY.swift */,
+				42AC3DCE282E715F003F1695 /* YOUTUBE_API_KEY.swift */,
 				429533C8282BFF680007EA6C /* Constants.swift */,
 				429E739C282D32600073899E /* Extensions.swift */,
 			);
@@ -313,7 +313,7 @@
 				42C86E11283BA8BB0075C72A /* YouTubeVideoContentRating.swift in Sources */,
 				42C86E08283BA5B70075C72A /* YouTubeVideoListResponse.swift in Sources */,
 				429533BB282BEA5F0007EA6C /* YouTubeSearchResultID.swift in Sources */,
-				42AC3DCF282E715F003F1695 /* API_KEY.swift in Sources */,
+				42AC3DCF282E715F003F1695 /* YOUTUBE_API_KEY.swift in Sources */,
 				428B7D1F28044D22003DBBB9 /* SceneDelegate.swift in Sources */,
 				429E739D282D32600073899E /* Extensions.swift in Sources */,
 				429EA85D2840C16F00C79684 /* DownloadedMP3sFileReader.swift in Sources */,

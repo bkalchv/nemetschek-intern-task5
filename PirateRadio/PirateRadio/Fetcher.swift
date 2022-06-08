@@ -33,7 +33,7 @@ class Fetcher {
         let queryItems = [
             URLQueryItem(name: "part", value: "contentDetails"),
             URLQueryItem(name: "id", value: videoIds.joined(separator: ",")),
-            URLQueryItem(name: "key", value: API_KEY.value)
+            URLQueryItem(name: "key", value: YOUTUBE_API_KEY.value)
         ]
         
         youTubeVideoListAPIURL.queryItems = queryItems
@@ -142,7 +142,7 @@ class Fetcher {
             URLQueryItem(name: "order", value: "viewCount"),
             URLQueryItem(name: "q", value: searchText),
             URLQueryItem(name: "type", value: "video"),
-            URLQueryItem(name: "key", value: API_KEY.value)
+            URLQueryItem(name: "key", value: YOUTUBE_API_KEY.value)
         ]
         
         if let nextPageID = nextPageID {
