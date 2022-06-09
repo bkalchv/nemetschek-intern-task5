@@ -69,6 +69,8 @@ class LastFMFetcher {
                 }
             }
             
+            dataTask?.resume()
+            print("DataTask started")
         }
     }
 }
