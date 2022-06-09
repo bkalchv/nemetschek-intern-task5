@@ -29,6 +29,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     }
     var gestureTimer: Timer? = nil
     private var filenameForDownload: [WKDownload : String] = [:]
+    var lastFMFetcher: LastFMFetcher? = nil
        
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         ytPlayerView.delegate = self
         setupDownloadButtonsWebView()
         setupPirateModeView()
+        lastFMFetcher = LastFMFetcher()
         
         NotificationCenter.default.addObserver(self, selector: #selector(activatePirateMode), name: .PirateModeRequirementsFulfilledNotification, object: nil)
     }
@@ -220,11 +222,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         filenameForDownload[download] = suggestedFilename
         completionHandler(downloadLocation)
     }
-    
-    private func extractFilenameFromURL(url: URL) -> String {
-        return url.deletingPathExtension().lastPathComponent
-    }
-    
+       
     private func extractArtistFromFilename(filename: String) -> String {
         let delimiter = "-"
         if filename.contains(delimiter) {
@@ -238,8 +236,9 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     private func extractTitleFromFilename(filename: String) -> String {
         let delimiter: Character = "-"
         if let delimiterFirstAppearance = filename.firstIndex(of: delimiter) {
-            
-            let title = String(filename[filename.index(after: delimiterFirstAppearance)...])
+            var title = String(filename[filename.index(after: delimiterFirstAppearance)...])
+            title = (title as NSString).deletingPathExtension
+            title = title.replacingOccurrences(of: "\\s?\\([\\w\\s]*|[\\S]*\\)", with: "", options: .regularExpression)
             return title.trimmingCharacters(in: .whitespaces)
         } else {
             return filename
@@ -260,8 +259,14 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         let filename = filenameForDownload[download]!
         let fileURL = Constants.YOUTUBE_TO_MP3_DOWNLOADS_DIRECTORY_URL.appendingPathComponent(filename)
         let song = Song.create(title: self.extractTitleFromFilename(filename: filename), artist: self.extractArtistFromFilename(filename: filename), duration: self.durationForFile(url: fileURL), filename: filename)
-        // write to database
+        // TODO: write to database
         RealmWrapper.addSong(song)
+        
+        if song.artist != Constants.SONG_DEFAULT_ARTIST_VALUE {
+            lastFMFetcher?.executeLastFMTrackSearchAPI(songName: song.title, songArtist: song.artist)
+        } else {
+            lastFMFetcher?.executeLastFMTrackSearchAPI(songName: song.title)
+        }
         
         NotificationCenter.default.post(name: .DidFinishDownloadingMP3File, object: nil)
     }
