@@ -57,6 +57,7 @@
 		42C86E0F283BA7A40075C72A /* YouTubeVideoContentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E0E283BA7A40075C72A /* YouTubeVideoContentDetails.swift */; };
 		42C86E11283BA8BB0075C72A /* YouTubeVideoContentRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */; };
 		42CE7AFC283FBBFE00378A1A /* MusicPlayerSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */; };
+		42DBDCEE28520A4F00F56B9E /* LastFMTrackSearchAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCED28520A4F00F56B9E /* LastFMTrackSearchAttr.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		42C86E0E283BA7A40075C72A /* YouTubeVideoContentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentDetails.swift; sourceTree = "<group>"; };
 		42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentRating.swift; sourceTree = "<group>"; };
 		42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerSongsViewController.swift; sourceTree = "<group>"; };
+		42DBDCED28520A4F00F56B9E /* LastFMTrackSearchAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMTrackSearchAttr.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 			children = (
 				42BBDC6A2850DBD40087B96E /* LastFMTrackSearchResponse.swift */,
 				42BBDC6C2850DCFC0087B96E /* LastFMTrackSearchResults.swift */,
+				42DBDCED28520A4F00F56B9E /* LastFMTrackSearchAttr.swift */,
 				42BBDC6E2850DEFF0087B96E /* LastFMTrackSearchQuery.swift */,
 				42BBDC702850DF2B0087B96E /* LastFMTrackSearchTrackmatches.swift */,
 				42BBDC722850E0FD0087B96E /* LastFMTrackmatch.swift */,
@@ -370,6 +373,7 @@
 				42BBDC662850CA8E0087B96E /* YOUTUBE_API_KEY.swift in Sources */,
 				42CE7AFC283FBBFE00378A1A /* MusicPlayerSongsViewController.swift in Sources */,
 				42BBDC752850E16C0087B96E /* LastFMTrackmatchImage.swift in Sources */,
+				42DBDCEE28520A4F00F56B9E /* LastFMTrackSearchAttr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

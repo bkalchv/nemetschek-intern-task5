@@ -238,7 +238,9 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         if let delimiterFirstAppearance = filename.firstIndex(of: delimiter) {
             var title = String(filename[filename.index(after: delimiterFirstAppearance)...])
             title = (title as NSString).deletingPathExtension
-            title = title.replacingOccurrences(of: "\\s?\\([\\w\\s]*|[\\S]*\\)", with: "", options: .regularExpression)
+            //\s?\([\w\s]*\)| \s?\([\S]*\)
+            
+            title = title.replacingOccurrences(of: "\\s?\\([\\w\\s]*\\)|\\s?\\([\\S]*\\)", with: "", options: .regularExpression)
             return title.trimmingCharacters(in: .whitespaces)
         } else {
             return filename

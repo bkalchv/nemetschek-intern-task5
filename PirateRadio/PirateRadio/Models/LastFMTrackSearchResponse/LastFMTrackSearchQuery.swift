@@ -11,4 +11,9 @@ class LastFMTrackSearchQuery: Codable {
     var text: String
     var role: String
     var startPage: String
+    
+    enum CodingKeys: String, CodingKey {
+        case text = "#text"
+        case role, startPage
+    }
 }

@@ -46,6 +46,21 @@ class LastFMFetcher {
         return request
     }
     
+    private func updateLastValidTrackSearchResponse(forJSONString JSONString: String) {
+        let responseData = Data(JSONString.utf8)
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        do {
+            let decodedTrackSearchResponse = try decoder.decode(LastFMTrackSearchResponse.self, from: responseData)
+            self.lastValidTrackSearchResponse = decodedTrackSearchResponse
+        } catch {
+            print("Error by decoding: \(error)")
+            print("Localcized description: \(error.localizedDescription)")
+        }
+    }
+    
     public func executeLastFMTrackSearchAPI(songName: String, songArtist: String? = nil) {
         if let request = initializeLastFMTrackSearchURLRequest(songName: songName, songArtist: songArtist) {
             
@@ -55,16 +70,17 @@ class LastFMFetcher {
                     self?.dataTask = nil
                 }
                 
-                print("LastFM TrackSearch's response code \((response as! HTTPURLResponse).statusCode)")
-                if let error = error {
-                    // TODO: Erro handling?
+                print("LastFM API TrackSearch's response code \((response as! HTTPURLResponse).statusCode)")
+                    if let error = error {
+                    // TODO: Error handling?
                     print("DataTask error: \(error)")
                 } else if let data = data,
                           let response = response as? HTTPURLResponse,
                           response.statusCode == 200 {
                     if let JSONString = String(data: data, encoding: .utf8) {
-                        print(JSONString)
+                        //print(JSONString)
                         print("Fetch me")
+                        self?.updateLastValidTrackSearchResponse(forJSONString: JSONString)
                     }
                 }
             }
