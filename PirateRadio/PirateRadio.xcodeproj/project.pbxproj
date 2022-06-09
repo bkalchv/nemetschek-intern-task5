@@ -58,6 +58,16 @@
 		42C86E11283BA8BB0075C72A /* YouTubeVideoContentRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */; };
 		42CE7AFC283FBBFE00378A1A /* MusicPlayerSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */; };
 		42DBDCEE28520A4F00F56B9E /* LastFMTrackSearchAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCED28520A4F00F56B9E /* LastFMTrackSearchAttr.swift */; };
+		42DBDCF12852239600F56B9E /* TrackGetInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCF02852239600F56B9E /* TrackGetInfoResponse.swift */; };
+		42DBDCF3285223ED00F56B9E /* TrackGetInfoResponseTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCF2285223ED00F56B9E /* TrackGetInfoResponseTrack.swift */; };
+		42DBDCF5285224FC00F56B9E /* TrackGetInfoStreamable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCF4285224FC00F56B9E /* TrackGetInfoStreamable.swift */; };
+		42DBDCF72852258700F56B9E /* TrackGetInfoArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCF62852258700F56B9E /* TrackGetInfoArtist.swift */; };
+		42DBDCF9285225AF00F56B9E /* TrackGetInfoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCF8285225AF00F56B9E /* TrackGetInfoAlbum.swift */; };
+		42DBDCFB2852268C00F56B9E /* TrackGetInfoAlbumImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCFA2852268C00F56B9E /* TrackGetInfoAlbumImage.swift */; };
+		42DBDCFD285226E600F56B9E /* TrackGetInfoAlbumAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCFC285226E600F56B9E /* TrackGetInfoAlbumAttr.swift */; };
+		42DBDCFF2852271A00F56B9E /* TrackGetInfoTopTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCFE2852271900F56B9E /* TrackGetInfoTopTags.swift */; };
+		42DBDD012852275300F56B9E /* TrackGetInfoTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDD002852275300F56B9E /* TrackGetInfoTag.swift */; };
+		42DBDD03285227A000F56B9E /* TrackGetInfoWiki.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDD02285227A000F56B9E /* TrackGetInfoWiki.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +121,16 @@
 		42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentRating.swift; sourceTree = "<group>"; };
 		42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerSongsViewController.swift; sourceTree = "<group>"; };
 		42DBDCED28520A4F00F56B9E /* LastFMTrackSearchAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMTrackSearchAttr.swift; sourceTree = "<group>"; };
+		42DBDCF02852239600F56B9E /* TrackGetInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGetInfoResponse.swift; sourceTree = "<group>"; };
+		42DBDCF2285223ED00F56B9E /* TrackGetInfoResponseTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGetInfoResponseTrack.swift; sourceTree = "<group>"; };
+		42DBDCF4285224FC00F56B9E /* TrackGetInfoStreamable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGetInfoStreamable.swift; sourceTree = "<group>"; };
+		42DBDCF62852258700F56B9E /* TrackGetInfoArtist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGetInfoArtist.swift; sourceTree = "<group>"; };
+		42DBDCF8285225AF00F56B9E /* TrackGetInfoAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGetInfoAlbum.swift; sourceTree = "<group>"; };
+		42DBDCFA2852268C00F56B9E /* TrackGetInfoAlbumImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGetInfoAlbumImage.swift; sourceTree = "<group>"; };
+		42DBDCFC285226E600F56B9E /* TrackGetInfoAlbumAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGetInfoAlbumAttr.swift; sourceTree = "<group>"; };
+		42DBDCFE2852271900F56B9E /* TrackGetInfoTopTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGetInfoTopTags.swift; sourceTree = "<group>"; };
+		42DBDD002852275300F56B9E /* TrackGetInfoTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGetInfoTag.swift; sourceTree = "<group>"; };
+		42DBDD02285227A000F56B9E /* TrackGetInfoWiki.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGetInfoWiki.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +207,7 @@
 		429533B7282BE9BC0007EA6C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				42DBDCEF2852236E00F56B9E /* LastFMTrackGetInfoResponse */,
 				42BBDC692850DB4B0087B96E /* LastFMTrackSearchResponse */,
 				42C86E06283BA58C0075C72A /* YouTubeSearchResponse */,
 				42C86E0B283BA6BB0075C72A /* YouTubeVideoListResponse */,
@@ -246,6 +267,23 @@
 				42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */,
 			);
 			path = YouTubeVideoListResponse;
+			sourceTree = "<group>";
+		};
+		42DBDCEF2852236E00F56B9E /* LastFMTrackGetInfoResponse */ = {
+			isa = PBXGroup;
+			children = (
+				42DBDCF02852239600F56B9E /* TrackGetInfoResponse.swift */,
+				42DBDCF2285223ED00F56B9E /* TrackGetInfoResponseTrack.swift */,
+				42DBDCF4285224FC00F56B9E /* TrackGetInfoStreamable.swift */,
+				42DBDCF62852258700F56B9E /* TrackGetInfoArtist.swift */,
+				42DBDCF8285225AF00F56B9E /* TrackGetInfoAlbum.swift */,
+				42DBDCFA2852268C00F56B9E /* TrackGetInfoAlbumImage.swift */,
+				42DBDCFC285226E600F56B9E /* TrackGetInfoAlbumAttr.swift */,
+				42DBDCFE2852271900F56B9E /* TrackGetInfoTopTags.swift */,
+				42DBDD002852275300F56B9E /* TrackGetInfoTag.swift */,
+				42DBDD02285227A000F56B9E /* TrackGetInfoWiki.swift */,
+			);
+			path = LastFMTrackGetInfoResponse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,32 +382,42 @@
 				42BBDC6B2850DBD40087B96E /* LastFMTrackSearchResponse.swift in Sources */,
 				42BBDC712850DF2B0087B96E /* LastFMTrackSearchTrackmatches.swift in Sources */,
 				428B7D2128044D22003DBBB9 /* VideoPlayerViewController.swift in Sources */,
+				42DBDCF5285224FC00F56B9E /* TrackGetInfoStreamable.swift in Sources */,
 				429533C5282BF2540007EA6C /* YouTubeSearchListResponsePageInfo.swift in Sources */,
+				42DBDCFD285226E600F56B9E /* TrackGetInfoAlbumAttr.swift in Sources */,
 				423AAC3D2833C0A300447E3D /* YoutubeToMp3APIResponseItem.swift in Sources */,
 				428B7D1D28044D22003DBBB9 /* AppDelegate.swift in Sources */,
 				429EA85B2840BEC300C79684 /* DownloadedSongsTableViewController.swift in Sources */,
 				429EA85F284108D000C79684 /* MusicPlayerLibraryTableViewController.swift in Sources */,
 				42C86E11283BA8BB0075C72A /* YouTubeVideoContentRating.swift in Sources */,
+				42DBDCF12852239600F56B9E /* TrackGetInfoResponse.swift in Sources */,
 				42C86E08283BA5B70075C72A /* YouTubeVideoListResponse.swift in Sources */,
 				429533BB282BEA5F0007EA6C /* YouTubeSearchResultID.swift in Sources */,
 				428B7D1F28044D22003DBBB9 /* SceneDelegate.swift in Sources */,
+				42DBDD03285227A000F56B9E /* TrackGetInfoWiki.swift in Sources */,
 				42BBDC6F2850DEFF0087B96E /* LastFMTrackSearchQuery.swift in Sources */,
+				42DBDCFF2852271A00F56B9E /* TrackGetInfoTopTags.swift in Sources */,
 				429E739D282D32600073899E /* Extensions.swift in Sources */,
 				429EA85D2840C16F00C79684 /* DownloadedMP3sFileReader.swift in Sources */,
+				42DBDCFB2852268C00F56B9E /* TrackGetInfoAlbumImage.swift in Sources */,
 				429EA8592840BE8800C79684 /* SongTableViewCell.swift in Sources */,
 				429533BF282BEB4B0007EA6C /* YouTubeSearchResultSnippetThumbnails.swift in Sources */,
+				42DBDCF3285223ED00F56B9E /* TrackGetInfoResponseTrack.swift in Sources */,
 				42C86E0D283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift in Sources */,
 				429533CD282C02600007EA6C /* SearchResultTableViewController.swift in Sources */,
 				429533B9282BE9DD0007EA6C /* YouTubeSearchResultItem.swift in Sources */,
 				42BBDC622850854C0087B96E /* RealmWrapper.swift in Sources */,
+				42DBDD012852275300F56B9E /* TrackGetInfoTag.swift in Sources */,
 				42BBDC732850E0FD0087B96E /* LastFMTrackmatch.swift in Sources */,
 				42C86E0F283BA7A40075C72A /* YouTubeVideoContentDetails.swift in Sources */,
 				429533C9282BFF680007EA6C /* Constants.swift in Sources */,
 				42C86E0A283BA60E0075C72A /* YouTubeListResponseItem.swift in Sources */,
+				42DBDCF9285225AF00F56B9E /* TrackGetInfoAlbum.swift in Sources */,
 				423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */,
 				42BBDC6D2850DCFC0087B96E /* LastFMTrackSearchResults.swift in Sources */,
 				42AC3DD1282E728F003F1695 /* Fetcher.swift in Sources */,
 				429EA8562840BBFC00C79684 /* Song.swift in Sources */,
+				42DBDCF72852258700F56B9E /* TrackGetInfoArtist.swift in Sources */,
 				42BBDC662850CA8E0087B96E /* YOUTUBE_API_KEY.swift in Sources */,
 				42CE7AFC283FBBFE00378A1A /* MusicPlayerSongsViewController.swift in Sources */,
 				42BBDC752850E16C0087B96E /* LastFMTrackmatchImage.swift in Sources */,
