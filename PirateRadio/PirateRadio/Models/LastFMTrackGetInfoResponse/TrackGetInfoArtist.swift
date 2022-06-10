@@ -9,6 +9,6 @@ import Foundation
 
 class TrackGetInfoArtist: Codable {
     var name: String
-    var mbid: String
+    var mbid: String?
     var url: String
 }
