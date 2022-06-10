@@ -9,13 +9,39 @@ import Foundation
 
 class LastFMFetcher {
     
-    var lastValidTrackSearchResponse: LastFMTrackSearchResponse? = nil
+    //var lastValidTrackSearchResponse: LastFMTrackSearchResponse? = nil
     var dataTask: URLSessionDataTask? = nil
+        
+    private func initializeLastFMAPITrackGetInfoURL(trackName: String, artistName: String) -> URL? {
+        var lastFMAPITrackGetInfoURL = URLComponents(string: Constants.LASTFM_API_URL)!
+        let queryItems = [
+            Constants.LASTFM_API_TRACK_GET_INFO_QUERY_ITEM,
+            URLQueryItem(name: "api_key", value: LASTFM_API_KEY.value),
+            URLQueryItem(name: "track", value: trackName),
+            URLQueryItem(name: "artist", value: artistName),
+            URLQueryItem(name: "format", value: "json")
+        ]
+        lastFMAPITrackGetInfoURL.queryItems = queryItems
+        
+        return lastFMAPITrackGetInfoURL.url
+    }
     
-    private func initializeLastFMTrackSearchAPIURL(songName: String, songArtist: String? = nil) -> URL? {
-        var lastFMSearchTrackAPIURL = URLComponents(string: Constants.LASTFM_SEARCH_TRACK_API_URL)!
+    
+    private func initializeLastFMAPITrackGetInfoURLRequest(trackName: String, artistName: String) -> URLRequest? {
+        guard let lastFMAPITrackGetInfoURL = initializeLastFMAPITrackGetInfoURL(trackName: trackName, artistName: artistName) else { return nil }
+        print(lastFMAPITrackGetInfoURL.absoluteString)
+        
+        var request = URLRequest(url: lastFMAPITrackGetInfoURL)
+        
+        setRequestDefaultValues(request: &request)
+        
+        return request
+    }
+    
+    private func initializeLastFMAPITrackSearchURL(songName: String, songArtist: String? = nil) -> URL? {
+        var lastFMAPITrackSearchURL = URLComponents(string: Constants.LASTFM_API_URL)!
         var queryItems = [
-            Constants.LASTFM_SEARCH_TRACK_API_SEARCH_TRACK_QUERY_ITEM,
+            Constants.LASTFM_API_TRACK_SEARCH_QUERY_ITEM,
             URLQueryItem(name: "track", value: songName),
             URLQueryItem(name: "api_key", value: LASTFM_API_KEY.value),
             URLQueryItem(name: "format", value: "json")
@@ -23,9 +49,25 @@ class LastFMFetcher {
         if let songArtist = songArtist {
             queryItems.append(URLQueryItem(name:"artist", value: songArtist))
         }
-        lastFMSearchTrackAPIURL.queryItems = queryItems
+        lastFMAPITrackSearchURL.queryItems = queryItems
         
-        return lastFMSearchTrackAPIURL.url
+        return lastFMAPITrackSearchURL.url
+    }
+    
+    private func trackGetInfoResponse(forJSONString JSONString: String) -> TrackGetInfoResponse? {
+        let responseData = Data(JSONString.utf8)
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        do {
+            let decodedTrackSearchResponse = try decoder.decode(TrackGetInfoResponse.self, from: responseData)
+            return decodedTrackSearchResponse
+        } catch {
+            print("Error by decoding: \(error)")
+            print("Localcized description: \(error.localizedDescription)")
+            return nil
+        }
     }
     
     private func setRequestDefaultValues(request: inout URLRequest) {
@@ -34,8 +76,8 @@ class LastFMFetcher {
         request.setValue(Constants.CONTENT_TYPE, forHTTPHeaderField: Constants.CONTENT_TYPE_FIELD)
     }
     
-    private func initializeLastFMTrackSearchURLRequest(songName: String, songArtist: String? = nil) -> URLRequest? {
-        guard let lastFMTrackSearchAPIURL = initializeLastFMTrackSearchAPIURL(songName: songName, songArtist: songArtist) else { return nil }
+    private func initializeLastFMAPITrackSearchURLRequest(songName: String, songArtist: String? = nil) -> URLRequest? {
+        guard let lastFMTrackSearchAPIURL = initializeLastFMAPITrackSearchURL(songName: songName, songArtist: songArtist) else { return nil }
         
         print(lastFMTrackSearchAPIURL.absoluteString)
         
@@ -46,7 +88,7 @@ class LastFMFetcher {
         return request
     }
     
-    private func updateLastValidTrackSearchResponse(forJSONString JSONString: String) {
+    private func trackSearchResponse(forJSONString JSONString: String) -> LastFMTrackSearchResponse? {
         let responseData = Data(JSONString.utf8)
         
         let decoder = JSONDecoder()
@@ -54,15 +96,44 @@ class LastFMFetcher {
         
         do {
             let decodedTrackSearchResponse = try decoder.decode(LastFMTrackSearchResponse.self, from: responseData)
-            self.lastValidTrackSearchResponse = decodedTrackSearchResponse
+            return decodedTrackSearchResponse
         } catch {
             print("Error by decoding: \(error)")
             print("Localcized description: \(error.localizedDescription)")
+            return nil
         }
     }
     
-    public func executeLastFMTrackSearchAPI(songName: String, songArtist: String? = nil) {
-        if let request = initializeLastFMTrackSearchURLRequest(songName: songName, songArtist: songArtist) {
+    private func createAlbumArtworksDirectoryInCacheIfNonExistent() {
+        let albumArtworksDirectoryURL = Constants.ALBUM_ARTWORK_DIRECTORY_URL
+        
+        if !albumArtworksDirectoryURL.isDirectory {
+            do {
+                try FileManager.default.createDirectory(at: albumArtworksDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print(error)
+            }
+        }
+    }
+        
+    private func firstSearchResultSongName(trackSearchResponse: LastFMTrackSearchResponse) -> String? {
+        if let firstMatch = trackSearchResponse.results.trackmatches.track.first {
+            return firstMatch.name
+        } else {
+            return nil
+        }
+    }
+    
+    private func firstSearchResultArtistName(trackSearchResponse: LastFMTrackSearchResponse) -> String? {
+        if let firstMatch = trackSearchResponse.results.trackmatches.track.first {
+            return firstMatch.artist
+        } else {
+            return nil
+        }
+    }
+    
+    public func executeLastFMAPITrackSearch(songName: String, songArtist: String?, shouldFindSongsAlbum: Bool = true) {
+        if let request = initializeLastFMAPITrackSearchURLRequest(songName: songName, songArtist: songArtist) {
             
             dataTask = URLSession.shared.dataTask(with: request) {
                 [weak self] data, response, error in
@@ -71,16 +142,61 @@ class LastFMFetcher {
                 }
                 
                 print("LastFM API TrackSearch's response code \((response as! HTTPURLResponse).statusCode)")
-                    if let error = error {
+                if let error = error {
                     // TODO: Error handling?
                     print("DataTask error: \(error)")
                 } else if let data = data,
                           let response = response as? HTTPURLResponse,
                           response.statusCode == 200 {
-                    if let JSONString = String(data: data, encoding: .utf8) {
+                    if let trackSearchJSONString = String(data: data, encoding: .utf8) {
                         //print(JSONString)
-                        print("Fetch me")
-                        self?.updateLastValidTrackSearchResponse(forJSONString: JSONString)
+                        if let trackSearchResponse = self?.trackSearchResponse(forJSONString: trackSearchJSONString),
+                           let trackName = self?.firstSearchResultSongName(trackSearchResponse: trackSearchResponse),
+                           let trackArtistName = self?.firstSearchResultArtistName(trackSearchResponse: trackSearchResponse),
+                           shouldFindSongsAlbum {
+                            
+                            if let getInfoRequest = self?.initializeLastFMAPITrackGetInfoURLRequest(trackName: trackName, artistName: trackArtistName) {
+                                let dataTask = URLSession.shared.dataTask(with: getInfoRequest)  {[weak self] data, response, error in
+                                    
+                                    print("LastFM API GetInfo's response code \((response as! HTTPURLResponse).statusCode)")
+                                    
+                                    if let error = error {
+                                        print("DataTask error: \(error)")
+                                    } else if let data = data,
+                                              let response = response as? HTTPURLResponse,
+                                              response.statusCode == 200 {
+                                        if let trackGetInfoJSONString = String(data: data, encoding: .utf8),
+                                           let trackGetInfoResponse = self?.trackGetInfoResponse(forJSONString: trackGetInfoJSONString),
+                                           let albumName = trackGetInfoResponse.track.album?.title,
+                                           let albumExtraLargeImage = trackGetInfoResponse.track.album?.imageExtraLargeURL {
+                                    
+                                            self?.createAlbumArtworksDirectoryInCacheIfNonExistent()
+                                            let imageURL = URL(string: albumExtraLargeImage)!
+                                            let downloadTask = URLSession.shared.downloadTask(with: imageURL) { url, response, error in
+                                                if let error = error {
+                                                    print("DownloadTask error: \(error)")
+                                                } else {
+                                                    guard let tempURL = url else { return }
+                                                    
+                                                    let artworkFileLocalURL = Constants.ALBUM_ARTWORK_DIRECTORY_URL.appendingPathComponent(imageURL.lastPathComponent)
+                                                    
+                                                    try? FileManager.default.moveItem(at: tempURL, to: artworkFileLocalURL)
+                                                    
+                                                    RealmWrapper.updateAlbumsProperties(songName: songName, songArtist: songArtist, albumName: albumName, albumArtworkFilename: artworkFileLocalURL.lastPathComponent)
+                                                    print("Database updated!")
+                                                }
+                                            }
+                                            downloadTask.resume()
+                                            print("DownloadTask started")
+                                        }
+                                    }
+                                    
+                                }
+                                dataTask.resume()
+                                print("DataTask2 started")
+                            }
+                            
+                        }
                     }
                 }
             }

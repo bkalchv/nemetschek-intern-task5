@@ -9,11 +9,12 @@ import Foundation
 import RealmSwift
 
 class Song: Object {
-    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted(primaryKey: true) var filename: String = ""
     @Persisted var title: String = ""
     @Persisted var artist: String = "Unknown"
     @Persisted var duration: String = ""
-    @Persisted var filename: String = ""
+    @Persisted var album: String = ""
+    @Persisted var albumArtworkFilename: String = ""
     
     // add album: String
     // add artwork: URL
@@ -45,8 +46,7 @@ class Song: Object {
 //    }
     
     static func ==(lhs: Song, rhs: Song) -> Bool {
-        return  lhs._id == rhs._id &&
-                lhs.title == rhs.title &&
+        return  lhs.title == rhs.title &&
                 lhs.artist == rhs.artist &&
                 lhs.duration == rhs.duration &&
                 lhs.filename == rhs.filename

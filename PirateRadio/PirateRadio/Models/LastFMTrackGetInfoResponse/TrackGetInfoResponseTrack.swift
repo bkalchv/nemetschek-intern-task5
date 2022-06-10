@@ -9,14 +9,14 @@ import Foundation
 
 class TrackGetInfoResponseTrack: Codable {
     var name: String
-    var mbid: String
+    var mbid: String?
     var url: String
     var duration: String
-    var stramable: TrackGetInfoStreamable
+    var streamable: TrackGetInfoStreamable
     var listeners: String
     var playcount: String
     var artist: TrackGetInfoArtist
-    var album: TrackGetInfoAlbum
+    var album: TrackGetInfoAlbum?
     var toptags: TrackGetInfoTopTags
-    var wiki: TrackGetInfoWiki
+    var wiki: TrackGetInfoWiki?
 }

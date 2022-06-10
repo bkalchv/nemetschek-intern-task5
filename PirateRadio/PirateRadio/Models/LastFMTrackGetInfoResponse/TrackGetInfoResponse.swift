@@ -7,6 +7,6 @@
 
 import Foundation
 
-class TrackGetInfoResponse {
+class TrackGetInfoResponse: Codable {
     var track: TrackGetInfoResponseTrack
 }

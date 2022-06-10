@@ -9,5 +9,5 @@ import Foundation
 class TrackGetInfoWiki: Codable {
     var published: String
     var summary: String
-    var contet: String
+    var content: String
 }

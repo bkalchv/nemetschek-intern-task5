@@ -13,9 +13,13 @@ struct Constants {
     
     static let THUMBNAILS_DIRECTORY_URL = Constants.CACHES_DIRECTORY_URL.appendingPathComponent("Thumbnails")
     
-    static let LASTFM_SEARCH_TRACK_API_URL = "https://ws.audioscrobbler.com/2.0/"
+    static let ALBUM_ARTWORK_DIRECTORY_URL = Constants.THUMBNAILS_DIRECTORY_URL.appendingPathComponent("AlbumArtworks")
     
-    static let LASTFM_SEARCH_TRACK_API_SEARCH_TRACK_QUERY_ITEM = URLQueryItem(name: "method", value: "track.search")
+    static let LASTFM_API_URL = "https://ws.audioscrobbler.com/2.0/"
+    
+    static let LASTFM_API_TRACK_SEARCH_QUERY_ITEM = URLQueryItem(name: "method", value: "track.search")
+    
+    static let LASTFM_API_TRACK_GET_INFO_QUERY_ITEM = URLQueryItem(name: "method", value: "track.getInfo")
     
     static let YOUTUBE_SEARCH_API_URL = "https://www.googleapis.com/youtube/v3/search"
     

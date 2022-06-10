@@ -264,11 +264,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         // TODO: write to database
         RealmWrapper.addSong(song)
         
-        if song.artist != Constants.SONG_DEFAULT_ARTIST_VALUE {
-            lastFMFetcher?.executeLastFMTrackSearchAPI(songName: song.title, songArtist: song.artist)
-        } else {
-            lastFMFetcher?.executeLastFMTrackSearchAPI(songName: song.title)
-        }
+        lastFMFetcher?.executeLastFMAPITrackSearch(songName: song.title, songArtist: song.artist)
         
         NotificationCenter.default.post(name: .DidFinishDownloadingMP3File, object: nil)
     }

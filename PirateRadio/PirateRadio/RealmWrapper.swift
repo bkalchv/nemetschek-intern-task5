@@ -26,6 +26,17 @@ class RealmWrapper {
         }
     }
     
+    public static func updateAlbumsProperties(songName: String, songArtist: String?, albumName: String, albumArtworkFilename: String) {
+        if let realm = try? Realm(),
+           let song = realm.objects(Song.self).first(where: { $0.title == songName && $0.artist == songArtist }) {
+            try? realm.write({
+                song.album = albumName
+                song.albumArtworkFilename = albumArtworkFilename
+                realm.add(song, update: .modified)
+            })
+        }
+    }
+    
     public static func allDownloadedSongs() -> Results<Song>? {
         do {
             let realm = try Realm()
