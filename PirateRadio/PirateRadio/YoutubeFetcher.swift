@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol FetcherDelegate : AnyObject {
+protocol YoutubeFetcherDelegate : AnyObject {
     func updateTableViewDataSource()
     func updateTableViewDataSourceItem(id: String, duration: String)
 }
 
-class Fetcher {
+class YoutubeFetcher {
     
     var lastValidSearchListResponse: YouTubeSearchListResponse? = nil
     var dataTask: URLSessionDataTask? = nil
-    weak var delegate : FetcherDelegate? = nil
+    weak var delegate : YoutubeFetcherDelegate? = nil
     
     var mockResponses = [Constants.MOCK_RESULT_JSON_STRING, Constants.MOCK_RESULT_NEXT_PAGE_JSON_STRING]
     

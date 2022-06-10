@@ -40,7 +40,7 @@
 		429EA85F284108D000C79684 /* MusicPlayerLibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EA85E284108D000C79684 /* MusicPlayerLibraryTableViewController.swift */; };
 		429EA8612841091C00C79684 /* MusicPlayerLibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EA8602841091C00C79684 /* MusicPlayerLibraryCell.swift */; };
 		429EA8632841162C00C79684 /* MusicPlayerLibraryMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EA8622841162C00C79684 /* MusicPlayerLibraryMenuItem.swift */; };
-		42AC3DD1282E728F003F1695 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DD0282E728F003F1695 /* Fetcher.swift */; };
+		42AC3DD1282E728F003F1695 /* YoutubeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC3DD0282E728F003F1695 /* YoutubeFetcher.swift */; };
 		42BBDC622850854C0087B96E /* RealmWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC612850854C0087B96E /* RealmWrapper.swift */; };
 		42BBDC642850C9370087B96E /* LASTFM_API_KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC632850C9370087B96E /* LASTFM_API_KEY.swift */; };
 		42BBDC662850CA8E0087B96E /* YOUTUBE_API_KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BBDC652850CA8E0087B96E /* YOUTUBE_API_KEY.swift */; };
@@ -103,7 +103,7 @@
 		429EA85E284108D000C79684 /* MusicPlayerLibraryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerLibraryTableViewController.swift; sourceTree = "<group>"; };
 		429EA8602841091C00C79684 /* MusicPlayerLibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerLibraryCell.swift; sourceTree = "<group>"; };
 		429EA8622841162C00C79684 /* MusicPlayerLibraryMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerLibraryMenuItem.swift; sourceTree = "<group>"; };
-		42AC3DD0282E728F003F1695 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		42AC3DD0282E728F003F1695 /* YoutubeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeFetcher.swift; sourceTree = "<group>"; };
 		42BBDC612850854C0087B96E /* RealmWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWrapper.swift; sourceTree = "<group>"; };
 		42BBDC632850C9370087B96E /* LASTFM_API_KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LASTFM_API_KEY.swift; sourceTree = "<group>"; };
 		42BBDC652850CA8E0087B96E /* YOUTUBE_API_KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOUTUBE_API_KEY.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				429EA85A2840BEC300C79684 /* DownloadedSongsTableViewController.swift */,
 				427E6FE32844E7490049C4FF /* AudioPlayer.swift */,
 				429EA8582840BE8800C79684 /* SongTableViewCell.swift */,
-				42AC3DD0282E728F003F1695 /* Fetcher.swift */,
+				42AC3DD0282E728F003F1695 /* YoutubeFetcher.swift */,
 				42BBDC672850D0BA0087B96E /* LastFMFetcher.swift */,
 				42BBDC612850854C0087B96E /* RealmWrapper.swift */,
 				428B7D2228044D22003DBBB9 /* Main.storyboard */,
@@ -415,7 +415,7 @@
 				42DBDCF9285225AF00F56B9E /* TrackGetInfoAlbum.swift in Sources */,
 				423AAC3F2833C14400447E3D /* YoutubeToMp3ResponseUploadedAt.swift in Sources */,
 				42BBDC6D2850DCFC0087B96E /* LastFMTrackSearchResults.swift in Sources */,
-				42AC3DD1282E728F003F1695 /* Fetcher.swift in Sources */,
+				42AC3DD1282E728F003F1695 /* YoutubeFetcher.swift in Sources */,
 				429EA8562840BBFC00C79684 /* Song.swift in Sources */,
 				42DBDCF72852258700F56B9E /* TrackGetInfoArtist.swift in Sources */,
 				42BBDC662850CA8E0087B96E /* YOUTUBE_API_KEY.swift in Sources */,

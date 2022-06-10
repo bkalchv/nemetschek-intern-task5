@@ -14,10 +14,10 @@ protocol SearchBarViewControllerDelegate : AnyObject {
     func scrollTableViewToTop()
 }
 
-class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResultTableViewControllerDelegate, FetcherDelegate {
+class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResultTableViewControllerDelegate, YoutubeFetcherDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    var fetcher: Fetcher? = nil
+    var fetcher: YoutubeFetcher? = nil
     var lastValidSearchListResponse: YouTubeSearchListResponse? {
         get {
             fetcher?.lastValidSearchListResponse
@@ -47,7 +47,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate, SearchResu
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        fetcher = Fetcher.init(withViewControllerForDelegate: self)
+        fetcher = YoutubeFetcher.init(withViewControllerForDelegate: self)
     }
         
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
