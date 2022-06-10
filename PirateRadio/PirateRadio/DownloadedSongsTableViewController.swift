@@ -65,6 +65,14 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
         cell.songDurationLabel.text = song.duration
         cell.songArtistLabel.text = song.artist
         
+        if !song.albumArtworkFilename.isEmpty {
+            let albumArtworkImage = UIImage(contentsOfFile: Constants.ALBUM_ARTWORK_DIRECTORY_URL.appendingPathComponent(song.albumArtworkFilename).path)
+            cell.songAlbumArtworkImage.image = albumArtworkImage
+        } else {
+            let noArtworkImage = UIImage(named: Constants.NO_ALBUM_ART_FILENAME)
+            cell.songAlbumArtworkImage.image = noArtworkImage
+        }        
+        
         return cell
     }
     

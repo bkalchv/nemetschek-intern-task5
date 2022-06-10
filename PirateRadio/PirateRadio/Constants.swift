@@ -180,4 +180,6 @@ struct Constants {
     static let PAUSE_BUTTON_IMAGE_FILENAME = "pause_black_36pt"
     
     static let PLAY_BUTTON_IMAGE_FILENAME = "play_arrow_black_36pt"
+    
+    static let NO_ALBUM_ART_FILENAME = "no-album-art"
 }
