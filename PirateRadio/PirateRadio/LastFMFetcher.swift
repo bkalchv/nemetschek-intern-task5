@@ -7,11 +7,12 @@
 
 import Foundation
 
-class LastFMFetcher {
+class LastFMFetcher: NSObject, URLSessionDelegate, URLSessionDataDelegate, URLSessionDownloadDelegate {
     
     //var lastValidTrackSearchResponse: LastFMTrackSearchResponse? = nil
-    var dataTask: URLSessionDataTask? = nil
-        
+    var dataTask: URLSessionDataTask?
+    var observation: NSKeyValueObservation?
+    
     private func initializeLastFMAPITrackGetInfoURL(trackName: String, artistName: String) -> URL? {
         var lastFMAPITrackGetInfoURL = URLComponents(string: Constants.LASTFM_API_URL)!
         let queryItems = [
@@ -168,7 +169,8 @@ class LastFMFetcher {
                                         if let trackGetInfoJSONString = String(data: data, encoding: .utf8),
                                            let trackGetInfoResponse = self?.trackGetInfoResponse(forJSONString: trackGetInfoJSONString),
                                            let albumName = trackGetInfoResponse.track.album?.title,
-                                           let albumExtraLargeImage = trackGetInfoResponse.track.album?.imageExtraLargeURL {
+                                           let albumExtraLargeImage = trackGetInfoResponse.track.album?.imageExtraLargeURL,
+                                           !albumExtraLargeImage.isEmpty {
                                     
                                             self?.createAlbumArtworksDirectoryInCacheIfNonExistent()
                                             let imageURL = URL(string: albumExtraLargeImage)!
@@ -186,6 +188,12 @@ class LastFMFetcher {
                                                     print("Database updated!")
                                                 }
                                             }
+                                            
+                                            self?.observation = downloadTask.progress.observe(\.fractionCompleted) { progress, _ in
+                                                let progressPercent = Int(Double(progress.fractionCompleted) * 100)
+                                                print("Artwork download's download progress: \(progressPercent)%")
+                                            }
+                                            
                                             downloadTask.resume()
                                             print("DownloadTask started")
                                         }
@@ -204,5 +212,13 @@ class LastFMFetcher {
             dataTask?.resume()
             print("DataTask started")
         }
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        print("\(totalBytesWritten) bytes'\'\(totalBytesExpectedToWrite) bytes downloaded")
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        print("I finished downloading")
     }
 }

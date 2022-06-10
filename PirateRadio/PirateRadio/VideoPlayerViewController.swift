@@ -27,9 +27,10 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     static var hasTappedOnPirateModeViewThreeTimes: Bool {
         get { tapsOnPirateModeView >= 3 }
     }
-    var gestureTimer: Timer? = nil
+    var gestureTimer: Timer?
     private var filenameForDownload: [WKDownload : String] = [:]
-    var lastFMFetcher: LastFMFetcher? = nil
+    private var observation: NSKeyValueObservation?
+    var lastFMFetcher: LastFMFetcher?
        
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -220,6 +221,13 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         self.view.makeToast("Starting to download...")
         
         filenameForDownload[download] = suggestedFilename
+        
+        observation = download.progress.observe(\.fractionCompleted) {
+            progress, _ in
+            let progressPercent = Int(Double(progress.fractionCompleted) * 100)
+            print("Song's download progress: \(progressPercent)%")
+        }
+        
         completionHandler(downloadLocation)
     }
        
