@@ -7,13 +7,12 @@
 
 import Foundation
 
-class LastFMFetcher: NSObject, URLSessionDelegate, URLSessionDataDelegate, URLSessionDownloadDelegate {
-    
-    //var lastValidTrackSearchResponse: LastFMTrackSearchResponse? = nil
+class LastFMFetcher {
+
     var dataTask: URLSessionDataTask?
     var observation: NSKeyValueObservation?
     
-    private func initializeLastFMAPITrackGetInfoURL(trackName: String, artistName: String) -> URL? {
+    private func lastFMAPITrackGetInfoURL(trackName: String, artistName: String) -> URL? {
         var lastFMAPITrackGetInfoURL = URLComponents(string: Constants.LASTFM_API_URL)!
         let queryItems = [
             Constants.LASTFM_API_TRACK_GET_INFO_QUERY_ITEM,
@@ -28,8 +27,8 @@ class LastFMFetcher: NSObject, URLSessionDelegate, URLSessionDataDelegate, URLSe
     }
     
     
-    private func initializeLastFMAPITrackGetInfoURLRequest(trackName: String, artistName: String) -> URLRequest? {
-        guard let lastFMAPITrackGetInfoURL = initializeLastFMAPITrackGetInfoURL(trackName: trackName, artistName: artistName) else { return nil }
+    private func lastFMAPITrackGetInfoURLRequest(trackName: String, artistName: String) -> URLRequest? {
+        guard let lastFMAPITrackGetInfoURL = lastFMAPITrackGetInfoURL(trackName: trackName, artistName: artistName) else { return nil }
         print(lastFMAPITrackGetInfoURL.absoluteString)
         
         var request = URLRequest(url: lastFMAPITrackGetInfoURL)
@@ -39,7 +38,7 @@ class LastFMFetcher: NSObject, URLSessionDelegate, URLSessionDataDelegate, URLSe
         return request
     }
     
-    private func initializeLastFMAPITrackSearchURL(songName: String, songArtist: String? = nil) -> URL? {
+    private func lastFMAPITrackSearchURL(songName: String, songArtist: String? = nil) -> URL? {
         var lastFMAPITrackSearchURL = URLComponents(string: Constants.LASTFM_API_URL)!
         var queryItems = [
             Constants.LASTFM_API_TRACK_SEARCH_QUERY_ITEM,
@@ -77,8 +76,8 @@ class LastFMFetcher: NSObject, URLSessionDelegate, URLSessionDataDelegate, URLSe
         request.setValue(Constants.CONTENT_TYPE, forHTTPHeaderField: Constants.CONTENT_TYPE_FIELD)
     }
     
-    private func initializeLastFMAPITrackSearchURLRequest(songName: String, songArtist: String? = nil) -> URLRequest? {
-        guard let lastFMTrackSearchAPIURL = initializeLastFMAPITrackSearchURL(songName: songName, songArtist: songArtist) else { return nil }
+    private func lastFMAPITrackSearchURLRequest(songName: String, songArtist: String? = nil) -> URLRequest? {
+        guard let lastFMTrackSearchAPIURL = lastFMAPITrackSearchURL(songName: songName, songArtist: songArtist) else { return nil }
         
         print(lastFMTrackSearchAPIURL.absoluteString)
         
@@ -134,7 +133,7 @@ class LastFMFetcher: NSObject, URLSessionDelegate, URLSessionDataDelegate, URLSe
     }
     
     public func executeLastFMAPITrackSearch(songName: String, songArtist: String?, shouldFindSongsAlbum: Bool = true) {
-        if let request = initializeLastFMAPITrackSearchURLRequest(songName: songName, songArtist: songArtist) {
+        if let request = lastFMAPITrackSearchURLRequest(songName: songName, songArtist: songArtist) {
             
             dataTask = URLSession.shared.dataTask(with: request) {
                 [weak self] data, response, error in
@@ -156,7 +155,7 @@ class LastFMFetcher: NSObject, URLSessionDelegate, URLSessionDataDelegate, URLSe
                            let trackArtistName = self?.firstSearchResultArtistName(trackSearchResponse: trackSearchResponse),
                            shouldFindSongsAlbum {
                             
-                            if let getInfoRequest = self?.initializeLastFMAPITrackGetInfoURLRequest(trackName: trackName, artistName: trackArtistName) {
+                            if let getInfoRequest = self?.lastFMAPITrackGetInfoURLRequest(trackName: trackName, artistName: trackArtistName) {
                                 let dataTask = URLSession.shared.dataTask(with: getInfoRequest)  {[weak self] data, response, error in
                                     
                                     print("LastFM API GetInfo's response code \((response as! HTTPURLResponse).statusCode)")
@@ -190,8 +189,8 @@ class LastFMFetcher: NSObject, URLSessionDelegate, URLSessionDataDelegate, URLSe
                                             }
                                             
                                             self?.observation = downloadTask.progress.observe(\.fractionCompleted) { progress, _ in
-                                                let progressPercent = Int(Double(progress.fractionCompleted) * 100)
-                                                print("Artwork download's download progress: \(progressPercent)%")
+                                                let progressPercent = Int(progress.fractionCompleted * 100)
+                                                print("Album artwork's download progress: \(progressPercent)%")
                                             }
                                             
                                             downloadTask.resume()
@@ -212,13 +211,5 @@ class LastFMFetcher: NSObject, URLSessionDelegate, URLSessionDataDelegate, URLSe
             dataTask?.resume()
             print("DataTask started")
         }
-    }
-    
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        print("\(totalBytesWritten) bytes'\'\(totalBytesExpectedToWrite) bytes downloaded")
-    }
-    
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        print("I finished downloading")
     }
 }

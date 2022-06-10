@@ -28,26 +28,26 @@ class Fetcher {
         dataTask?.cancel()
     }
     
-    private func initializeYouTubeVideoListAPI(videoIds: [String]) -> URL? {
-        var youTubeVideoListAPIURL = URLComponents(string: Constants.YOUTUBE_VIDEOS_API_URL)!
+    private func youtubeAPIVideoList(videoIds: [String]) -> URL? {
+        var youtubeVideoListAPIURL = URLComponents(string: Constants.YOUTUBE_VIDEOS_API_URL)!
         let queryItems = [
             URLQueryItem(name: "part", value: "contentDetails"),
             URLQueryItem(name: "id", value: videoIds.joined(separator: ",")),
             URLQueryItem(name: "key", value: YOUTUBE_API_KEY.value)
         ]
         
-        youTubeVideoListAPIURL.queryItems = queryItems
+        youtubeVideoListAPIURL.queryItems = queryItems
         
-        return youTubeVideoListAPIURL.url
+        return youtubeVideoListAPIURL.url
     }
     
-    private func initializeURLRequest(videoIds: [String]) -> URLRequest? {
+    private func youtubeAPIVideosListURLRequest(videoIds: [String]) -> URLRequest? {
         
-        guard let youTubeVideosListAPIURL = initializeYouTubeVideoListAPI(videoIds: videoIds) else { return nil}
+        guard let youtubeAPIVideosListURL = youtubeAPIVideoList(videoIds: videoIds) else { return nil}
         
-        print(youTubeVideosListAPIURL.absoluteString)
+        print(youtubeAPIVideosListURL.absoluteString)
         
-        var request = URLRequest(url: youTubeVideosListAPIURL)
+        var request = URLRequest(url: youtubeAPIVideosListURL)
         
         setRequestDefaultValues(request: &request)
         
@@ -62,7 +62,7 @@ class Fetcher {
     
     public func executeYoutubeVideoListAPI(videoIds: [String], completion: @escaping ([String]) -> Void) {
         
-        if let request = initializeYouTubeVideoListAPI(videoIds: videoIds) {
+        if let request = youtubeAPIVideoList(videoIds: videoIds) {
             
             dataTask = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
                 defer {
@@ -135,8 +135,8 @@ class Fetcher {
         print("Server search list response succesfully fetched to models.")
     }
     
-    private func initializeYoutubeSearchAPIURL(withSearchText searchText: String, nextPageID: String? = nil) -> URL? {
-        var youtubeSearchAPIURL = URLComponents(string: Constants.YOUTUBE_SEARCH_API_URL)!
+    private func youtubeAPISearchURL(withSearchText searchText: String, nextPageID: String? = nil) -> URL? {
+        var youtubeAPISearchURL = URLComponents(string: Constants.YOUTUBE_SEARCH_API_URL)!
         var queryItems = [
             URLQueryItem(name: "part", value: "snippet"),
             URLQueryItem(name: "order", value: "viewCount"),
@@ -149,16 +149,16 @@ class Fetcher {
             queryItems.append(URLQueryItem(name: "pageToken", value: nextPageID))
         }
         
-        youtubeSearchAPIURL.queryItems = queryItems
+        youtubeAPISearchURL.queryItems = queryItems
         
-        return youtubeSearchAPIURL.url
+        return youtubeAPISearchURL.url
     }
     
-    private func initializeURLRequest(withSearchText searchText: String, nextPageID: String? = nil) -> URLRequest? {
+    private func youtubeAPISearchURLRequest(withSearchText searchText: String, nextPageID: String? = nil) -> URLRequest? {
         
-        guard let youtubeApiURL = initializeYoutubeSearchAPIURL(withSearchText: searchText, nextPageID: nextPageID) else { return nil }
+        guard let youtubeAPISearchURL = youtubeAPISearchURL(withSearchText: searchText, nextPageID: nextPageID) else { return nil }
         
-        var request = URLRequest(url: youtubeApiURL)
+        var request = URLRequest(url: youtubeAPISearchURL)
         
         setRequestDefaultValues(request: &request)
         
@@ -167,7 +167,7 @@ class Fetcher {
     
     public func executeYoutubeSearchAPI(withSearchText searchText: String, nextPageID: String? = nil, shouldRequestDuration: Bool = true) {
         
-        if let request = initializeURLRequest(withSearchText: searchText, nextPageID: nextPageID) {
+        if let request = youtubeAPISearchURLRequest(withSearchText: searchText, nextPageID: nextPageID) {
             
             dataTask = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
                 defer {

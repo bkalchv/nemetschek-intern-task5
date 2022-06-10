@@ -224,7 +224,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         
         observation = download.progress.observe(\.fractionCompleted) {
             progress, _ in
-            let progressPercent = Int(Double(progress.fractionCompleted) * 100)
+            let progressPercent = Int(progress.fractionCompleted * 100)
             print("Song's download progress: \(progressPercent)%")
         }
         
@@ -246,8 +246,6 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         if let delimiterFirstAppearance = filename.firstIndex(of: delimiter) {
             var title = String(filename[filename.index(after: delimiterFirstAppearance)...])
             title = (title as NSString).deletingPathExtension
-            //\s?\([\w\s]*\)| \s?\([\S]*\)
-            
             title = title.replacingOccurrences(of: "\\s?\\([\\w\\s]*\\)|\\s?\\([\\S]*\\)", with: "", options: .regularExpression)
             return title.trimmingCharacters(in: .whitespaces)
         } else {
@@ -264,7 +262,6 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         self.view.makeToast("MP3 downloaded successfully!")
         print("MP3 downloaded successfully")
                         
-        
         // TODO: durationForFile not working with fileURLWithPath
         let filename = filenameForDownload[download]!
         let fileURL = Constants.YOUTUBE_TO_MP3_DOWNLOADS_DIRECTORY_URL.appendingPathComponent(filename)
