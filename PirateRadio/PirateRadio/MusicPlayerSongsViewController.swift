@@ -11,7 +11,7 @@ protocol SongsDataSourceDelegate: AnyObject {
     var songs: [Song] { get }
 }
 
-class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, AudioPlayerDelegate {
+class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, AudioPlayerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var currentSongTitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
@@ -39,8 +39,7 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
         setupMusicPlayerViewInitialState()
         slider.addTarget(self, action: #selector(sliderDidStartSliding), for: .touchDown)
         slider.addTarget(self, action: #selector(sliderDidEndSliding), for: .touchUpInside)
-        let sortBarButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: nil)
-        self.navigationItem.rightBarButtonItem  = sortBarButtonItem
+        self.navigationItem.rightBarButtonItem  = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(onSortButtonPress))
         // Do any additional setup after loading the view.
     }
     
@@ -53,6 +52,28 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
     @objc func sliderDidEndSliding() {
         let currentSliderValue = slider.value
         player?.play(atTime: Double(currentSliderValue))
+    }
+    
+    @objc func onSortButtonPress() {
+        // make popover appear
+        let sortButton = self.navigationItem.rightBarButtonItem
+        let sortButtonView = sortButton?.value(forKey: "view") as? UIView
+        let sortButtonFrame = sortButtonView?.frame
+        
+        let sortMenuPopoverVC = self.storyboard?.instantiateViewController(withIdentifier: "SortMenuPopoverTableViewController")
+        sortMenuPopoverVC?.modalPresentationStyle = .popover
+        sortMenuPopoverVC?.view.sizeToFit()
+        
+        if let popoverPresentantionController = sortMenuPopoverVC?.popoverPresentationController,
+           let sortButtonFrame = sortButtonFrame {
+            popoverPresentantionController.permittedArrowDirections = .up
+            popoverPresentantionController.sourceView = sortButtonView
+            popoverPresentantionController.sourceRect = sortButtonFrame
+            popoverPresentantionController.delegate = self
+            if let sortMenuPopoverVC = sortMenuPopoverVC {
+                present(sortMenuPopoverVC, animated: true)
+            }
+        }
     }
     
     func updatePlayPauseButtonImage() {
@@ -135,6 +156,14 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
     
     internal func setMusicPlayerViewSliderMaximumValue(maximumValue: Float) {
         slider.maximumValue = maximumValue
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+        return true
     }
     
     

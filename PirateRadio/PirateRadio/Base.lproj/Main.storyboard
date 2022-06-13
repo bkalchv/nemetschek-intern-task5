@@ -486,6 +486,52 @@
             </objects>
             <point key="canvasLocation" x="2243" y="1363"/>
         </scene>
+        <!--Sort Menu Popover Table View Controller-->
+        <scene sceneID="DNK-vK-va7">
+            <objects>
+                <tableViewController storyboardIdentifier="SortMenuPopoverTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="1hk-ID-lob" customClass="SortMenuPopoverTableViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="c3u-9s-lRK">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="210"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortMenuPopoverCell" id="oBj-QL-WYS" customClass="SortMenuPopoverTableViewCell" customModule="PirateRadio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="250" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oBj-QL-WYS" id="KSU-qU-4Sz">
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zz7-cj-zPd">
+                                            <rect key="frame" x="16" y="11.5" width="214" height="21"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="zz7-cj-zPd" firstAttribute="leading" secondItem="KSU-qU-4Sz" secondAttribute="leading" constant="16" id="MSy-6M-ycp"/>
+                                        <constraint firstAttribute="trailing" secondItem="zz7-cj-zPd" secondAttribute="trailing" constant="20" id="WS3-Fm-fbm"/>
+                                        <constraint firstItem="zz7-cj-zPd" firstAttribute="centerY" secondItem="KSU-qU-4Sz" secondAttribute="centerY" id="ZYf-1u-Uvq"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="menuLabel" destination="zz7-cj-zPd" id="qef-gP-1gL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="1hk-ID-lob" id="1hV-aT-Q9t"/>
+                            <outlet property="delegate" destination="1hk-ID-lob" id="awx-0J-yzH"/>
+                        </connections>
+                    </tableView>
+                    <size key="freeformSize" width="250" height="210"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYv-V9-XYT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3764" y="406"/>
+        </scene>
         <!--Music Player Library View Controller-->
         <scene sceneID="Qxp-Zv-1Oj">
             <objects>

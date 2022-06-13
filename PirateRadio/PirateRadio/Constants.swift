@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum SortMenuOption: String {
+    case title = "Title"
+    case recentylAdded = "Recently Added"
+    case artist = "Artist"
+}
+
 struct Constants {
     private static let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
     static let CACHES_DIRECTORY_URL = cachesDirectory[0]
