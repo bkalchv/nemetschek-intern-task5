@@ -15,12 +15,16 @@ class Song: Object {
     @Persisted var duration: String = ""
     @Persisted var album: String = ""
     @Persisted var albumArtworkFilename: String = ""
-    
+    @Persisted var addedAt: Date = Date.distantPast
     // add album: String
     // add artwork: URL
     // TODO: edit artist, title etc
-    // TODO: add artowrk for album
-    // if no artwork found -> show thumbnail
+    
+    // TODO: ask if thumbnail should be shown
+    // if no artwork found -> show no-album-art
+    
+    
+    // TODO: add "added at"
     
     static func create(title: String, artist: String, duration: String, filename: String) -> Song {
         let song = Song()
@@ -28,6 +32,7 @@ class Song: Object {
         song.artist = artist
         song.duration = duration
         song.filename = filename
+        song.addedAt = Date.now
         return song
     }
     
@@ -49,6 +54,7 @@ class Song: Object {
         return  lhs.title == rhs.title &&
                 lhs.artist == rhs.artist &&
                 lhs.duration == rhs.duration &&
-                lhs.filename == rhs.filename
+                lhs.filename == rhs.filename &&
+                lhs.addedAt == rhs.addedAt
     }
 }
