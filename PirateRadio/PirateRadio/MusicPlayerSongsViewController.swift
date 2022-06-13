@@ -33,6 +33,7 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Songs"
         player = AudioPlayer(withDelegate: self.songsDataSourceDelegate)
         self.player!.delegate = self
         setupMusicPlayerViewInitialState()

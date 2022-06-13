@@ -486,10 +486,10 @@
             </objects>
             <point key="canvasLocation" x="2243" y="1363"/>
         </scene>
-        <!--View Controller-->
+        <!--Library View Controller-->
         <scene sceneID="Qxp-Zv-1Oj">
             <objects>
-                <viewController id="flZ-9L-gwU" sceneMemberID="viewController">
+                <viewController id="flZ-9L-gwU" customClass="LibraryViewController" customModule="PirateRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IL2-8R-w4g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
