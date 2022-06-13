@@ -56,7 +56,7 @@
 		42C86E0D283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E0C283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift */; };
 		42C86E0F283BA7A40075C72A /* YouTubeVideoContentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E0E283BA7A40075C72A /* YouTubeVideoContentDetails.swift */; };
 		42C86E11283BA8BB0075C72A /* YouTubeVideoContentRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */; };
-		42CDAE6C2857405100A1B1E6 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDAE6B2857405100A1B1E6 /* LibraryViewController.swift */; };
+		42CDAE6C2857405100A1B1E6 /* MusicPlayerLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDAE6B2857405100A1B1E6 /* MusicPlayerLibraryViewController.swift */; };
 		42CE7AFC283FBBFE00378A1A /* MusicPlayerSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */; };
 		42DBDCEE28520A4F00F56B9E /* LastFMTrackSearchAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCED28520A4F00F56B9E /* LastFMTrackSearchAttr.swift */; };
 		42DBDCF12852239600F56B9E /* TrackGetInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBDCF02852239600F56B9E /* TrackGetInfoResponse.swift */; };
@@ -120,7 +120,7 @@
 		42C86E0C283BA7160075C72A /* YouTubeVideoListResponsePageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoListResponsePageInfo.swift; sourceTree = "<group>"; };
 		42C86E0E283BA7A40075C72A /* YouTubeVideoContentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentDetails.swift; sourceTree = "<group>"; };
 		42C86E10283BA8BB0075C72A /* YouTubeVideoContentRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideoContentRating.swift; sourceTree = "<group>"; };
-		42CDAE6B2857405100A1B1E6 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		42CDAE6B2857405100A1B1E6 /* MusicPlayerLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerLibraryViewController.swift; sourceTree = "<group>"; };
 		42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerSongsViewController.swift; sourceTree = "<group>"; };
 		42DBDCED28520A4F00F56B9E /* LastFMTrackSearchAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMTrackSearchAttr.swift; sourceTree = "<group>"; };
 		42DBDCF02852239600F56B9E /* TrackGetInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGetInfoResponse.swift; sourceTree = "<group>"; };
@@ -185,6 +185,7 @@
 				429533CC282C02600007EA6C /* SearchResultTableViewController.swift */,
 				429E739A282D0A2F0073899E /* SearchResultCell.swift */,
 				428B7D2028044D22003DBBB9 /* VideoPlayerViewController.swift */,
+				42CDAE6B2857405100A1B1E6 /* MusicPlayerLibraryViewController.swift */,
 				429EA85E284108D000C79684 /* MusicPlayerLibraryTableViewController.swift */,
 				429EA8602841091C00C79684 /* MusicPlayerLibraryCell.swift */,
 				42CE7AFB283FBBFE00378A1A /* MusicPlayerSongsViewController.swift */,
@@ -195,7 +196,6 @@
 				42BBDC672850D0BA0087B96E /* LastFMFetcher.swift */,
 				42BBDC612850854C0087B96E /* RealmWrapper.swift */,
 				428B7D2228044D22003DBBB9 /* Main.storyboard */,
-				42CDAE6B2857405100A1B1E6 /* LibraryViewController.swift */,
 				428B7D2528044D23003DBBB9 /* Assets.xcassets */,
 				428B7D2728044D23003DBBB9 /* LaunchScreen.storyboard */,
 				428B7D2A28044D23003DBBB9 /* Info.plist */,
@@ -372,7 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				429EA8612841091C00C79684 /* MusicPlayerLibraryCell.swift in Sources */,
-				42CDAE6C2857405100A1B1E6 /* LibraryViewController.swift in Sources */,
+				42CDAE6C2857405100A1B1E6 /* MusicPlayerLibraryViewController.swift in Sources */,
 				4201CE80284A41C10091B484 /* Playlist.swift in Sources */,
 				429533CF282C10840007EA6C /* SearchBarViewController.swift in Sources */,
 				427E6FE42844E7490049C4FF /* AudioPlayer.swift in Sources */,

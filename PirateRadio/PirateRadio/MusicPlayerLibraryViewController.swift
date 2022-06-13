@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LibraryViewController: UIViewController {
+class MusicPlayerLibraryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

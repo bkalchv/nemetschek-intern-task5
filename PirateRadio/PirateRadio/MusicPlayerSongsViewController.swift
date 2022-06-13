@@ -39,6 +39,8 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
         setupMusicPlayerViewInitialState()
         slider.addTarget(self, action: #selector(sliderDidStartSliding), for: .touchDown)
         slider.addTarget(self, action: #selector(sliderDidEndSliding), for: .touchUpInside)
+        let sortBarButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem  = sortBarButtonItem
         // Do any additional setup after loading the view.
     }
     
