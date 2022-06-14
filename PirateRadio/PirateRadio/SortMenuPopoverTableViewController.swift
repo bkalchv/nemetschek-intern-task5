@@ -33,7 +33,11 @@ class SortMenuPopoverTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
         
         if let selectedCellIndexPath = selectedCellIndexPath {
-            UserDefaults.standard.set(selectedCellIndexPath.row, forKey: "SelectedSortMenuItemRow")
+            let selectedOption = sortMenuOptions[selectedCellIndexPath.row]
+            UserDefaults.standard.set(selectedOption, forKey: "SelectedSortMenuOption")
+            
+            // TODO: Ask
+            // Notify DownloadedSongsTableVC/MusicPlayerVC that a certain option has been selected
         }
     }
     
@@ -56,6 +60,14 @@ class SortMenuPopoverTableViewController: UITableViewController {
         }
     }
     
+    private func indexOfSortMenuOption(option: String) -> Int? {
+        if let index = sortMenuOptions.firstIndex(where: { $0 == option }) {
+            return index
+        }
+        
+        return nil
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SortMenuPopoverCell", for: indexPath) as! SortMenuPopoverTableViewCell
         
@@ -69,18 +81,20 @@ class SortMenuPopoverTableViewController: UITableViewController {
             }
         } else {
             //get it from userdefaults
-            let prevSelectedCellIndexPath = IndexPath(row: UserDefaults.standard.integer(forKey: "SelectedSortMenuItemRow"), section: 0)
-            if indexPath == prevSelectedCellIndexPath {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
+            if let previouslySelectedMenuOption = UserDefaults.standard.string(forKey: "SelectedSortMenuOption") {
+                let previouslySelectedMenuOptionIndexPath = IndexPath(row: indexOfSortMenuOption(option: previouslySelectedMenuOption)!, section: 0)
+                if indexPath == previouslySelectedMenuOptionIndexPath {
+                    cell.accessoryType = .checkmark
+                } else {
+                    cell.accessoryType = .none
+                }
             }
+
         }
 
         // Configure the cell...
         cell.menuLabel.text = menuOption
-        print("\(indexPath.row):  \(cell.isSelected)")
-        
+                
         return cell
     }
     
