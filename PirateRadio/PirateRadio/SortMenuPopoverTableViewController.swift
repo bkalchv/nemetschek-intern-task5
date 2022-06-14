@@ -57,6 +57,12 @@ class SortMenuPopoverTableViewController: UITableViewController {
         return 3
     }
 
+    override func viewSafeAreaInsetsDidChange() {
+        if #available(iOS 11.0, *) {
+            super.viewSafeAreaInsetsDidChange()
+            self.tableView.contentInset = UIEdgeInsets(top: self.tableView.safeAreaInsets.top, left: 0, bottom: 0, right: 0)
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SortMenuPopoverCell", for: indexPath) as! SortMenuPopoverTableViewCell
@@ -73,6 +79,7 @@ class SortMenuPopoverTableViewController: UITableViewController {
         
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedCellIndexPath = selectedCellIndexPath {
             tableView.deselectRow(at: selectedCellIndexPath, animated: true)
