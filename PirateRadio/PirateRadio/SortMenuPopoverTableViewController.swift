@@ -38,8 +38,7 @@ class SortMenuPopoverTableViewController: UITableViewController {
             
             // TODO: Ask
             // Notify DownloadedSongsTableVC that a certain option has been selected
-            let sortMenuOption = SortMenuOption(rawValue: selectedOption)
-            NotificationCenter.default.post(name: .DidSelectSortMenuOption, object: nil, userInfo: ["selectedSortOption" : sortMenuOption!])
+            NotificationCenter.default.post(name: .DidSelectSortMenuOption, object: nil, userInfo: nil)
         }
     }
     

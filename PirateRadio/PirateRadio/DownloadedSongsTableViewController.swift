@@ -72,16 +72,7 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
     
     // TODO: Ask
     @objc func didSelectSortMenuOption(notification: Notification) {
-        if let sortMenuOption = notification.userInfo?["selectedSortOption"] as? SortMenuOption {
-            switch(sortMenuOption) {
-            case .title:
-                sortTableDataByTitleAscending()
-            case .recentylAdded:
-                sortTableDataByDateDescending()
-            case .artist:
-                sortTableDataByArtistAscending()
-            }
-        }
+        sortTableData()
         self.tableView.reloadData()
     }
     // MARK: - Table view data source
