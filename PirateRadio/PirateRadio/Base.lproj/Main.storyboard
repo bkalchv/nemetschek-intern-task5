@@ -530,7 +530,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYv-V9-XYT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3764" y="406"/>
+            <point key="canvasLocation" x="3767" y="515"/>
         </scene>
         <!--Music Player Library View Controller-->
         <scene sceneID="Qxp-Zv-1Oj">
@@ -918,7 +918,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wjr-NG-Pw9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3957.971014492754" y="713.83928571428567"/>
+            <point key="canvasLocation" x="3857" y="812"/>
         </scene>
     </scenes>
     <resources>
