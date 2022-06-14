@@ -10,7 +10,7 @@ import UIKit
 class SortMenuPopoverTableViewCell: UITableViewCell {
 
     @IBOutlet weak var menuLabel: UILabel!
-       
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

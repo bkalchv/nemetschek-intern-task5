@@ -10,13 +10,14 @@ import UIKit
 class SortMenuPopoverTableViewController: UITableViewController {
     
     private let sortMenuOptions: [String] = [SortMenuOption.title.rawValue, SortMenuOption.recentylAdded.rawValue, SortMenuOption.artist.rawValue]
-    private var contentSizeObserver: NSKeyValueObservation?
     private var selectedCellIndexPath: IndexPath?
         
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.isScrollEnabled = false
-       
+        self.tableView.rowHeight = 45.0
+        let height = sortMenuOptions.count * Int(tableView.rowHeight)
+        self.preferredContentSize = CGSize(width: 220, height: height)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,18 +27,14 @@ class SortMenuPopoverTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // TODO: Ask if fine
-        contentSizeObserver = self.tableView.observe(\.contentSize) { [weak self] tableView, _ in
-            self?.preferredContentSize = CGSize(width: 250, height: tableView.contentSize.height)
-        }
     }
     
-    // TODO: Ask which is better
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        contentSizeObserver?.invalidate()
-        contentSizeObserver = nil
+        if let selectedCellIndexPath = selectedCellIndexPath {
+            UserDefaults.standard.set(selectedCellIndexPath.row, forKey: "SelectedSortMenuItemRow")
+        }
     }
     
     // MARK: - Table view data source
@@ -72,7 +69,6 @@ class SortMenuPopoverTableViewController: UITableViewController {
             }
         } else {
             //get it from userdefaults
-            
             let prevSelectedCellIndexPath = IndexPath(row: UserDefaults.standard.integer(forKey: "SelectedSortMenuItemRow"), section: 0)
             if indexPath == prevSelectedCellIndexPath {
                 cell.accessoryType = .checkmark
@@ -83,6 +79,7 @@ class SortMenuPopoverTableViewController: UITableViewController {
 
         // Configure the cell...
         cell.menuLabel.text = menuOption
+        print("\(indexPath.row):  \(cell.isSelected)")
         
         return cell
     }
@@ -108,7 +105,6 @@ class SortMenuPopoverTableViewController: UITableViewController {
         }
         
         selectedCellIndexPath = indexPath
-        UserDefaults.standard.set(selectedCellIndexPath!.row, forKey: "SelectedSortMenuItemRow")
     }
     
 
