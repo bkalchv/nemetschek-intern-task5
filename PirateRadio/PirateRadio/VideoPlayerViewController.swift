@@ -29,7 +29,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
     }
     var gestureTimer: Timer?
     private var filenameForDownload: [WKDownload : String] = [:]
-    private var observation: NSKeyValueObservation?
+    private var downloadProgressObserver: NSKeyValueObservation?
     var lastFMFetcher: LastFMFetcher?
        
     override func viewDidLoad() {
@@ -42,6 +42,13 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         lastFMFetcher = LastFMFetcher()
         
         NotificationCenter.default.addObserver(self, selector: #selector(activatePirateMode), name: .PirateModeRequirementsFulfilledNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        downloadProgressObserver?.invalidate()
+        downloadProgressObserver = nil
     }
     
     @objc func onGestureTimerFired() {
@@ -222,7 +229,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, WKUIDel
         
         filenameForDownload[download] = suggestedFilename
         
-        observation = download.progress.observe(\.fractionCompleted) {
+        downloadProgressObserver = download.progress.observe(\.fractionCompleted) {
             progress, _ in
             let progressPercent = Int(progress.fractionCompleted * 100)
             print("Song's download progress: \(progressPercent)%")
