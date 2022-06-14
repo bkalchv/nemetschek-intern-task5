@@ -17,21 +17,46 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
     
     internal var songs: [Song] = []
     weak var songPlayerDelegate: SongPlayerDelegate?
-    
-    private func updateTableData() {
-        songs = DownloadedMP3sFileReader.downloadedSongsSortedByDateOfCreation()
-    }
-    
+        
     private func updateTableDataFromDataBase() {
         if let downloadedSongs = RealmWrapper.allDownloadedSongs() {
             songs = Array(downloadedSongs)
         }        
     }
     
+    private func sortTableData() {
+        if let selectedSortOption = UserDefaults.standard.string(forKey: "SelectedSortMenuOption"),
+            let sortMenuOption = SortMenuOption(rawValue: selectedSortOption) {
+            switch(sortMenuOption) {
+            case .title:
+                sortTableDataByTitleAscending()
+            case .recentylAdded:
+                sortTableDataByDateDescending()
+            case .artist:
+                sortTableDataByArtistAscending()
+            }
+        }
+    }
+    
+    private func sortTableDataByTitleAscending() {
+        songs = songs.sorted(by: { $0.title < $1.title })
+    }
+    
+    private func sortTableDataByDateDescending() {
+        songs = songs.sorted(by: { $0.addedAt > $1.addedAt })
+    }
+    
+    private func sortTableDataByArtistAscending() {
+        songs = songs.sorted(by: { $0.artist < $1.artist })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateTableDataFromDataBase()
+        sortTableData()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(didFinishDownload(notification:)), name: .DidFinishDownloadingMP3File, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectSortMenuOption(notification:)), name: .DidSelectSortMenuOption, object: nil)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,6 +66,22 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
     
     @objc func didFinishDownload(notification: Notification) {
         updateTableDataFromDataBase()
+        sortTableData()
+        self.tableView.reloadData()
+    }
+    
+    // TODO: Ask
+    @objc func didSelectSortMenuOption(notification: Notification) {
+        if let sortMenuOption = notification.userInfo?["selectedSortOption"] as? SortMenuOption {
+            switch(sortMenuOption) {
+            case .title:
+                sortTableDataByTitleAscending()
+            case .recentylAdded:
+                sortTableDataByDateDescending()
+            case .artist:
+                sortTableDataByArtistAscending()
+            }
+        }
         self.tableView.reloadData()
     }
     // MARK: - Table view data source

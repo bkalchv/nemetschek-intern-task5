@@ -20,7 +20,7 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var prevButton: UIButton!
     internal var player: AudioPlayer? = nil
-    weak var songsDataSourceDelegate: SongsDataSourceDelegate!    
+    weak var songsDataSourceDelegate: SongsDataSourceDelegate!
     
     private func setupMusicPlayerViewInitialState() {
         guard let audioPlayerCurrentSong = songsDataSourceDelegate.songs.first else { return }
