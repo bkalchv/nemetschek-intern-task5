@@ -11,6 +11,12 @@ protocol SongsDataSourceDelegate: AnyObject {
     var songs: [Song] { get }
 }
 
+extension MusicPlayerSongsViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    // TODO
+  }
+}
+
 class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, AudioPlayerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var currentSongTitleLabel: UILabel!
@@ -20,6 +26,7 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var prevButton: UIButton!
     internal var player: AudioPlayer? = nil
+    let searchController = UISearchController(searchResultsController: nil)
     weak var songsDataSourceDelegate: SongsDataSourceDelegate!
     
     private func setupMusicPlayerViewInitialState() {
@@ -30,15 +37,25 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
         setMusicPlayerViewSliderMaximumValue(maximumValue: Float(player!.getLoadedSongDuration()))
     }
     
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search in downloaded songs"
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Songs"
         player = AudioPlayer(withDelegate: self.songsDataSourceDelegate)
         self.player!.delegate = self
         setupMusicPlayerViewInitialState()
+        setupSearchController()
         slider.addTarget(self, action: #selector(sliderDidStartSliding), for: .touchDown)
         slider.addTarget(self, action: #selector(sliderDidEndSliding), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem  = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(onSortButtonPress))
+        
         // Do any additional setup after loading the view.
     }
     

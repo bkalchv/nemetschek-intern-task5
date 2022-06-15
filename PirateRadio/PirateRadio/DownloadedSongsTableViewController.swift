@@ -17,7 +17,7 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
     
     internal var songs: [Song] = []
     weak var songPlayerDelegate: SongPlayerDelegate?
-        
+    
     private func updateTableDataFromDataBase() {
         if let downloadedSongs = RealmWrapper.allDownloadedSongs() {
             songs = Array(downloadedSongs)
@@ -50,10 +50,13 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
         songs = songs.sorted(by: { $0.artist < $1.artist })
     }
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateTableDataFromDataBase()
         sortTableData()
+
         
         NotificationCenter.default.addObserver(self, selector: #selector(didFinishDownload(notification:)), name: .DidFinishDownloadingMP3File, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectSortMenuOption(notification:)), name: .DidSelectSortMenuOption, object: nil)
