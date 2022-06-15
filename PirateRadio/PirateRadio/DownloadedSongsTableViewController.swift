@@ -13,10 +13,42 @@ protocol SongPlayerDelegate: AnyObject {
     func play(song: Song)
 }
 
+protocol SearchControllerDelegate: AnyObject {
+    var isSearchBarEmpty: Bool { get }
+    var isSearchControllerActive: Bool { get }
+}
+
+extension DownloadedSongsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        if let searchText = searchBar.text {
+            print("Search text changed to: \(searchText)")
+            filterSongsForSearchText(searchText: searchText)
+            tableView.reloadData()
+        }
+    }
+}
+
 class DownloadedSongsTableViewController: UITableViewController, SongsDataSourceDelegate {
-    
+   
     internal var songs: [Song] = []
+    private var filteredSongs: [Song] = []
     weak var songPlayerDelegate: SongPlayerDelegate?
+    weak var searchControllerDelegate: SearchControllerDelegate?
+    var isFiltering: Bool {
+        if let searchControllerDelegate = searchControllerDelegate {
+            return searchControllerDelegate.isSearchControllerActive && !searchControllerDelegate.isSearchBarEmpty
+        }
+        
+        return false
+    }
+    
+    private func filterSongsForSearchText(searchText: String) {
+        filteredSongs = songs.filter { (song: Song) -> Bool in
+            return  song.title.lowercased().contains(searchText.lowercased()) ||
+                    song.artist.lowercased().contains(searchText.lowercased())
+        }
+    }
     
     private func updateTableDataFromDataBase() {
         if let downloadedSongs = RealmWrapper.allDownloadedSongs() {
@@ -24,7 +56,7 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
         }        
     }
     
-    private func sortTableData() {
+    private func sortSongs() {
         if let selectedSortOption = UserDefaults.standard.string(forKey: "SelectedSortMenuOption"),
             let sortMenuOption = SortMenuOption(rawValue: selectedSortOption) {
             switch(sortMenuOption) {
@@ -55,8 +87,7 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         updateTableDataFromDataBase()
-        sortTableData()
-
+        sortSongs()
         
         NotificationCenter.default.addObserver(self, selector: #selector(didFinishDownload(notification:)), name: .DidFinishDownloadingMP3File, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectSortMenuOption(notification:)), name: .DidSelectSortMenuOption, object: nil)
@@ -69,13 +100,13 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
     
     @objc func didFinishDownload(notification: Notification) {
         updateTableDataFromDataBase()
-        sortTableData()
+        sortSongs()
         self.tableView.reloadData()
     }
     
     // TODO: Ask
     @objc func didSelectSortMenuOption(notification: Notification) {
-        sortTableData()
+        sortSongs()
         self.tableView.reloadData()
     }
     // MARK: - Table view data source
@@ -87,14 +118,14 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return songs.count
+        return isFiltering ? filteredSongs.count : songs.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongTableViewCell", for: indexPath) as! SongTableViewCell
         // Configure the cell...
-        let song = songs[indexPath.row]
+        let song = isFiltering ? filteredSongs[indexPath.row] : songs[indexPath.row]
         
         cell.songTitleLabel.text = song.title
         cell.songDurationLabel.text = song.duration
@@ -120,7 +151,9 @@ class DownloadedSongsTableViewController: UITableViewController, SongsDataSource
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        songPlayerDelegate?.play(song: self.songs[indexPath.row])
+        
+        isFiltering ?  songPlayerDelegate?.play(song: filteredSongs[indexPath.row]) : songPlayerDelegate?.play(song: songs[indexPath.row])
+
     }
     
     /*

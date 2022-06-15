@@ -11,13 +11,7 @@ protocol SongsDataSourceDelegate: AnyObject {
     var songs: [Song] { get }
 }
 
-extension MusicPlayerSongsViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-    // TODO
-  }
-}
-
-class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, AudioPlayerDelegate, UIPopoverPresentationControllerDelegate {
+class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, AudioPlayerDelegate, UIPopoverPresentationControllerDelegate, SearchControllerDelegate {
     
     @IBOutlet weak var currentSongTitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
@@ -27,6 +21,12 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
     @IBOutlet weak var prevButton: UIButton!
     internal var player: AudioPlayer? = nil
     let searchController = UISearchController(searchResultsController: nil)
+    internal var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    internal var isSearchControllerActive: Bool {
+        return searchController.isActive
+    }
     weak var songsDataSourceDelegate: SongsDataSourceDelegate!
     
     private func setupMusicPlayerViewInitialState() {
@@ -38,7 +38,6 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
     }
     
     private func setupSearchController() {
-        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search in downloaded songs"
         navigationItem.searchController = searchController
@@ -139,7 +138,9 @@ class MusicPlayerSongsViewController: UIViewController, SongPlayerDelegate, Audi
         // Pass the selected object to the new view controller.
         
         if let embeddedDownloadedSongsTableVC = segue.destination as? DownloadedSongsTableViewController {
+            searchController.searchResultsUpdater = embeddedDownloadedSongsTableVC
             embeddedDownloadedSongsTableVC.songPlayerDelegate = self
+            embeddedDownloadedSongsTableVC.searchControllerDelegate = self
             self.songsDataSourceDelegate = embeddedDownloadedSongsTableVC
         }
         
